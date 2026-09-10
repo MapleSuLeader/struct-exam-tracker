@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一级注册结构工程师备考追踪</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <div class="nav-brand"> 结构备考追踪</div>
+            <div class="nav-links">
+                <a href="#dashboard" class="nav-link active">📊 总览</a>
+                <a href="#daily" class="nav-link">📝 每日记录</a>
+                <a href="#errors" class="nav-link"> 错题本</a>
+                <a href="#review" class="nav-link">🔄 复习计划</a>
+                <a href="#stats" class="nav-link">📈 统计</a>
+            </div>
+        </nav>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- Dashboard 页面 -->
+            <section id="dashboard" class="page active">
+                <div class="dashboard-header">
+                    <h1>📊 学习总览</h1>
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-days">0</div>
+                            <div class="stat-label">学习天数</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-hours">0</div>
+                            <div class="stat-label">总时长(小时)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-problems">0</div>
+                            <div class="stat-label">做题总数</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="accuracy-rate">0%</div>
+                            <div class="stat-label">平均正确率</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="chart-card">
+                        <h3>📅 本周学习时长</h3>
+                        <canvas id="weekly-chart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3> 各科正确率</h3>
+                        <canvas id="subject-chart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>🎯 本周目标进度</h3>
+                        <div class="progress-container">
+                            <div class="progress-item">
+                                <span>混凝土结构</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <span>钢结构</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <span>砌体结构</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>🔥 待复习错题</h3>
+                        <div id="review-due-list" class="review-list">
+                            <p class="empty-state">暂无待复习错题</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 成就提示 -->
+                <div id="achievement-toast" class="achievement-toast hidden">
+                    <span class="achievement-icon">🏆</span>
+                    <span class="achievement-text"></span>
+                </div>
+            </section>
+
+            <!-- 每日记录页面 -->
+            <section id="daily" class="page">
+                <h1>📝 每日学习记录</h1>
+                <form id="daily-form" class="record-form">
+                    <div class="form-group">
+                        <label>日期</label>
+                        <input type="date" id="record-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>学习内容</label>
+                        <textarea id="record-content" rows="3" placeholder="今天学了什么章节/知识点" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>学习时长（分钟）</label>
+                        <input type="number" id="record-duration" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>做题数量</label>
+                        <input type="number" id="record-problems" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>正确题数</label>
+                        <input type="number" id="record-correct" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>精力状态（1-5分）</label>
+                        <select id="record-energy" required>
+                            <option value="5">5 - 精力充沛</option>
+                            <option value="4">4 - 状态不错</option>
+                            <option value="3" selected>3 - 一般</option>
+                            <option value="2">2 - 有点累</option>
+                            <option value="1">1 - 很疲惫</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>专注度（1-5分）</label>
+                        <select id="record-focus" required>
+                            <option value="5">5 - 完全专注</option>
+                            <option value="4">4 - 比较专注</option>
+                            <option value="3" selected>3 - 偶尔分心</option>
+                            <option value="2">2 - 经常走神</option>
+                            <option value="1">1 - 很难集中</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>难点/疑问</label>
+                        <textarea id="record-difficulties" rows="2" placeholder="遇到什么问题"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>今日心得</label>
+                        <textarea id="record-notes" rows="2" placeholder="学习心得、总结"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>明日计划</label>
+                        <textarea id="record-tomorrow" rows="2" placeholder="明天打算学什么"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">保存记录</button>
+                </form>
+
+                <div class="records-list">
+                    <h2>历史记录</h2>
+                    <div id="records-container"></div>
+                </div>
+            </section>
+
+            <!-- 错题本页面 -->
+            <section id="errors" class="page">
+                <h1> 错题本</h1>
+                <button class="btn-primary" onclick="showAddErrorModal()">➕ 添加错题</button>
+                
+                <div class="filter-bar">
+                    <select id="filter-subject">
+                        <option value="">全部科目</option>
+                        <option value="混凝土">混凝土结构</option>
+                        <option value="钢结构">钢结构</option>
+                        <option value="砌体">砌体结构</option>
+                        <option value="桥梁">桥梁工程</option>
+                        <option value="地基">地基基础</option>
+                        <option value="高层">高层结构</option>
+                    </select>
+                    <select id="filter-error-type">
+                        <option value="">全部错误类型</option>
+                        <option value="概念不清">概念不清</option>
+                        <option value="计算错误">计算错误</option>
+                        <option value="规范不熟">规范不熟</option>
+                        <option value="审题失误">审题失误</option>
+                    </select>
+                </div>
+
+                <div id="errors-container" class="errors-list"></div>
+            </section>
+
+            <!-- 复习计划页面 -->
+            <section id="review" class="page">
+                <h1>🔄 艾宾浩斯复习计划</h1>
+                <div class="review-schedule">
+                    <div class="schedule-header">
+                        <h2>今日待复习</h2>
+                        <span class="review-count" id="today-review-count">0 题</span>
+                    </div>
+                    <div id="today-review-list" class="review-items"></div>
+                </div>
+
+                <div class="review-schedule">
+                    <div class="schedule-header">
+                        <h2>未来复习计划</h2>
+                    </div>
+                    <div id="future-review-list" class="review-items"></div>
+                </div>
+            </section>
+
+            <!-- 统计页面 -->
+            <section id="stats" class="page">
+                <h1> 学习统计</h1>
+                <div class="stats-grid">
+                    <div class="stat-card-large">
+                        <h3>学习时长趋势</h3>
+                        <canvas id="duration-trend-chart"></canvas>
+                    </div>
+                    <div class="stat-card-large">
+                        <h3>正确率变化</h3>
+                        <canvas id="accuracy-trend-chart"></canvas>
+                    </div>
+                    <div class="stat-card-large">
+                        <h3>错题类型分布</h3>
+                        <canvas id="error-type-chart"></canvas>
+                    </div>
+                    <div class="stat-card-large">
+                        <h3>薄弱知识点 TOP10</h3>
+                        <div id="weak-topics-list"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 添加错题弹窗 -->
+    <div id="error-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeErrorModal()">&times;</span>
+            <h2>添加错题</h2>
+            <form id="error-form">
+                <div class="form-group">
+                    <label>题目内容</label>
+                    <textarea id="error-question" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>科目</label>
+                    <select id="error-subject" required>
+                        <option value="混凝土">混凝土结构</option>
+                        <option value="钢结构">钢结构</option>
+                        <option value="砌体">砌体结构</option>
+                        <option value="桥梁">桥梁工程</option>
+                        <option value="地基">地基基础</option>
+                        <option value="高层">高层结构</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>知识点</label>
+                    <input type="text" id="error-topic" placeholder="如：梁配筋计算" required>
+                </div>
+                <div class="form-group">
+                    <label>错误答案</label>
+                    <textarea id="error-wrong-answer" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>正确答案</label>
+                    <textarea id="error-correct-answer" rows="2" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>错误原因</label>
+                    <select id="error-type" required>
+                        <option value="概念不清">概念不清</option>
+                        <option value="计算错误">计算错误</option>
+                        <option value="规范不熟">规范不熟</option>
+                        <option value="审题失误">审题失误</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>关联规范条文</label>
+                    <input type="text" id="error-code" placeholder="如：GB 50010-2010 第6.2.1条">
+                </div>
+                <div class="form-group">
+                    <label>难度（1-5星）</label>
+                    <select id="error-difficulty">
+                        <option value="1">⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="3" selected>⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>题目图片（可选）</label>
+                    <input type="file" id="error-image" accept="image/*">
+                </div>
+                <button type="submit" class="btn-primary">保存错题</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
