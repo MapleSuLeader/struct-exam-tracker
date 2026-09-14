@@ -32,42 +32,200 @@
   },
   "2026-09-20": {
     "subject": "结构力学",
-    "topic": "第4讲：位移法",
-    "status": "planned"
+    "topic": "串讲复习：第1-3讲（静定梁+静定桁架+力法）",
+    "status": "planned",
+    "notes": "周日串讲，把本周3讲联系起来"
   },
   "2026-09-21": {
     "subject": "结构力学",
-    "topic": "复习第4讲：位移法",
+    "topic": "第4讲：位移法",
     "status": "planned"
   },
   "2026-09-22": {
     "subject": "结构力学",
-    "topic": "第5讲：影响线",
+    "topic": "复习第4讲：位移法",
     "status": "planned"
   },
   "2026-09-23": {
     "subject": "结构力学",
-    "topic": "复习第5讲：影响线",
+    "topic": "第5讲：影响线",
     "status": "planned"
   },
   "2026-09-24": {
     "subject": "结构力学",
-    "topic": "第6讲：力矩分配法",
+    "topic": "复习第5讲：影响线",
     "status": "planned"
   },
   "2026-09-25": {
     "subject": "结构力学",
-    "topic": "复习第6讲：力矩分配法",
+    "topic": "第6讲：力矩分配法",
     "status": "planned"
   },
   "2026-09-26": {
     "subject": "结构力学",
-    "topic": "第7讲：结构位移计算",
+    "topic": "复习第6讲：力矩分配法",
     "status": "planned"
   },
   "2026-09-27": {
     "subject": "结构力学",
+    "topic": "串讲复习：第4-6讲（位移法+影响线+力矩分配法）",
+    "status": "planned",
+    "notes": "周日串讲，把本周3讲联系起来"
+  },
+  "2026-09-28": {
+    "subject": "结构力学",
+    "topic": "第7讲：结构位移计算",
+    "status": "planned"
+  },
+  "2026-09-29": {
+    "subject": "结构力学",
     "topic": "复习第7讲：结构位移计算",
     "status": "planned"
+  },
+  "2026-09-30": {
+    "subject": "结构力学",
+    "topic": "总复习：结构力学7讲串联（1/5）",
+    "status": "planned",
+    "notes": "整体串讲，综合题练习"
+  },
+  "2026-10-01": {
+    "subject": "结构力学",
+    "topic": "总复习：结构力学7讲串联（2/5）",
+    "status": "planned"
+  },
+  "2026-10-02": {
+    "subject": "结构力学",
+    "topic": "总复习：结构力学7讲串联（3/5）",
+    "status": "planned"
+  },
+  "2026-10-03": {
+    "subject": "结构力学",
+    "topic": "总复习：结构力学7讲串联（4/5）",
+    "status": "planned"
+  },
+  "2026-10-04": {
+    "subject": "结构力学",
+    "topic": "总复习：结构力学7讲串联（5/5）+ 自测",
+    "status": "planned",
+    "notes": "结构力学收官自测"
+  },
+  "2026-10-05": {
+    "subject": "混凝土结构",
+    "topic": "第1讲：材料性能 + 设计原则",
+    "status": "planned"
+  },
+  "2026-10-06": {
+    "subject": "混凝土结构",
+    "topic": "复习第1讲：材料性能 + 设计原则",
+    "status": "planned"
+  },
+  "2026-10-07": {
+    "subject": "混凝土结构",
+    "topic": "第2讲：受弯构件正截面承载力",
+    "status": "planned"
+  },
+  "2026-10-08": {
+    "subject": "混凝土结构",
+    "topic": "复习第2讲：受弯构件正截面承载力",
+    "status": "planned"
+  },
+  "2026-10-09": {
+    "subject": "混凝土结构",
+    "topic": "第3讲：受弯构件斜截面承载力",
+    "status": "planned"
+  },
+  "2026-10-10": {
+    "subject": "混凝土结构",
+    "topic": "复习第3讲：受弯构件斜截面承载力",
+    "status": "planned"
+  },
+  "2026-10-11": {
+    "subject": "混凝土结构",
+    "topic": "串讲复习：第1-3讲",
+    "status": "planned",
+    "notes": "周日串讲"
+  },
+  "2026-10-12": {
+    "subject": "混凝土结构",
+    "topic": "第4讲：受压构件（轴心+偏心）",
+    "status": "planned"
+  },
+  "2026-10-13": {
+    "subject": "混凝土结构",
+    "topic": "复习第4讲：受压构件",
+    "status": "planned"
+  },
+  "2026-10-14": {
+    "subject": "混凝土结构",
+    "topic": "第5讲：受拉、受扭构件",
+    "status": "planned"
+  },
+  "2026-10-15": {
+    "subject": "混凝土结构",
+    "topic": "复习第5讲：受拉、受扭构件",
+    "status": "planned"
+  },
+  "2026-10-16": {
+    "subject": "混凝土结构",
+    "topic": "第6讲：预应力混凝土",
+    "status": "planned"
+  },
+  "2026-10-17": {
+    "subject": "混凝土结构",
+    "topic": "复习第6讲：预应力混凝土",
+    "status": "planned"
+  },
+  "2026-10-18": {
+    "subject": "混凝土结构",
+    "topic": "串讲复习：第4-6讲",
+    "status": "planned",
+    "notes": "周日串讲"
+  },
+  "2026-10-19": {
+    "subject": "混凝土结构",
+    "topic": "第7讲：正常使用极限状态 + 构造",
+    "status": "planned"
+  },
+  "2026-10-20": {
+    "subject": "混凝土结构",
+    "topic": "复习第7讲：正常使用极限状态 + 构造",
+    "status": "planned"
+  },
+  "2026-10-21": {
+    "subject": "混凝土结构",
+    "topic": "第8讲：抗震设计 + 真题演练",
+    "status": "planned"
+  },
+  "2026-10-22": {
+    "subject": "混凝土结构",
+    "topic": "复习第8讲：抗震设计 + 真题演练",
+    "status": "planned"
+  },
+  "2026-10-23": {
+    "subject": "混凝土结构",
+    "topic": "总复习：混凝土8讲串联（1/5）",
+    "status": "planned"
+  },
+  "2026-10-24": {
+    "subject": "混凝土结构",
+    "topic": "总复习：混凝土8讲串联（2/5）",
+    "status": "planned"
+  },
+  "2026-10-25": {
+    "subject": "混凝土结构",
+    "topic": "总复习：混凝土8讲串联（3/5）",
+    "status": "planned",
+    "notes": "周日串讲"
+  },
+  "2026-10-26": {
+    "subject": "混凝土结构",
+    "topic": "总复习：混凝土8讲串联（4/5）",
+    "status": "planned"
+  },
+  "2026-10-27": {
+    "subject": "混凝土结构",
+    "topic": "总复习：混凝土8讲串联（5/5）+ 自测",
+    "status": "planned",
+    "notes": "混凝土收官自测"
   }
 }
