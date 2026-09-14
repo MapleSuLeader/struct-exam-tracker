@@ -1,0 +1,38 @@
+{
+  "2026-09-14": {
+    "subject": "结构力学",
+    "topic": "静定梁的内力计算",
+    "status": "completed",
+    "notes": "第1讲完成，3道练习题全对"
+  },
+  "2026-09-15": {
+    "subject": "结构力学",
+    "topic": "静定梁复习 + 康奈尔笔记整理",
+    "status": "planned"
+  },
+  "2026-09-16": {
+    "subject": "结构力学",
+    "topic": "静定桁架",
+    "status": "planned"
+  },
+  "2026-09-17": {
+    "subject": "结构力学",
+    "topic": "力法",
+    "status": "planned"
+  },
+  "2026-09-18": {
+    "subject": "结构力学",
+    "topic": "位移法",
+    "status": "planned"
+  },
+  "2026-09-19": {
+    "subject": "结构力学",
+    "topic": "影响线",
+    "status": "planned"
+  },
+  "2026-09-20": {
+    "subject": "结构力学",
+    "topic": "力矩分配法（补充）+ 结构位移计算（补充）",
+    "status": "planned"
+  }
+}

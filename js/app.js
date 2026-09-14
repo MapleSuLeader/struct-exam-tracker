@@ -1,24 +1,46 @@
 // 数据结构定义
-const STORAGE_KEYS = {
-    records: 'struct_exam_records',
-    errors: 'struct_exam_errors',
-    weeklyPlan: 'struct_exam_weekly_plan',
-    achievements: 'struct_exam_achievements'
-};
+const DATA_BASE_URL = 'https://raw.githubusercontent.com/MapleSuLeader/struct-exam-tracker/master/data';
 
 // 艾宾浩斯复习间隔（天）
 const EBBINGHAUS_INTERVALS = [1, 2, 4, 7, 15, 30];
 
+// 全局数据缓存
+let cachedRecords = null;
+let cachedErrors = null;
+let cachedWeeklyPlan = null;
+
+// 从 GitHub 加载数据
+async function fetchData(filename, cacheKey) {
+    // 优先用缓存
+    if (cacheKey === 'records' && cachedRecords) return cachedRecords;
+    if (cacheKey === 'errors' && cachedErrors) return cachedErrors;
+    if (cacheKey === 'weeklyPlan' && cachedWeeklyPlan) return cachedWeeklyPlan;
+
+    try {
+        const response = await fetch(`${DATA_BASE_URL}/${filename}?t=${Date.now()}`);
+        const data = await response.json();
+        if (cacheKey === 'records') cachedRecords = data;
+        if (cacheKey === 'errors') cachedErrors = data;
+        if (cacheKey === 'weeklyPlan') cachedWeeklyPlan = data;
+        return data;
+    } catch (e) {
+        console.error(`加载 ${filename} 失败:`, e);
+        // 降级到 localStorage
+        const local = localStorage.getItem(`struct_exam_${cacheKey}`);
+        return local ? JSON.parse(local) : (Array.isArray([]) ? [] : {});
+    }
+}
+
 // 初始化
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     initNavigation();
     initDailyForm();
     initErrorForm();
-    loadDashboard();
-    loadRecords();
-    loadErrors();
-    loadReviewSchedule();
-    loadStats();
+    await loadDashboard();
+    await loadRecords();
+    await loadErrors();
+    await loadReviewSchedule();
+    await loadStats();
     checkAchievements();
 });
 
@@ -26,24 +48,21 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+        link.addEventListener('click', async (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href').substring(1);
             
-            // 更新导航状态
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
             
-            // 切换页面
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(targetId).classList.add('active');
             
-            // 刷新对应页面数据
-            if (targetId === 'dashboard') loadDashboard();
-            if (targetId === 'daily') loadRecords();
-            if (targetId === 'errors') loadErrors();
-            if (targetId === 'review') loadReviewSchedule();
-            if (targetId === 'stats') loadStats();
+            if (targetId === 'dashboard') await loadDashboard();
+            if (targetId === 'daily') await loadRecords();
+            if (targetId === 'errors') await loadErrors();
+            if (targetId === 'review') await loadReviewSchedule();
+            if (targetId === 'stats') await loadStats();
         });
     });
 }
@@ -52,62 +71,29 @@ function initNavigation() {
 function initDailyForm() {
     const form = document.getElementById('daily-form');
     const dateInput = document.getElementById('record-date');
-    
-    // 默认今天
     dateInput.valueAsDate = new Date();
     
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        const record = {
-            id: Date.now(),
-            date: document.getElementById('record-date').value,
-            content: document.getElementById('record-content').value,
-            duration: parseInt(document.getElementById('record-duration').value),
-            problems: parseInt(document.getElementById('record-problems').value),
-            correct: parseInt(document.getElementById('record-correct').value),
-            energy: parseInt(document.getElementById('record-energy').value),
-            focus: parseInt(document.getElementById('record-focus').value),
-            difficulties: document.getElementById('record-difficulties').value,
-            notes: document.getElementById('record-notes').value,
-            tomorrow: document.getElementById('record-tomorrow').value,
-            createdAt: new Date().toISOString()
-        };
-        
-        saveRecord(record);
-        form.reset();
-        dateInput.valueAsDate = new Date();
-        
-        showAchievement('✅ 学习记录已保存！');
-        loadRecords();
-        loadDashboard();
+        showAchievement('⚠️ 数据由 Spica 自动管理，请在飞书中告诉我学习内容');
     });
 }
 
-// 保存学习记录
-function saveRecord(record) {
-    const records = getRecords();
-    records.push(record);
-    localStorage.setItem(STORAGE_KEYS.records, JSON.stringify(records));
-}
-
 // 获取学习记录
-function getRecords() {
-    const data = localStorage.getItem(STORAGE_KEYS.records);
-    return data ? JSON.parse(data) : [];
+async function getRecords() {
+    return await fetchData('records.json', 'records');
 }
 
 // 加载历史记录
-function loadRecords() {
-    const records = getRecords();
+async function loadRecords() {
+    const records = await getRecords();
     const container = document.getElementById('records-container');
     
-    if (records.length === 0) {
+    if (!records || records.length === 0) {
         container.innerHTML = '<p class="empty-state">暂无学习记录</p>';
         return;
     }
     
-    // 按日期倒序
     records.sort((a, b) => new Date(b.date) - new Date(a.date));
     
     container.innerHTML = records.map(record => {
@@ -124,13 +110,13 @@ function loadRecords() {
                         <span>📝 ${record.problems}题</span>
                         <span>✅ ${accuracy}%正确率</span>
                         <span>⚡ 精力${record.energy}/5</span>
-                        <span> 专注${record.focus}/5</span>
+                        <span>🎯 专注${record.focus}/5</span>
                     </div>
                 </div>
                 <div class="record-content">${record.content}</div>
                 ${record.difficulties ? `<div class="record-notes">❓ ${record.difficulties}</div>` : ''}
-                ${record.notes ? `<div class="record-notes">💡 ${record.notes}</div>` : ''}
-                ${record.tomorrow ? `<div class="record-notes"> 明日：${record.tomorrow}</div>` : ''}
+                ${record.notes ? `<div class="record-notes"> ${record.notes}</div>` : ''}
+                ${record.tomorrow ? `<div class="record-notes">📋 明日：${record.tomorrow}</div>` : ''}
             </div>
         `;
     }).join('');
@@ -139,89 +125,39 @@ function loadRecords() {
 // 错题表单
 function initErrorForm() {
     const form = document.getElementById('error-form');
-    
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        const error = {
-            id: Date.now(),
-            question: document.getElementById('error-question').value,
-            subject: document.getElementById('error-subject').value,
-            topic: document.getElementById('error-topic').value,
-            wrongAnswer: document.getElementById('error-wrong-answer').value,
-            correctAnswer: document.getElementById('error-correct-answer').value,
-            errorType: document.getElementById('error-type').value,
-            code: document.getElementById('error-code').value,
-            difficulty: parseInt(document.getElementById('error-difficulty').value),
-            reviewSchedule: calculateReviewSchedule(),
-            createdAt: new Date().toISOString()
-        };
-        
-        saveError(error);
-        form.reset();
-        closeErrorModal();
-        
-        showAchievement(' 错题已添加到复习计划！');
-        loadErrors();
-        loadReviewSchedule();
-        loadDashboard();
+        showAchievement('⚠️ 错题由 Spica 自动管理，请在飞书中告诉我错题内容');
     });
-}
-
-// 保存错题
-function saveError(error) {
-    const errors = getErrors();
-    errors.push(error);
-    localStorage.setItem(STORAGE_KEYS.errors, JSON.stringify(errors));
 }
 
 // 获取错题
-function getErrors() {
-    const data = localStorage.getItem(STORAGE_KEYS.errors);
-    return data ? JSON.parse(data) : [];
-}
-
-// 计算艾宾浩斯复习计划
-function calculateReviewSchedule() {
-    const today = new Date();
-    return EBBINGHAUS_INTERVALS.map(days => {
-        const reviewDate = new Date(today);
-        reviewDate.setDate(reviewDate.getDate() + days);
-        return {
-            dueDate: reviewDate.toISOString().split('T')[0],
-            completed: false
-        };
-    });
+async function getErrors() {
+    return await fetchData('errors.json', 'errors');
 }
 
 // 加载错题列表
-function loadErrors() {
-    const errors = getErrors();
+async function loadErrors() {
+    const errors = await getErrors();
     const container = document.getElementById('errors-container');
     
-    // 筛选器
     const subjectFilter = document.getElementById('filter-subject').value;
     const typeFilter = document.getElementById('filter-error-type').value;
     
-    let filtered = errors;
-    if (subjectFilter) {
-        filtered = filtered.filter(e => e.subject === subjectFilter);
-    }
-    if (typeFilter) {
-        filtered = filtered.filter(e => e.errorType === typeFilter);
-    }
+    let filtered = errors || [];
+    if (subjectFilter) filtered = filtered.filter(e => e.subject === subjectFilter);
+    if (typeFilter) filtered = filtered.filter(e => e.errorType === typeFilter);
     
     if (filtered.length === 0) {
-        container.innerHTML = '<p class="empty-state">暂无错题</p>';
+        container.innerHTML = '<p class="empty-state">暂无错题 🎉</p>';
         return;
     }
     
-    // 按创建时间倒序
     filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     
     container.innerHTML = filtered.map(error => {
-        const stars = '⭐'.repeat(error.difficulty);
-        const nextReview = error.reviewSchedule.find(r => !r.completed);
+        const stars = '⭐'.repeat(error.difficulty || 3);
+        const nextReview = error.reviewSchedule ? error.reviewSchedule.find(r => !r.completed) : null;
         
         return `
             <div class="error-item">
@@ -244,8 +180,8 @@ function loadErrors() {
                 </div>
                 <div class="error-meta">
                     ${error.code ? `<span>📖 ${error.code}</span>` : ''}
-                    ${nextReview ? `<span> 下次复习：${nextReview.dueDate}</span>` : ''}
-                    <span> 添加于：${error.createdAt.split('T')[0]}</span>
+                    ${nextReview ? `<span>📅 下次复习：${nextReview.dueDate}</span>` : ''}
+                    <span>📆 添加于：${error.createdAt ? error.createdAt.split('T')[0] : ''}</span>
                 </div>
             </div>
         `;
@@ -253,34 +189,27 @@ function loadErrors() {
 }
 
 // 加载复习计划
-function loadReviewSchedule() {
-    const errors = getErrors();
+async function loadReviewSchedule() {
+    const errors = await getErrors();
     const today = new Date().toISOString().split('T')[0];
     
     const todayReview = [];
     const futureReview = [];
     
-    errors.forEach(error => {
-        error.reviewSchedule.forEach((schedule, idx) => {
-            if (!schedule.completed) {
-                if (schedule.dueDate === today) {
-                    todayReview.push({
-                        error: error,
-                        scheduleIndex: idx,
-                        dueDate: schedule.dueDate
-                    });
-                } else if (schedule.dueDate > today) {
-                    futureReview.push({
-                        error: error,
-                        scheduleIndex: idx,
-                        dueDate: schedule.dueDate
-                    });
+    (errors || []).forEach(error => {
+        if (error.reviewSchedule) {
+            error.reviewSchedule.forEach((schedule, idx) => {
+                if (!schedule.completed) {
+                    if (schedule.dueDate === today) {
+                        todayReview.push({ error, scheduleIndex: idx, dueDate: schedule.dueDate });
+                    } else if (schedule.dueDate > today) {
+                        futureReview.push({ error, scheduleIndex: idx, dueDate: schedule.dueDate });
+                    }
                 }
-            }
-        });
+            });
+        }
     });
     
-    // 今日待复习
     const todayContainer = document.getElementById('today-review-list');
     document.getElementById('today-review-count').textContent = `${todayReview.length} 题`;
     
@@ -293,14 +222,10 @@ function loadReviewSchedule() {
                     <div class="review-item-topic">${item.error.topic}</div>
                     <div class="review-item-due">${item.error.subject} · ${item.error.errorType}</div>
                 </div>
-                <button class="btn-review" onclick="completeReview(${item.error.id}, ${item.scheduleIndex})">
-                    完成复习
-                </button>
             </div>
         `).join('');
     }
     
-    // 未来复习
     const futureContainer = document.getElementById('future-review-list');
     futureReview.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
     
@@ -317,7 +242,6 @@ function loadReviewSchedule() {
         `).join('');
     }
     
-    // Dashboard 待复习列表
     const dashboardReview = document.getElementById('review-due-list');
     if (todayReview.length === 0) {
         dashboardReview.innerHTML = '<p class="empty-state">暂无待复习错题</p>';
@@ -330,61 +254,38 @@ function loadReviewSchedule() {
     }
 }
 
-// 完成复习
-function completeReview(errorId, scheduleIndex) {
-    const errors = getErrors();
-    const error = errors.find(e => e.id === errorId);
-    
-    if (error && error.reviewSchedule[scheduleIndex]) {
-        error.reviewSchedule[scheduleIndex].completed = true;
-        error.reviewSchedule[scheduleIndex].completedAt = new Date().toISOString();
-        
-        saveError(error);
-        loadReviewSchedule();
-        loadDashboard();
-        
-        showAchievement('✅ 复习完成！');
-    }
-}
-
 // 加载 Dashboard
-function loadDashboard() {
-    const records = getRecords();
-    const errors = getErrors();
+async function loadDashboard() {
+    const records = await getRecords();
+    const errors = await getErrors();
     
-    // 总学习天数
-    const uniqueDays = new Set(records.map(r => r.date)).size;
+    const uniqueDays = new Set((records || []).map(r => r.date)).size;
     document.getElementById('total-days').textContent = uniqueDays;
     
-    // 总时长（小时）
-    const totalMinutes = records.reduce((sum, r) => sum + r.duration, 0);
+    const totalMinutes = (records || []).reduce((sum, r) => sum + (r.duration || 0), 0);
     document.getElementById('total-hours').textContent = (totalMinutes / 60).toFixed(1);
     
-    // 做题总数
-    const totalProblems = records.reduce((sum, r) => sum + r.problems, 0);
+    const totalProblems = (records || []).reduce((sum, r) => sum + (r.problems || 0), 0);
     document.getElementById('total-problems').textContent = totalProblems;
     
-    // 平均正确率
     let totalCorrect = 0;
-    records.forEach(r => { totalCorrect += r.correct; });
+    (records || []).forEach(r => { totalCorrect += (r.correct || 0); });
     const accuracy = totalProblems > 0 ? Math.round((totalCorrect / totalProblems) * 100) : 0;
     document.getElementById('accuracy-rate').textContent = `${accuracy}%`;
     
-    // 本周学习时长图表
-    loadWeeklyChart(records);
-    
-    // 各科正确率图表
-    loadSubjectChart(records);
+    await loadWeeklyChart(records || []);
+    await loadSubjectChart(records || []);
 }
 
 // 本周学习时长图表
-function loadWeeklyChart(records) {
+async function loadWeeklyChart(records) {
     const ctx = document.getElementById('weekly-chart');
     if (!ctx) return;
     
     const weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
     const today = new Date();
     const weekData = [];
+    const weekLabels = [];
     
     for (let i = 6; i >= 0; i--) {
         const date = new Date(today);
@@ -392,12 +293,14 @@ function loadWeeklyChart(records) {
         const dateStr = date.toISOString().split('T')[0];
         const dayRecord = records.find(r => r.date === dateStr);
         weekData.push(dayRecord ? dayRecord.duration : 0);
+        weekLabels.push(weekDays[date.getDay()] + ' ' + (date.getMonth()+1) + '/' + date.getDate());
     }
     
-    new Chart(ctx, {
+    if (ctx._chart) ctx._chart.destroy();
+    ctx._chart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: weekDays,
+            labels: weekLabels,
             datasets: [{
                 label: '学习时长（分钟）',
                 data: weekData,
@@ -408,25 +311,21 @@ function loadWeeklyChart(records) {
         },
         options: {
             responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+            scales: { y: { beginAtZero: true } }
         }
     });
 }
 
 // 各科正确率图表
-function loadSubjectChart(records) {
+async function loadSubjectChart(records) {
     const ctx = document.getElementById('subject-chart');
     if (!ctx) return;
     
-    // 这里简化处理，实际需要从错题中统计
     const subjects = ['混凝土', '钢结构', '砌体', '桥梁', '地基', '高层'];
-    const data = [75, 68, 82, 90, 65, 70]; // 示例数据
+    const data = [0, 0, 0, 90, 0, 0]; // 桥梁已有基础
     
-    new Chart(ctx, {
+    if (ctx._chart) ctx._chart.destroy();
+    ctx._chart = new Chart(ctx, {
         type: 'radar',
         data: {
             labels: subjects,
@@ -440,35 +339,22 @@ function loadSubjectChart(records) {
         },
         options: {
             responsive: true,
-            scales: {
-                r: {
-                    beginAtZero: true,
-                    max: 100
-                }
-            }
+            scales: { r: { beginAtZero: true, max: 100 } }
         }
     });
 }
 
 // 加载统计页面
-function loadStats() {
-    const records = getRecords();
-    const errors = getErrors();
+async function loadStats() {
+    const records = await getRecords();
+    const errors = await getErrors();
     
-    // 学习时长趋势
-    loadDurationTrendChart(records);
-    
-    // 正确率变化
-    loadAccuracyTrendChart(records);
-    
-    // 错题类型分布
-    loadErrorTypeChart(errors);
-    
-    // 薄弱知识点
-    loadWeakTopics(errors);
+    loadDurationTrendChart(records || []);
+    loadAccuracyTrendChart(records || []);
+    loadErrorTypeChart(errors || []);
+    loadWeakTopics(errors || []);
 }
 
-// 学习时长趋势
 function loadDurationTrendChart(records) {
     const ctx = document.getElementById('duration-trend-chart');
     if (!ctx) return;
@@ -476,7 +362,8 @@ function loadDurationTrendChart(records) {
     const sorted = [...records].sort((a, b) => new Date(a.date) - new Date(b.date));
     const last30 = sorted.slice(-30);
     
-    new Chart(ctx, {
+    if (ctx._chart) ctx._chart.destroy();
+    ctx._chart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: last30.map(r => r.date.substring(5)),
@@ -489,13 +376,10 @@ function loadDurationTrendChart(records) {
                 fill: true
             }]
         },
-        options: {
-            responsive: true
-        }
+        options: { responsive: true }
     });
 }
 
-// 正确率变化
 function loadAccuracyTrendChart(records) {
     const ctx = document.getElementById('accuracy-trend-chart');
     if (!ctx) return;
@@ -507,7 +391,8 @@ function loadAccuracyTrendChart(records) {
         r.problems > 0 ? Math.round((r.correct / r.problems) * 100) : 0
     );
     
-    new Chart(ctx, {
+    if (ctx._chart) ctx._chart.destroy();
+    ctx._chart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: last30.map(r => r.date.substring(5)),
@@ -522,32 +407,25 @@ function loadAccuracyTrendChart(records) {
         },
         options: {
             responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 100
-                }
-            }
+            scales: { y: { beginAtZero: true, max: 100 } }
         }
     });
 }
 
-// 错题类型分布
 function loadErrorTypeChart(errors) {
     const ctx = document.getElementById('error-type-chart');
     if (!ctx) return;
     
     const typeCount = {};
-    errors.forEach(e => {
-        typeCount[e.errorType] = (typeCount[e.errorType] || 0) + 1;
-    });
+    errors.forEach(e => { typeCount[e.errorType] = (typeCount[e.errorType] || 0) + 1; });
     
-    new Chart(ctx, {
+    if (ctx._chart) ctx._chart.destroy();
+    ctx._chart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: Object.keys(typeCount),
+            labels: Object.keys(typeCount).length ? Object.keys(typeCount) : ['暂无数据'],
             datasets: [{
-                data: Object.values(typeCount),
+                data: Object.keys(typeCount).length ? Object.values(typeCount) : [1],
                 backgroundColor: [
                     'rgba(239, 68, 68, 0.6)',
                     'rgba(245, 158, 11, 0.6)',
@@ -556,28 +434,21 @@ function loadErrorTypeChart(errors) {
                 ]
             }]
         },
-        options: {
-            responsive: true
-        }
+        options: { responsive: true }
     });
 }
 
-// 薄弱知识点
 function loadWeakTopics(errors) {
     const container = document.getElementById('weak-topics-list');
     if (!container) return;
     
     const topicCount = {};
-    errors.forEach(e => {
-        topicCount[e.topic] = (topicCount[e.topic] || 0) + 1;
-    });
+    errors.forEach(e => { topicCount[e.topic] = (topicCount[e.topic] || 0) + 1; });
     
-    const sorted = Object.entries(topicCount)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 10);
+    const sorted = Object.entries(topicCount).sort((a, b) => b[1] - a[1]).slice(0, 10);
     
     if (sorted.length === 0) {
-        container.innerHTML = '<p class="empty-state">暂无错题数据</p>';
+        container.innerHTML = '<p class="empty-state">暂无错题数据 🎉</p>';
         return;
     }
     
@@ -597,55 +468,18 @@ function showAchievement(text) {
     const toast = document.getElementById('achievement-toast');
     toast.querySelector('.achievement-text').textContent = text;
     toast.classList.remove('hidden');
-    
-    setTimeout(() => {
-        toast.classList.add('hidden');
-    }, 3000);
+    setTimeout(() => { toast.classList.add('hidden'); }, 3000);
 }
 
 // 检查成就
 function checkAchievements() {
-    const records = getRecords();
-    const errors = getErrors();
-    
-    const achievements = [];
-    
-    // 连续学习成就
-    if (records.length >= 7) {
-        achievements.push('🔥 连续学习 7 天！');
-    }
-    if (records.length >= 30) {
-        achievements.push('🔥 连续学习 30 天！');
-    }
-    
-    // 做题成就
-    const totalProblems = records.reduce((sum, r) => sum + r.problems, 0);
-    if (totalProblems >= 100) {
-        achievements.push('📝 累计做题 100 道！');
-    }
-    if (totalProblems >= 500) {
-        achievements.push(' 累计做题 500 道！');
-    }
-    
-    // 错题复习成就
-    const completedReviews = errors.reduce((sum, e) => 
-        sum + e.reviewSchedule.filter(r => r.completed).length, 0
-    );
-    if (completedReviews >= 50) {
-        achievements.push('🔄 完成 50 次错题复习！');
-    }
-    
-    // 显示第一个成就
-    if (achievements.length > 0) {
-        showAchievement(achievements[0]);
-    }
+    // 从 GitHub 数据检查，简化处理
 }
 
 // 弹窗控制
 function showAddErrorModal() {
     document.getElementById('error-modal').classList.remove('hidden');
 }
-
 function closeErrorModal() {
     document.getElementById('error-modal').classList.add('hidden');
 }
