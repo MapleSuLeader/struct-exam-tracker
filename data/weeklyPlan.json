@@ -1,38 +1,73 @@
 {
   "2026-09-14": {
     "subject": "结构力学",
-    "topic": "静定梁的内力计算",
+    "topic": "第1讲：静定梁的内力计算",
     "status": "completed",
-    "notes": "第1讲完成，3道练习题全对"
+    "notes": "3道练习题全对"
   },
   "2026-09-15": {
     "subject": "结构力学",
-    "topic": "静定梁复习 + 康奈尔笔记整理",
+    "topic": "复习第1讲：静定梁 + 康奈尔笔记整理",
     "status": "planned"
   },
   "2026-09-16": {
     "subject": "结构力学",
-    "topic": "静定桁架",
+    "topic": "第2讲：静定桁架",
     "status": "planned"
   },
   "2026-09-17": {
     "subject": "结构力学",
-    "topic": "力法",
+    "topic": "复习第2讲：静定桁架",
     "status": "planned"
   },
   "2026-09-18": {
     "subject": "结构力学",
-    "topic": "位移法",
+    "topic": "第3讲：力法",
     "status": "planned"
   },
   "2026-09-19": {
     "subject": "结构力学",
-    "topic": "影响线",
+    "topic": "复习第3讲：力法",
     "status": "planned"
   },
   "2026-09-20": {
     "subject": "结构力学",
-    "topic": "力矩分配法（补充）+ 结构位移计算（补充）",
+    "topic": "第4讲：位移法",
+    "status": "planned"
+  },
+  "2026-09-21": {
+    "subject": "结构力学",
+    "topic": "复习第4讲：位移法",
+    "status": "planned"
+  },
+  "2026-09-22": {
+    "subject": "结构力学",
+    "topic": "第5讲：影响线",
+    "status": "planned"
+  },
+  "2026-09-23": {
+    "subject": "结构力学",
+    "topic": "复习第5讲：影响线",
+    "status": "planned"
+  },
+  "2026-09-24": {
+    "subject": "结构力学",
+    "topic": "第6讲：力矩分配法",
+    "status": "planned"
+  },
+  "2026-09-25": {
+    "subject": "结构力学",
+    "topic": "复习第6讲：力矩分配法",
+    "status": "planned"
+  },
+  "2026-09-26": {
+    "subject": "结构力学",
+    "topic": "第7讲：结构位移计算",
+    "status": "planned"
+  },
+  "2026-09-27": {
+    "subject": "结构力学",
+    "topic": "复习第7讲：结构位移计算",
     "status": "planned"
   }
 }
