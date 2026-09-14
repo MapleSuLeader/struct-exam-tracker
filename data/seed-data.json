@@ -1,0 +1,101 @@
+{
+  "records": [
+    {
+      "id": 1726300800000,
+      "date": "2026-09-14",
+      "content": "结构力学第1讲：静定梁的内力计算\n- 基本概念：梁的类型（简支梁、悬臂梁、外伸梁）、符号规定\n- 支座反力计算：隔离体法 + 三个平衡方程\n- 截面法（核心）：截开→取隔离体→设内力→列平衡方程\n- 内力图绘制：M图、FQ图的形状规律\n- 微分关系：dM/dx=FQ, dFQ/dx=-q\n- 图形特征：集中力处FQ突变M转折，均布荷载段M抛物线FQ斜线\n- 叠加法原理",
+      "duration": 120,
+      "problems": 3,
+      "correct": 3,
+      "energy": 4,
+      "focus": 5,
+      "difficulties": "无",
+      "notes": "三道练习题全对。截面法掌握扎实，外伸梁综合题用了两种方法验证极值点。",
+      "tomorrow": "整理康奈尔笔记，复习静定梁内容",
+      "createdAt": "2026-09-14T16:30:00.000Z"
+    }
+  ],
+  "errors": [],
+  "weeklyPlan": {
+    "2026-09-14": {
+      "subject": "结构力学",
+      "topic": "静定梁的内力计算",
+      "status": "completed",
+      "notes": "第1讲完成，3道练习题全对"
+    },
+    "2026-09-15": {
+      "subject": "结构力学",
+      "topic": "静定梁复习 + 康奈尔笔记整理",
+      "status": "planned"
+    },
+    "2026-09-16": {
+      "subject": "结构力学",
+      "topic": "静定桁架",
+      "status": "planned"
+    },
+    "2026-09-17": {
+      "subject": "结构力学",
+      "topic": "力法",
+      "status": "planned"
+    },
+    "2026-09-18": {
+      "subject": "结构力学",
+      "topic": "位移法",
+      "status": "planned"
+    },
+    "2026-09-19": {
+      "subject": "结构力学",
+      "topic": "影响线",
+      "status": "planned"
+    },
+    "2026-09-20": {
+      "subject": "结构力学",
+      "topic": "力矩分配法（补充）+ 结构位移计算（补充）",
+      "status": "planned"
+    }
+  },
+  "studyPlan": {
+    "phase": "第一阶段：基础系统学习",
+    "period": "2026.9 - 2026.12",
+    "completed": [
+      {
+        "date": "2026-09-14",
+        "subject": "结构力学",
+        "topic": "静定梁的内力计算",
+        "result": "3/3 练习题全对"
+      }
+    ],
+    "upcoming": [
+      {
+        "subject": "结构力学",
+        "topic": "静定桁架",
+        "priority": "高"
+      },
+      {
+        "subject": "结构力学",
+        "topic": "力法",
+        "priority": "高"
+      },
+      {
+        "subject": "结构力学",
+        "topic": "位移法",
+        "priority": "高"
+      },
+      {
+        "subject": "结构力学",
+        "topic": "影响线",
+        "priority": "高"
+      },
+      {
+        "subject": "结构力学",
+        "topic": "力矩分配法",
+        "priority": "中（待补充）"
+      },
+      {
+        "subject": "结构力学",
+        "topic": "结构位移计算",
+        "priority": "中（待补充）"
+      }
+    ]
+  }
+}
