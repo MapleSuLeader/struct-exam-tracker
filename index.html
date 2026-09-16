@@ -14,9 +14,9 @@
             <div class="nav-brand"> 结构备考追踪</div>
             <div class="nav-links">
                 <a href="#dashboard" class="nav-link active">📊 总览</a>
-                <a href="#daily" class="nav-link">📝 每日记录</a>
+                <a href="#daily" class="nav-link"> 每日记录</a>
                 <a href="#errors" class="nav-link"> 错题本</a>
-                <a href="#review" class="nav-link">🔄 复习计划</a>
+                <a href="#review" class="nav-link">📅 学习计划</a>
                 <a href="#stats" class="nav-link">📈 统计</a>
             </div>
         </nav>
@@ -70,7 +70,7 @@
 
                 <!-- 成就提示 -->
                 <div id="achievement-toast" class="achievement-toast hidden">
-                    <span class="achievement-icon">🏆</span>
+                    <span class="achievement-icon"></span>
                     <span class="achievement-text"></span>
                 </div>
             </section>
@@ -154,6 +154,7 @@
                         <option value="桥梁">桥梁工程</option>
                         <option value="地基">地基基础</option>
                         <option value="高层">高层结构</option>
+                        <option value="结构力学">结构力学</option>
                     </select>
                     <select id="filter-error-type">
                         <option value="">全部错误类型</option>
@@ -167,29 +168,77 @@
                 <div id="errors-container" class="errors-list"></div>
             </section>
 
-            <!-- 复习计划页面 -->
+            <!-- 学习计划页面 -->
             <section id="review" class="page">
-                <h1>🔄 艾宾浩斯复习计划</h1>
+                <h1>📅 学习计划</h1>
+
+                <!-- 艾宾浩斯复习 -->
                 <div class="review-schedule">
                     <div class="schedule-header">
-                        <h2>今日待复习</h2>
+                        <h2>🔄 今日待复习</h2>
                         <span class="review-count" id="today-review-count">0 题</span>
                     </div>
                     <div id="today-review-list" class="review-items"></div>
                 </div>
 
-                <div class="review-schedule">
-                    <div class="schedule-header">
-                        <h2>未来复习计划</h2>
+                <!-- 三周计划视图 -->
+                <div class="three-week-view">
+                    <div class="week-column week-past" id="week-last">
+                        <div class="week-header">
+                            <h3>📋 上周计划</h3>
+                            <span class="week-completion" id="last-week-pct">0%</span>
+                        </div>
+                        <div class="week-days" id="last-week-days"></div>
                     </div>
-                    <div id="future-review-list" class="review-items"></div>
+                    <div class="week-column week-current" id="week-this">
+                        <div class="week-header">
+                            <h3>🎯 本周计划</h3>
+                            <span class="week-completion" id="this-week-pct">0%</span>
+                        </div>
+                        <div class="week-days" id="this-week-days"></div>
+                    </div>
+                    <div class="week-column week-future" id="week-next">
+                        <div class="week-header">
+                            <h3>📌 下周计划</h3>
+                            <span class="week-completion" id="next-week-pct">—</span>
+                        </div>
+                        <div class="week-days" id="next-week-days"></div>
+                    </div>
                 </div>
 
-                <div class="review-schedule">
-                    <div class="schedule-header">
-                        <h2>📋 本周学习计划</h2>
+                <!-- 横道图 -->
+                <div class="gantt-section">
+                    <div class="gantt-header">
+                        <h3>📊 总进度横道图</h3>
+                        <div class="gantt-filters" id="gantt-filters">
+                            <label class="filter-chip active" data-subject="all">
+                                <input type="checkbox" checked> 全部
+                            </label>
+                            <label class="filter-chip" data-subject="结构力学">
+                                <input type="checkbox" checked> 结构力学
+                            </label>
+                            <label class="filter-chip" data-subject="混凝土">
+                                <input type="checkbox" checked> 混凝土
+                            </label>
+                            <label class="filter-chip" data-subject="钢结构">
+                                <input type="checkbox" checked> 钢结构
+                            </label>
+                            <label class="filter-chip" data-subject="砌体">
+                                <input type="checkbox" checked> 砌体
+                            </label>
+                            <label class="filter-chip" data-subject="桥梁">
+                                <input type="checkbox" checked> 桥梁
+                            </label>
+                            <label class="filter-chip" data-subject="地基">
+                                <input type="checkbox" checked> 地基
+                            </label>
+                            <label class="filter-chip" data-subject="高层">
+                                <input type="checkbox" checked> 高层
+                            </label>
+                        </div>
                     </div>
-                    <div id="weekly-plan-list" class="review-items"></div>
+                    <div class="gantt-chart" id="gantt-chart"></div>
+                    <div class="gantt-legend" id="gantt-legend"></div>
                 </div>
             </section>
 
@@ -237,6 +286,7 @@
                         <option value="桥梁">桥梁工程</option>
                         <option value="地基">地基基础</option>
                         <option value="高层">高层结构</option>
+                        <option value="结构力学">结构力学</option>
                     </select>
                 </div>
                 <div class="form-group">

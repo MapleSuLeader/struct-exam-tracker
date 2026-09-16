@@ -20,6 +20,14 @@
     --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
     --radius: 12px;
+    /* 科目颜色 */
+    --color-mechanics: #4f46e5;
+    --color-concrete: #10b981;
+    --color-steel: #f59e0b;
+    --color-masonry: #ef4444;
+    --color-bridge: #3b82f6;
+    --color-foundation: #8b5cf6;
+    --color-highrise: #ec4899;
 }
 
 body {
@@ -301,6 +309,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .record-date {
@@ -313,6 +323,7 @@ body {
     gap: 16px;
     font-size: 0.85rem;
     color: var(--text-secondary);
+    flex-wrap: wrap;
 }
 
 .record-content {
@@ -492,6 +503,325 @@ body {
     opacity: 0.9;
 }
 
+/* ========== 三周计划视图 ========== */
+.three-week-view {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.week-column {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.week-column.week-current {
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 0 1px var(--primary), var(--shadow-lg);
+}
+
+.week-column.week-past {
+    opacity: 0.85;
+}
+
+.week-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.week-header h3 {
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.week-completion {
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 12px;
+    background: var(--bg);
+}
+
+.week-completion.completed {
+    background: #f0fdf4;
+    color: var(--success);
+}
+
+.week-completion.partial {
+    background: #fffbeb;
+    color: var(--warning);
+}
+
+.week-completion.pending {
+    background: var(--bg);
+    color: var(--text-secondary);
+}
+
+.week-days {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.week-day-item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--bg);
+    border-left: 3px solid var(--border);
+    transition: all 0.2s;
+}
+
+.week-day-item.today {
+    border-left-color: var(--primary);
+    background: #eef2ff;
+}
+
+.week-day-item.completed {
+    border-left-color: var(--success);
+    background: #f0fdf4;
+}
+
+.week-day-item.in-progress {
+    border-left-color: var(--warning);
+    background: #fffbeb;
+}
+
+.week-day-item.empty {
+    border-left-color: var(--border);
+    opacity: 0.5;
+}
+
+.week-day-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.week-day-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.week-day-status {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 8px;
+}
+
+.week-day-status.completed {
+    background: var(--success);
+    color: white;
+}
+
+.week-day-status.in-progress {
+    background: var(--warning);
+    color: white;
+}
+
+.week-day-status.planned {
+    background: var(--border);
+    color: var(--text-secondary);
+}
+
+.week-day-topic {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* ========== 横道图 ========== */
+.gantt-section {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.gantt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.gantt-header h3 {
+    font-size: 1.1rem;
+}
+
+.gantt-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.filter-chip input {
+    display: none;
+}
+
+.filter-chip.active {
+    border-color: var(--primary);
+    background: #eef2ff;
+    color: var(--primary);
+}
+
+.filter-chip:hover {
+    border-color: var(--primary-light);
+}
+
+.gantt-chart {
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.gantt-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    min-height: 32px;
+}
+
+.gantt-label {
+    min-width: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+    padding-right: 12px;
+    flex-shrink: 0;
+}
+
+.gantt-bar-container {
+    flex: 1;
+    position: relative;
+    height: 24px;
+    background: var(--bg);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.gantt-bar {
+    position: absolute;
+    top: 2px;
+    height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s;
+    min-width: 20px;
+}
+
+.gantt-bar.completed {
+    opacity: 1;
+}
+
+.gantt-bar.in-progress {
+    opacity: 0.85;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 4px,
+        rgba(255,255,255,0.15) 4px,
+        rgba(255,255,255,0.15) 8px
+    );
+}
+
+.gantt-bar.planned {
+    opacity: 0.5;
+}
+
+.gantt-today-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--danger);
+    z-index: 5;
+}
+
+.gantt-today-line::after {
+    content: '今天';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    color: var(--danger);
+    white-space: nowrap;
+}
+
+/* 横道图时间轴 */
+.gantt-timeline {
+    display: flex;
+    margin-left: 100px;
+    margin-bottom: 4px;
+    position: relative;
+}
+
+.gantt-timeline-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+/* 横道图图例 */
+.gantt-legend {
+    display: flex;
+    gap: 20px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.legend-color {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+}
+
+.legend-color.completed { background: var(--success); }
+.legend-color.in-progress { background: var(--warning); }
+.legend-color.planned { background: var(--primary); opacity: 0.5; }
+.legend-color.today-line { background: var(--danger); width: 2px; }
+
 /* 统计页面 */
 .stats-grid {
     display: grid;
@@ -583,5 +913,22 @@ body {
     
     .quick-stats {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .three-week-view {
+        grid-template-columns: 1fr;
+    }
+
+    .week-column.week-current {
+        order: -1;
+    }
+
+    .gantt-label {
+        min-width: 70px;
+        font-size: 0.7rem;
+    }
+
+    .gantt-timeline {
+        margin-left: 70px;
     }
 }

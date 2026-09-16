@@ -9,6 +9,17 @@ let cachedRecords = null;
 let cachedErrors = null;
 let cachedWeeklyPlan = null;
 
+// 科目颜色映射
+const SUBJECT_COLORS = {
+    '结构力学': '#4f46e5',
+    '混凝土': '#10b981',
+    '钢结构': '#f59e0b',
+    '砌体': '#ef4444',
+    '桥梁': '#3b82f6',
+    '地基': '#8b5cf6',
+    '高层': '#ec4899'
+};
+
 // 从 GitHub 加载数据
 async function fetchData(filename, cacheKey) {
     if (cacheKey === 'records' && cachedRecords) return cachedRecords;
@@ -161,7 +172,7 @@ async function loadErrors() {
     }).join('');
 }
 
-// 加载复习计划
+// 加载复习计划页面
 async function loadReviewSchedule() {
     const errors = await getErrors();
     const weeklyPlan = await fetchData('weeklyPlan.json', 'weeklyPlan');
@@ -169,13 +180,11 @@ async function loadReviewSchedule() {
 
     // 艾宾浩斯错题复习
     const todayReview = [];
-    const futureReview = [];
     (errors || []).forEach(error => {
         if (error.reviewSchedule) {
             error.reviewSchedule.forEach((schedule, idx) => {
-                if (!schedule.completed) {
-                    if (schedule.dueDate === today) todayReview.push({ error, scheduleIndex: idx, dueDate: schedule.dueDate });
-                    else if (schedule.dueDate > today) futureReview.push({ error, scheduleIndex: idx, dueDate: schedule.dueDate });
+                if (!schedule.completed && schedule.dueDate <= today) {
+                    todayReview.push({ error, scheduleIndex: idx, dueDate: schedule.dueDate });
                 }
             });
         }
@@ -196,55 +205,252 @@ async function loadReviewSchedule() {
         `).join('');
     }
 
-    const futureContainer = document.getElementById('future-review-list');
-    futureReview.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
-    if (futureReview.length === 0) {
-        futureContainer.innerHTML = '<p class="empty-state">暂无未来复习计划</p>';
-    } else {
-        futureContainer.innerHTML = futureReview.slice(0, 10).map(item => `
-            <div class="review-item-card">
-                <div class="review-item-info">
-                    <div class="review-item-topic">${item.error.topic}</div>
-                    <div class="review-item-due">${item.dueDate} · ${item.error.subject}</div>
-                </div>
-            </div>
-        `).join('');
-    }
+    // 三周计划视图
+    await loadThreeWeekView(weeklyPlan || {});
+    
+    // 横道图
+    await loadGanttChart(weeklyPlan || {});
+}
 
-    // 本周学习计划（从 weeklyPlan 读取）
-    const planContainer = document.getElementById('weekly-plan-list');
-    if (planContainer) {
-        const weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-        const todayDate = new Date();
-        let planHtml = '';
+// 加载三周计划视图
+async function loadThreeWeekView(weeklyPlan) {
+    const today = new Date();
+    const weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+    
+    // 获取本周周一
+    const getMonday = (date) => {
+        const d = new Date(date);
+        const day = d.getDay();
+        const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+        return new Date(d.setDate(diff));
+    };
+    
+    const thisMonday = getMonday(today);
+    const lastMonday = new Date(thisMonday);
+    lastMonday.setDate(lastMonday.getDate() - 7);
+    const nextMonday = new Date(thisMonday);
+    nextMonday.setDate(nextMonday.getDate() + 7);
+    
+    // 生成一周数据
+    const generateWeekData = (monday, isPast) => {
+        const days = [];
+        let completed = 0, total = 0;
         for (let i = 0; i < 7; i++) {
-            const d = new Date(todayDate);
+            const d = new Date(monday);
             d.setDate(d.getDate() + i);
             const dateStr = d.toISOString().split('T')[0];
-            const dayName = i === 0 ? '今天' : (i === 1 ? '明天' : weekDays[d.getDay()]);
-            const plan = weeklyPlan ? weeklyPlan[dateStr] : null;
-            const statusIcon = plan ? (plan.status === 'completed' ? '✅' : (plan.status === 'in_progress' ? '🔄' : '📋')) : '⬜';
-            const topicText = plan ? `${plan.subject} - ${plan.topic}` : '暂无安排';
-            planHtml += `
-                <div class="review-item-card" style="${dateStr === today ? 'border-left:3px solid #4f46e5;' : ''}">
-                    <div class="review-item-info">
-                        <div class="review-item-topic">${statusIcon} ${dayName}（${dateStr.substring(5)}）</div>
-                        <div class="review-item-due">${topicText}</div>
-                    </div>
-                </div>
-            `;
+            const plan = weeklyPlan[dateStr];
+            const isToday = dateStr === today.toISOString().split('T')[0];
+            
+            let status = 'empty';
+            let statusLabel = '无计划';
+            if (plan) {
+                total++;
+                if (plan.status === 'completed') {
+                    status = 'completed';
+                    statusLabel = '已完成';
+                    completed++;
+                } else if (plan.status === 'in_progress') {
+                    status = 'in-progress';
+                    statusLabel = '进行中';
+                } else if (isPast && d < today) {
+                    status = 'empty';
+                    statusLabel = '未完成';
+                } else {
+                    status = 'planned';
+                    statusLabel = '计划中';
+                }
+            }
+            
+            days.push({
+                date: dateStr,
+                dayName: weekDays[d.getDay()],
+                shortDate: `${d.getMonth()+1}/${d.getDate()}`,
+                plan: plan,
+                status: status,
+                statusLabel: statusLabel,
+                isToday: isToday
+            });
         }
-        planContainer.innerHTML = planHtml;
-    }
+        const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+        return { days, completed, total, pct };
+    };
+    
+    const lastWeek = generateWeekData(lastMonday, true);
+    const thisWeek = generateWeekData(thisMonday, false);
+    const nextWeek = generateWeekData(nextMonday, false);
+    
+    // 渲染上周
+    const lastWeekContainer = document.getElementById('last-week-days');
+    const lastWeekPct = document.getElementById('last-week-pct');
+    lastWeekPct.textContent = `${lastWeek.pct}%`;
+    lastWeekPct.className = `week-completion ${lastWeek.pct >= 80 ? 'completed' : lastWeek.pct >= 50 ? 'partial' : 'pending'}`;
+    lastWeekContainer.innerHTML = lastWeek.days.map(d => renderWeekDay(d)).join('');
+    
+    // 渲染本周
+    const thisWeekContainer = document.getElementById('this-week-days');
+    const thisWeekPct = document.getElementById('this-week-pct');
+    thisWeekPct.textContent = `${thisWeek.pct}%`;
+    thisWeekPct.className = `week-completion ${thisWeek.pct >= 80 ? 'completed' : thisWeek.pct >= 50 ? 'partial' : 'pending'}`;
+    thisWeekContainer.innerHTML = thisWeek.days.map(d => renderWeekDay(d)).join('');
+    
+    // 渲染下周
+    const nextWeekContainer = document.getElementById('next-week-days');
+    document.getElementById('next-week-pct').textContent = '—';
+    nextWeekContainer.innerHTML = nextWeek.days.map(d => renderWeekDay(d)).join('');
+}
 
-    const dashboardReview = document.getElementById('review-due-list');
-    if (todayReview.length === 0) {
-        dashboardReview.innerHTML = '<p class="empty-state">暂无待复习错题</p>';
-    } else {
-        dashboardReview.innerHTML = todayReview.slice(0, 5).map(item => `
-            <div class="review-item"><strong>${item.error.topic}</strong> - ${item.error.subject}</div>
-        `).join('');
+// 渲染单日
+function renderWeekDay(d) {
+    const statusClass = d.isToday ? 'today' : d.status;
+    return `
+        <div class="week-day-item ${statusClass}">
+            <div class="week-day-label">
+                <span class="week-day-name">${d.dayName} ${d.shortDate}</span>
+                ${d.plan ? `<span class="week-day-status ${d.status}">${d.statusLabel}</span>` : ''}
+            </div>
+            <div class="week-day-topic">${d.plan ? `${d.plan.subject} - ${d.plan.topic}` : '—'}</div>
+        </div>
+    `;
+}
+
+// 加载横道图
+async function loadGanttChart(weeklyPlan) {
+    const ganttContainer = document.getElementById('gantt-chart');
+    const legendContainer = document.getElementById('gantt-legend');
+    
+    // 计算时间范围：从2026-09-14到2026-10-27
+    const startDate = new Date('2026-09-14');
+    const endDate = new Date('2026-10-27');
+    const totalDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+    const today = new Date();
+    const todayOffset = Math.max(0, Math.min(totalDays - 1, Math.floor((today - startDate) / (1000 * 60 * 60 * 24))));
+    
+    // 按科目分组计划
+    const subjectPlans = {};
+    const planEntries = Object.entries(weeklyPlan).sort((a, b) => a[0].localeCompare(b[0]));
+    
+    planEntries.forEach(([date, plan]) => {
+        const subj = plan.subject;
+        if (!subjectPlans[subj]) {
+            subjectPlans[subj] = { subject: subj, days: [], completed: 0, total: 0 };
+        }
+        subjectPlans[subj].days.push({ date, plan });
+        subjectPlans[subj].total++;
+        if (plan.status === 'completed') {
+            subjectPlans[subj].completed++;
+        }
+    });
+    
+    // 渲染横道图
+    let html = '';
+    
+    // 时间轴标签（每周一）
+    html += '<div class="gantt-timeline">';
+    for (let i = 0; i < totalDays; i += 7) {
+        const d = new Date(startDate);
+        d.setDate(d.getDate() + i);
+        const pct = (i / totalDays) * 100;
+        html += `<span class="gantt-timeline-label" style="left:${pct}%">${d.getMonth()+1}/${d.getDate()}</span>`;
     }
+    html += '</div>';
+    
+    // 各科目行
+    Object.entries(subjectPlans).forEach(([subj, data]) => {
+        const color = SUBJECT_COLORS[subj] || '#6b7280';
+        const pct = data.total > 0 ? Math.round((data.completed / data.total) * 100) : 0;
+        
+        html += `<div class="gantt-row" data-subject="${subj}">`;
+        html += `<div class="gantt-label">${subj}</div>`;
+        html += `<div class="gantt-bar-container">`;
+        
+        // 绘制每天进度
+        data.days.forEach(day => {
+            const dayDate = new Date(day.date);
+            const dayOffset = Math.floor((dayDate - startDate) / (1000 * 60 * 60 * 24));
+            const left = (dayOffset / totalDays) * 100;
+            const width = Math.max(1, 100 / totalDays);
+            
+            const statusClass = day.plan.status === 'completed' ? 'completed' : 
+                                day.plan.status === 'in_progress' ? 'in-progress' : 'planned';
+            
+            html += `<div class="gantt-bar ${statusClass}" style="left:${left}%;width:${width}%;background:${color}" title="${day.date}: ${day.plan.topic}"></div>`;
+        });
+        
+        // 今天标记线
+        html += `<div class="gantt-today-line" style="left:${(todayOffset/totalDays)*100}%"></div>`;
+        
+        html += '</div></div>';
+    });
+    
+    // 总进度行
+    const totalCompleted = Object.values(subjectPlans).reduce((s, d) => s + d.completed, 0);
+    const totalTotal = Object.values(subjectPlans).reduce((s, d) => s + d.total, 0);
+    const totalPct = totalTotal > 0 ? Math.round((totalCompleted / totalTotal) * 100) : 0;
+    
+    html += `<div class="gantt-row" data-subject="total">`;
+    html += `<div class="gantt-label">总进度</div>`;
+    html += `<div class="gantt-bar-container">`;
+    html += `<div class="gantt-bar completed" style="left:0;width:${totalPct}%;background:var(--primary)">${totalPct}%</div>`;
+    html += `<div class="gantt-today-line" style="left:${(todayOffset/totalDays)*100}%"></div>`;
+    html += '</div></div>';
+    
+    ganttContainer.innerHTML = html;
+    
+    // 图例
+    legendContainer.innerHTML = `
+        <div class="legend-item"><div class="legend-color completed"></div>已完成</div>
+        <div class="legend-item"><div class="legend-color in-progress"></div>进行中</div>
+        <div class="legend-item"><div class="legend-color planned"></div>计划中</div>
+        <div class="legend-item"><div class="legend-color today-line"></div>今天</div>
+    `;
+    
+    // 科目筛选器
+    const filters = document.querySelectorAll('.filter-chip');
+    filters.forEach(chip => {
+        const checkbox = chip.querySelector('input');
+        checkbox.addEventListener('change', () => {
+            chip.classList.toggle('active', checkbox.checked);
+            updateGanttVisibility();
+        });
+        // 初始化状态
+        if (checkbox.checked) chip.classList.add('active');
+    });
+    
+    // 点击切换
+    filters.forEach(chip => {
+        chip.addEventListener('click', (e) => {
+            if (e.target.tagName === 'INPUT') return;
+            const checkbox = chip.querySelector('input');
+            checkbox.checked = !checkbox.checked;
+            chip.classList.toggle('active', checkbox.checked);
+            updateGanttVisibility();
+        });
+    });
+}
+
+// 更新横道图可见性
+function updateGanttVisibility() {
+    const activeSubjects = new Set();
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+        const checkbox = chip.querySelector('input');
+        if (checkbox.checked) {
+            activeSubjects.add(chip.dataset.subject);
+        }
+    });
+    
+    const showAll = activeSubjects.has('all');
+    
+    document.querySelectorAll('.gantt-row').forEach(row => {
+        const subj = row.dataset.subject;
+        if (subj === 'total') {
+            row.style.display = 'flex';
+        } else if (showAll) {
+            row.style.display = 'flex';
+        } else {
+            row.style.display = activeSubjects.has(subj) ? 'flex' : 'none';
+        }
+    });
 }
 
 // 加载 Dashboard
@@ -384,10 +590,11 @@ async function loadWeeklyProgress(weeklyPlan) {
 
     Object.entries(subjectProgress).forEach(([subj, stats]) => {
         const p = Math.round((stats.done / stats.total) * 100);
+        const color = SUBJECT_COLORS[subj] || 'var(--primary)';
         html += `
             <div class="progress-item">
                 <span>${subj}</span>
-                <div class="progress-bar"><div class="progress-fill" style="width:${p}%"></div></div>
+                <div class="progress-bar"><div class="progress-fill" style="width:${p}%;background:${color}"></div></div>
                 <span>${p}%</span>
             </div>
         `;
