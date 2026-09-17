@@ -69,6 +69,25 @@ function initNavigation() {
             if (targetId === 'errors') await loadErrors();
             if (targetId === 'review') await loadReviewSchedule();
             if (targetId === 'stats') await loadStats();
+            if (targetId === 'notes') initNotesTabs();
+        });
+    });
+}
+
+// 笔记标签切换
+function initNotesTabs() {
+    const tabs = document.querySelectorAll('.note-tab');
+    const notes = document.querySelectorAll('.cornell-note');
+    
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const lecture = tab.dataset.lecture;
+            
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            notes.forEach(note => note.classList.remove('active'));
+            document.getElementById(`note-${lecture}`).classList.add('active');
         });
     });
 }
