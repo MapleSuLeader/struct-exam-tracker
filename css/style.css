@@ -883,6 +883,100 @@ body {
     color: var(--text);
 }
 
+/* ========== 课程分类选择器 ========== */
+.subject-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.subject-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.subject-btn:hover {
+    border-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.subject-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.subject-icon {
+    font-size: 1.2rem;
+}
+
+.subject-name {
+    font-weight: 600;
+}
+
+.subject-count {
+    background: rgba(255,255,255,0.2);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.subject-btn.active .subject-count {
+    background: rgba(255,255,255,0.3);
+}
+
+.subject-content {
+    display: none;
+}
+
+.subject-content.active {
+    display: block;
+}
+
+.empty-subject {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.empty-subject h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+/* ========== SVG 图示 ========== */
+.note-illustration {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px 0;
+    text-align: center;
+}
+
+.note-illustration svg {
+    max-width: 100%;
+    height: auto;
+}
+
 /* ========== 康奈尔笔记样式 ========== */
 .notes-tabs {
     display: flex;

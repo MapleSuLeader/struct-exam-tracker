@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一级注册结构工程师备考追踪</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <div class="nav-brand"> 结构备考追踪</div>
+            <div class="nav-links">
+                <a href="#dashboard" class="nav-link active">📊 总览</a>
+                <a href="#daily" class="nav-link"> 每日记录</a>
+                <a href="#errors" class="nav-link"> 错题本</a>
+                <a href="#review" class="nav-link">📅 学习计划</a>
+                <a href="#stats" class="nav-link">📈 统计</a>
+                <a href="#notes" class="nav-link">📒 笔记</a>
+            </div>
+        </nav>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- Dashboard 页面 -->
+            <section id="dashboard" class="page active">
+                <div class="dashboard-header">
+                    <h1>📊 学习总览</h1>
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-days">0</div>
+                            <div class="stat-label">学习天数</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-hours">0</div>
+                            <div class="stat-label">总时长(小时)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-problems">0</div>
+                            <div class="stat-label">做题总数</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="accuracy-rate">0%</div>
+                            <div class="stat-label">平均正确率</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="chart-card">
+                        <h3>📅 本周学习时长</h3>
+                        <canvas id="weekly-chart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3> 各科正确率</h3>
+                        <canvas id="subject-chart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>🎯 本周目标进度</h3>
+                        <div class="progress-container" id="weekly-progress-list"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>🔥 待复习错题</h3>
+                        <div id="review-due-list" class="review-list">
+                            <p class="empty-state">暂无待复习错题</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 成就提示 -->
+                <div id="achievement-toast" class="achievement-toast hidden">
+                    <span class="achievement-icon"></span>
+                    <span class="achievement-text"></span>
+                </div>
+            </section>
+
+            <!-- 每日记录页面 -->
+            <section id="daily" class="page">
+                <h1>📝 每日学习记录</h1>
+                <form id="daily-form" class="record-form">
+                    <div class="form-group">
+                        <label>日期</label>
+                        <input type="date" id="record-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>学习内容</label>
+                        <textarea id="record-content" rows="3" placeholder="今天学了什么章节/知识点" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>学习时长（分钟）</label>
+                        <input type="number" id="record-duration" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>做题数量</label>
+                        <input type="number" id="record-problems" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>正确题数</label>
+                        <input type="number" id="record-correct" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>精力状态（1-5分）</label>
+                        <select id="record-energy" required>
+                            <option value="5">5 - 精力充沛</option>
+                            <option value="4">4 - 状态不错</option>
+                            <option value="3" selected>3 - 一般</option>
+                            <option value="2">2 - 有点累</option>
+                            <option value="1">1 - 很疲惫</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>专注度（1-5分）</label>
+                        <select id="record-focus" required>
+                            <option value="5">5 - 完全专注</option>
+                            <option value="4">4 - 比较专注</option>
+                            <option value="3" selected>3 - 偶尔分心</option>
+                            <option value="2">2 - 经常走神</option>
+                            <option value="1">1 - 很难集中</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>难点/疑问</label>
+                        <textarea id="record-difficulties" rows="2" placeholder="遇到什么问题"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>今日心得</label>
+                        <textarea id="record-notes" rows="2" placeholder="学习心得、总结"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>明日计划</label>
+                        <textarea id="record-tomorrow" rows="2" placeholder="明天打算学什么"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">保存记录</button>
+                </form>
+
+                <div class="records-list">
+                    <h2>历史记录</h2>
+                    <div id="records-container"></div>
+                </div>
+            </section>
+
+            <!-- 错题本页面 -->
+            <section id="errors" class="page">
+                <h1> 错题本</h1>
+                <button class="btn-primary" onclick="showAddErrorModal()">➕ 添加错题</button>
+                
+                <div class="filter-bar">
+                    <select id="filter-subject">
+                        <option value="">全部科目</option>
+                        <option value="混凝土">混凝土结构</option>
+                        <option value="钢结构">钢结构</option>
+                        <option value="砌体">砌体结构</option>
+                        <option value="桥梁">桥梁工程</option>
+                        <option value="地基">地基基础</option>
+                        <option value="高层">高层结构</option>
+                        <option value="结构力学">结构力学</option>
+                    </select>
+                    <select id="filter-error-type">
+                        <option value="">全部错误类型</option>
+                        <option value="概念不清">概念不清</option>
+                        <option value="计算错误">计算错误</option>
+                        <option value="规范不熟">规范不熟</option>
+                        <option value="审题失误">审题失误</option>
+                    </select>
+                </div>
+
+                <div id="errors-container" class="errors-list"></div>
+            </section>
+
+            <!-- 学习计划页面 -->
+            <section id="review" class="page">
+                <h1>📅 学习计划</h1>
+
+                <!-- 艾宾浩斯复习 -->
+                <div class="review-schedule">
+                    <div class="schedule-header">
+                        <h2>🔄 今日待复习</h2>
+                        <span class="review-count" id="today-review-count">0 题</span>
+                    </div>
+                    <div id="today-review-list" class="review-items"></div>
+                </div>
+
+                <!-- 三周计划视图 -->
+                <div class="three-week-view">
+                    <div class="week-column week-past" id="week-last">
+                        <div class="week-header">
+                            <h3>📋 上周计划</h3>
+                            <span class="week-completion" id="last-week-pct">0%</span>
+                        </div>
+                        <div class="week-days" id="last-week-days"></div>
+                    </div>
+                    <div class="week-column week-current" id="week-this">
+                        <div class="week-header">
+                            <h3>🎯 本周计划</h3>
+                            <span class="week-completion" id="this-week-pct">0%</span>
+                        </div>
+                        <div class="week-days" id="this-week-days"></div>
+                    </div>
+                    <div class="week-column week-future" id="week-next">
+                        <div class="week-header">
+                            <h3>📌 下周计划</h3>
+                            <span class="week-completion" id="next-week-pct">—</span>
+                        </div>
+                        <div class="week-days" id="next-week-days"></div>
+                    </div>
+                </div>
+
+                <!-- 横道图 -->
+                <div class="gantt-section">
+                    <div class="gantt-header">
+                        <h3>📊 总进度横道图</h3>
+                        <div class="gantt-filters" id="gantt-filters">
+                            <label class="filter-chip active" data-subject="all">
+                                <input type="checkbox" checked> 全部
+                            </label>
+                            <label class="filter-chip" data-subject="结构力学">
+                                <input type="checkbox" checked> 结构力学
+                            </label>
+                            <label class="filter-chip" data-subject="混凝土">
+                                <input type="checkbox" checked> 混凝土
+                            </label>
+                            <label class="filter-chip" data-subject="钢结构">
+                                <input type="checkbox" checked> 钢结构
+                            </label>
+                            <label class="filter-chip" data-subject="砌体">
+                                <input type="checkbox" checked> 砌体
+                            </label>
+                            <label class="filter-chip" data-subject="桥梁">
+                                <input type="checkbox" checked> 桥梁
+                            </label>
+                            <label class="filter-chip" data-subject="地基">
+                                <input type="checkbox" checked> 地基
+                            </label>
+                            <label class="filter-chip" data-subject="高层">
+                                <input type="checkbox" checked> 高层
+                            </label>
+                        </div>
+                    </div>
+                    <div class="gantt-chart" id="gantt-chart"></div>
+                    <div class="gantt-legend" id="gantt-legend"></div>
+                </div>
+            </section>
+
+            <!-- 学习笔记页面 -->
+            <section id="notes" class="page">
+                <h1>📒 康奈尔学习笔记</h1>
+                
+                <!-- 笔记选择标签 -->
+                <div class="notes-tabs">
+                    <button class="note-tab active" data-lecture="0">第0讲 结构判定</button>
+                    <button class="note-tab" data-lecture="1">第1讲 静定梁</button>
+                    <button class="note-tab" data-lecture="2">第2讲 静定桁架</button>
+                </div>
+
+                <!-- 第0讲笔记 -->
+                <div class="cornell-note active" id="note-0">
+                    <div class="note-header">
+                        <h2>第0讲 结构判定（自由度与约束）</h2>
+                        <span class="note-date">2026-09-17</span>
+                    </div>
+                    <div class="cornell-layout">
+                        <!-- 线索栏 -->
+                        <div class="cornell-cue">
+                            <h4>🔑 核心概念</h4>
+                            <ul>
+                                <li><strong>自由度（DOF）</strong>：确定体系位置所需的独立坐标数</li>
+                                <li><strong>约束</strong>：减少自由度的装置</li>
+                                <li><strong>多余约束</strong>：不减少自由度的约束</li>
+                                <li><strong>静定/超静定</strong>：能否仅用平衡方程求解</li>
+                            </ul>
+                            <h4>❓ 关键问题</h4>
+                            <ol>
+                                <li>怎么算自由度？</li>
+                                <li>约束数量与自由度的关系？</li>
+                                <li>怎样判定可变/静定/超静定？</li>
+                                <li>超静定次数怎么算？</li>
+                            </ol>
+                        </div>
+                        <!-- 笔记栏 -->
+                        <div class="cornell-notes">
+                            <h3>一、自由度公式</h3>
+                            <div class="formula-box">
+                                <p><strong>刚片体系：</strong> W = 3m - (3g + 2h + b)</p>
+                                <table class="compact-table">
+                                    <tr><td>m</td><td>刚片数（不含地基）</td></tr>
+                                    <tr><td>g</td><td>单刚结数</td></tr>
+                                    <tr><td>h</td><td>单铰结数</td></tr>
+                                    <tr><td>b</td><td>支座链杆数</td></tr>
+                                </table>
+                                <p><strong>链杆体系：</strong> W = 2j - b</p>
+                                <table class="compact-table">
+                                    <tr><td>j</td><td>铰结点数（含支座铰）</td></tr>
+                                    <tr><td>b</td><td>链杆数（含支座链杆）</td></tr>
+                                </table>
+                            </div>
+
+                            <h3>二、常见约束的约束数</h3>
+                            <table class="compact-table">
+                                <tr><th>约束类型</th><th>约束数</th></tr>
+                                <tr><td>一根链杆（二力杆）</td><td>1</td></tr>
+                                <tr><td>一个单铰</td><td>2</td></tr>
+                                <tr><td>一个刚结点</td><td>3</td></tr>
+                                <tr><td>固定铰支座</td><td>2</td></tr>
+                                <tr><td>可动铰支座</td><td>1</td></tr>
+                                <tr><td>固定端</td><td>3</td></tr>
+                            </table>
+                            <div class="warning-box">
+                                ⚠️ <strong>复铰</strong>：连接 n 个刚片的铰 = (n-1) 个单铰 = 2(n-1) 个约束
+                            </div>
+
+                            <h3>三、判定准则</h3>
+                            <table class="compact-table">
+                                <tr><th>W 值</th><th>判定</th><th>说明</th></tr>
+                                <tr><td>W > 0</td><td class="status-variable">几何可变</td><td>约束不足</td></tr>
+                                <tr><td>W = 0</td><td class="status-static">静定结构</td><td>约束恰好</td></tr>
+                                <tr><td>W < 0</td><td class="status-hyper">超静定</td><td>多余约束，n = -W</td></tr>
+                            </table>
+                            <div class="warning-box">
+                                ⚠️ W ≤ 0 只是必要条件！还需检查约束布置是否合理（如三铰共线、三链杆平行则仍可变）
+                            </div>
+
+                            <h3>四、超静定次数</h3>
+                            <div class="formula-box">
+                                <p>n = -W = (3g + 2h + b) - 3m</p>
+                                <p>链杆体系：n = b - 2j</p>
+                            </div>
+                            <p><strong>常见超静定结构：</strong></p>
+                            <ul>
+                                <li>连续梁：每多一个中间支座 → +1次</li>
+                                <li>两端固定梁：3次超静定</li>
+                                <li>一端固定一端铰支：1次超静定</li>
+                                <li>封闭框架：3次超静定</li>
+                            </ul>
+                        </div>
+                        <!-- 总结栏 -->
+                        <div class="cornell-summary">
+                            <h4>📝 总结</h4>
+                            <p><strong>一句话：</strong>自由度 W 是约束与需求的差值。W>0 可变，W=0 静定，W<0 超静定。算 W 关键是数对刚片数、铰数、链杆数，注意复铰折算。</p>
+                            <h4>⚠️ 易错点</h4>
+                            <ol>
+                                <li>复铰 = (n-1) 个单铰，别数漏</li>
+                                <li>W=0 不一定静定，还要看约束布置</li>
+                                <li>公式里 m 不含地基，要统一</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第1讲笔记 -->
+                <div class="cornell-note" id="note-1">
+                    <div class="note-header">
+                        <h2>第1讲 静定梁内力计算</h2>
+                        <span class="note-date">2026-09-17</span>
+                    </div>
+                    <div class="cornell-layout">
+                        <div class="cornell-cue">
+                            <h4>🔑 核心概念</h4>
+                            <ul>
+                                <li><strong>内力</strong>：弯矩 M、剪力 V、轴力 N</li>
+                                <li><strong>截面法</strong>：求内力的基本方法</li>
+                                <li><strong>符号规定</strong>：正负号规则</li>
+                                <li><strong>内力图</strong>：M图、V图绘制</li>
+                            </ul>
+                            <h4>❓ 关键问题</h4>
+                            <ol>
+                                <li>截面法怎么求内力？</li>
+                                <li>M、V 正负号怎么规定？</li>
+                                <li>M、V 微分关系？</li>
+                                <li>叠加法怎么画 M 图？</li>
+                            </ol>
+                        </div>
+                        <div class="cornell-notes">
+                            <h3>一、截面法（核心）</h3>
+                            <div class="steps-box">
+                                <p><strong>Step 1 → 截</strong>：在需求内力处假想截开</p>
+                                <p><strong>Step 2 → 取</strong>：取其中一部分为隔离体</p>
+                                <p><strong>Step 3 → 平衡</strong>：列平衡方程</p>
+                                <ul>
+                                    <li>ΣFx = 0 → 轴力 N</li>
+                                    <li>ΣFy = 0 → 剪力 V</li>
+                                    <li>ΣM = 0 → 弯矩 M</li>
+                                </ul>
+                            </div>
+                            <div class="tip-box">💡 取荷载较少的一侧为隔离体，计算更简单</div>
+
+                            <h3>二、内力符号规定</h3>
+                            <table class="compact-table">
+                                <tr><th>内力</th><th>正号规定</th></tr>
+                                <tr><td>弯矩 M</td><td>使梁<strong>下侧受拉</strong>为正（画在受拉侧）</td></tr>
+                                <tr><td>剪力 V</td><td>左端向上为正（顺时针转）</td></tr>
+                                <tr><td>轴力 N</td><td>拉力为正，压力为负</td></tr>
+                            </table>
+
+                            <h3>三、微分关系</h3>
+                            <div class="formula-box">
+                                <p>dV/dx = -q(x)</p>
+                                <p>dM/dx = V(x)</p>
+                                <p>d²M/dx² = -q(x)</p>
+                            </div>
+                            <table class="compact-table">
+                                <tr><th>荷载</th><th>V 图</th><th>M 图</th></tr>
+                                <tr><td>无荷载 (q=0)</td><td>水平线</td><td>斜直线</td></tr>
+                                <tr><td>均布荷载</td><td>斜直线</td><td>抛物线（凸向荷载）</td></tr>
+                                <tr><td>集中力 P</td><td>突变(=P)</td><td>折点</td></tr>
+                                <tr><td>集中力偶 m₀</td><td>无变化</td><td>突变(=m₀)</td></tr>
+                            </table>
+
+                            <h3>四、叠加法常用值</h3>
+                            <table class="compact-table">
+                                <tr><th>荷载类型</th><th>M 最大值</th></tr>
+                                <tr><td>简支梁跨中集中力 P</td><td>PL/4（跨中）</td></tr>
+                                <tr><td>简支梁满跨均布 q</td><td>qL²/8（跨中）</td></tr>
+                                <tr><td>悬臂梁端部集中力 P</td><td>PL（固定端）</td></tr>
+                                <tr><td>悬臂梁满跨均布 q</td><td>qL²/2（固定端）</td></tr>
+                            </table>
+
+                            <h3>五、多跨静定梁</h3>
+                            <div class="tip-box">
+                                💡 <strong>口诀</strong>：先附属，后基本；传力方向：附属 → 基本
+                            </div>
+                        </div>
+                        <div class="cornell-summary">
+                            <h4>📝 总结</h4>
+                            <p><strong>一句话：</strong>截面法是核心，平衡方程求内力；M图画在受拉侧，V图注意正负号；利用微分关系快速画图，叠加法简化复杂荷载。</p>
+                            <h4>⚠️ 易错点</h4>
+                            <ol>
+                                <li>M图画在受拉侧，不标正负</li>
+                                <li>集中力偶处 M 突变，别漏</li>
+                                <li>多跨静定梁从附属部分开始算</li>
+                                <li>V=0 对应 M 极值，可校核</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第2讲笔记 -->
+                <div class="cornell-note" id="note-2">
+                    <div class="note-header">
+                        <h2>第2讲 静定桁架内力计算</h2>
+                        <span class="note-date">2026-09-17</span>
+                    </div>
+                    <div class="cornell-layout">
+                        <div class="cornell-cue">
+                            <h4>🔑 核心概念</h4>
+                            <ul>
+                                <li><strong>桁架</strong>：直杆铰接，荷载作用于结点</li>
+                                <li><strong>理想假设</strong>：杆件只受轴力</li>
+                                <li><strong>结点法</strong>：逐结点平衡</li>
+                                <li><strong>截面法</strong>：截断求解</li>
+                                <li><strong>零杆</strong>：N=0 的杆件</li>
+                            </ul>
+                            <h4>❓ 关键问题</h4>
+                            <ol>
+                                <li>理想桁架假设条件？</li>
+                                <li>结点法怎么逐点求解？</li>
+                                <li>截面法怎么截？</li>
+                                <li>怎么快速判断零杆？</li>
+                            </ol>
+                        </div>
+                        <div class="cornell-notes">
+                            <h3>一、理想桁架假设</h3>
+                            <ol>
+                                <li>所有结点为理想铰</li>
+                                <li>杆件为直杆，轴线过铰心</li>
+                                <li>荷载和反力全部作用在结点上</li>
+                                <li>杆件自重忽略（或等效移至结点）</li>
+                            </ol>
+                            <p><strong>结论：</strong>每根杆件只受<strong>轴力</strong>（拉力或压力）</p>
+
+                            <h3>二、结点法</h3>
+                            <div class="steps-box">
+                                <p>每个结点 <strong>2个方程</strong>（ΣFx=0, ΣFy=0）→ 最多求 <strong>2个未知力</strong></p>
+                                <p><strong>步骤：</strong></p>
+                                <ol>
+                                    <li>求支座反力</li>
+                                    <li>找只有2根未知杆的结点开始</li>
+                                    <li>设未知力为拉力（背离结点）</li>
+                                    <li>正值→拉力，负值→压力</li>
+                                </ol>
+                            </div>
+
+                            <h3>三、零杆判定（高频考点！）</h3>
+                            <div class="highlight-box">
+                                <p><strong>规则1：</strong>两杆结点 + 无外力 → 两杆等力</p>
+                                <p><strong>规则2：</strong>两杆结点 + 外力沿一杆 → 另一杆为零杆</p>
+                                <p><strong>规则3：</strong>三杆结点 + 无外力 + 两杆共线 → 第三杆为零杆</p>
+                            </div>
+                            <div class="tip-box">💡 先找零杆，可减少后续计算量！从最外围结点开始找</div>
+
+                            <h3>四、截面法</h3>
+                            <div class="steps-box">
+                                <p>截面最多截断 <strong>3根未知杆</strong>（3个方程）</p>
+                                <p><strong>技巧：</strong></p>
+                                <ul>
+                                    <li><strong>力矩法</strong>：选两未知力交点为矩心</li>
+                                    <li><strong>投影法</strong>：沿某方向投影消去未知力</li>
+                                </ul>
+                            </div>
+
+                            <h3>五、方法选择</h3>
+                            <table class="compact-table">
+                                <tr><th>情况</th><th>推荐方法</th></tr>
+                                <tr><td>求全部杆件内力</td><td>结点法</td></tr>
+                                <tr><td>只求某几根杆</td><td>截面法</td></tr>
+                                <tr><td>截不断(>3未知)</td><td>结点法配合</td></tr>
+                            </table>
+
+                            <h3>六、对称性利用</h3>
+                            <ul>
+                                <li><strong>对称荷载：</strong>对称位置杆件内力相同</li>
+                                <li><strong>反对称荷载：</strong>对称位置杆件内力大小相等、符号相反</li>
+                            </ul>
+                        </div>
+                        <div class="cornell-summary">
+                            <h4>📝 总结</h4>
+                            <p><strong>一句话：</strong>桁架杆件只受轴力；结点法逐点平衡（≤2未知），截面法截断求解（≤3未知杆）；先判零杆减少计算，善用对称性减半工作量。</p>
+                            <h4>⚠️ 易错点</h4>
+                            <ol>
+                                <li>零杆不是没用的杆，别随意删除</li>
+                                <li>设拉力为正，负值=压力，别搞反</li>
+                                <li>截面法矩心选在未知力交点</li>
+                                <li>对称结构一定先用对称性简化！</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 统计页面 -->
+            <section id="stats" class="page">
+                <h1> 学习统计</h1>
+                <div class="stats-grid">
+                    <div class="stat-card-large">
+                        <h3>学习时长趋势</h3>
+                        <canvas id="duration-trend-chart"></canvas>
+                    </div>
+                    <div class="stat-card-large">
+                        <h3>正确率变化</h3>
+                        <canvas id="accuracy-trend-chart"></canvas>
+                    </div>
+                    <div class="stat-card-large">
+                        <h3>错题类型分布</h3>
+                        <canvas id="error-type-chart"></canvas>
+                    </div>
+                    <div class="stat-card-large">
+                        <h3>薄弱知识点 TOP10</h3>
+                        <div id="weak-topics-list"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 添加错题弹窗 -->
+    <div id="error-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeErrorModal()">&times;</span>
+            <h2>添加错题</h2>
+            <form id="error-form">
+                <div class="form-group">
+                    <label>题目内容</label>
+                    <textarea id="error-question" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>科目</label>
+                    <select id="error-subject" required>
+                        <option value="混凝土">混凝土结构</option>
+                        <option value="钢结构">钢结构</option>
+                        <option value="砌体">砌体结构</option>
+                        <option value="桥梁">桥梁工程</option>
+                        <option value="地基">地基基础</option>
+                        <option value="高层">高层结构</option>
+                        <option value="结构力学">结构力学</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>知识点</label>
+                    <input type="text" id="error-topic" placeholder="如：梁配筋计算" required>
+                </div>
+                <div class="form-group">
+                    <label>错误答案</label>
+                    <textarea id="error-wrong-answer" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>正确答案</label>
+                    <textarea id="error-correct-answer" rows="2" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>错误原因</label>
+                    <select id="error-type" required>
+                        <option value="概念不清">概念不清</option>
+                        <option value="计算错误">计算错误</option>
+                        <option value="规范不熟">规范不熟</option>
+                        <option value="审题失误">审题失误</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>关联规范条文</label>
+                    <input type="text" id="error-code" placeholder="如：GB 50010-2010 第6.2.1条">
+                </div>
+                <div class="form-group">
+                    <label>难度（1-5星）</label>
+                    <select id="error-difficulty">
+                        <option value="1">⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="3" selected>⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>题目图片（可选）</label>
+                    <input type="file" id="error-image" accept="image/*">
+                </div>
+                <button type="submit" class="btn-primary">保存错题</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -69,7 +69,10 @@ function initNavigation() {
             if (targetId === 'errors') await loadErrors();
             if (targetId === 'review') await loadReviewSchedule();
             if (targetId === 'stats') await loadStats();
-            if (targetId === 'notes') initNotesTabs();
+            if (targetId === 'notes') {
+                initNotesTabs();
+                initSubjectTabs();
+            }
         });
     });
 }
@@ -88,6 +91,22 @@ function initNotesTabs() {
             
             notes.forEach(note => note.classList.remove('active'));
             document.getElementById(`note-${lecture}`).classList.add('active');
+        });
+    });
+}
+
+// 科目切换
+function initSubjectTabs() {
+    const btns = document.querySelectorAll('.subject-btn');
+    const contents = document.querySelectorAll('.subject-content');
+    
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const subject = btn.dataset.subject;
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            contents.forEach(c => c.classList.remove('active'));
+            document.getElementById(`subject-${subject}`).classList.add('active');
         });
     });
 }
