@@ -93,6 +93,8 @@ function initNotesTabs() {
             document.getElementById(`note-${lecture}`).classList.add('active');
         });
     });
+
+    initCueClickHighlight();
 }
 
 // 科目切换
@@ -729,3 +731,59 @@ function closeErrorModal() { document.getElementById('error-modal').classList.ad
 
 document.getElementById('filter-subject').addEventListener('change', loadErrors);
 document.getElementById('filter-error-type').addEventListener('change', loadErrors);
+// 线索点击高亮
+function initCueClickHighlight() {
+    document.querySelectorAll('.cornell-cue li[data-section]').forEach(li => {
+        li.addEventListener('click', function() {
+            const note = this.closest('.cornell-note');
+            const notesArea = note.querySelector('.cornell-notes');
+            const sectionId = this.dataset.section;
+            const targetSection = notesArea.querySelector('#' + sectionId);
+
+            // 如果是复习模式，展开对应章节
+            if (notesArea.classList.contains('review-mode')) {
+                targetSection.classList.toggle('section-revealed');
+                return;
+            }
+
+            // 正常模式：高亮切换
+            const wasActive = this.classList.contains('cue-active');
+
+            // 清除所有
+            note.querySelectorAll('.cue-active').forEach(el => el.classList.remove('cue-active'));
+            notesArea.querySelectorAll('.section-highlight').forEach(el => el.classList.remove('section-highlight'));
+            notesArea.classList.remove('has-highlight');
+
+            if (!wasActive) {
+                this.classList.add('cue-active');
+                targetSection.classList.add('section-highlight');
+                notesArea.classList.add('has-highlight');
+                // 滚动到对应章节
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+}
+
+// 复习模式切换
+function toggleReviewMode(btn) {
+    const note = btn.closest('.cornell-note');
+    const notesArea = note.querySelector('.cornell-notes');
+
+    btn.classList.toggle('active');
+    notesArea.classList.toggle('review-mode');
+
+    if (notesArea.classList.contains('review-mode')) {
+        btn.textContent = '📖 退出复习';
+        // 清除高亮
+        note.querySelectorAll('.cue-active').forEach(el => el.classList.remove('cue-active'));
+        notesArea.querySelectorAll('.section-highlight').forEach(el => el.classList.remove('section-highlight'));
+        notesArea.classList.remove('has-highlight');
+        // 折叠所有章节
+        notesArea.querySelectorAll('.note-section').forEach(s => s.classList.remove('section-revealed'));
+    } else {
+        btn.textContent = '🧠 复习模式';
+        // 展开所有章节
+        notesArea.querySelectorAll('.note-section').forEach(s => s.classList.remove('section-revealed'));
+    }
+}

@@ -270,34 +270,37 @@
 
                     <!-- ===== 第0讲 ===== -->
                     <div class="cornell-note active" id="note-0">
-                        <div class="note-header"><h2>第0讲 结构判定（自由度与约束）</h2><span class="note-date">2026-09-17</span></div>
+                        <div class="note-header"><h2>第0讲 结构判定（自由度与约束）</h2><span class="note-date">2026-09-17</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
                         <div class="cornell-layout">
                             <div class="cornell-cue">
                                 <h4>🔑 核心概念</h4>
                                 <ul>
-                                    <li><strong>自由度（DOF）</strong>：确定体系位置所需的独立坐标数</li>
-                                    <li><strong>约束</strong>：减少自由度的装置</li>
-                                    <li><strong>多余约束</strong>：不减少自由度的约束</li>
-                                    <li><strong>静定/超静定</strong>：能否仅用平衡方程求解</li>
+                                    <li data-section="s1"><strong>自由度（DOF）</strong>：确定体系位置所需的独立坐标数</li>
+                                    <li data-section="s2"><strong>约束</strong>：减少自由度的装置</li>
+                                    <li data-section="s3"><strong>多余约束</strong>：不减少自由度的约束</li>
+                                    <li data-section="s4"><strong>静定/超静定</strong>：能否仅用平衡方程求解</li>
                                 </ul>
                                 <h4>❓ 关键问题</h4>
                                 <ol>
-                                    <li>怎么算自由度？</li>
-                                    <li>约束数量与自由度的关系？</li>
-                                    <li>怎样判定可变/静定/超静定？</li>
-                                    <li>超静定次数怎么算？</li>
+                                    <li data-section="s1">怎么算自由度？</li>
+                                    <li data-section="s2">约束数量与自由度的关系？</li>
+                                    <li data-section="s3">怎样判定可变/静定/超静定？</li>
+                                    <li data-section="s4">超静定次数怎么算？</li>
                                 </ol>
                             </div>
                             <div class="cornell-notes">
-                                <h3>一、自由度公式</h3>
+                                <div class="note-section" id="s1">
+<h3>一、自由度公式</h3>
                                 <div class="formula-box">
                                     <p><strong>刚片体系：</strong> W = 3m - (3g + 2h + b)</p>
                                     <table class="compact-table"><tr><td>m</td><td>刚片数（不含地基）</td></tr><tr><td>g</td><td>单刚结数</td></tr><tr><td>h</td><td>单铰结数</td></tr><tr><td>b</td><td>支座链杆数</td></tr></table>
                                     <p><strong>链杆体系：</strong> W = 2j - b</p>
                                     <table class="compact-table"><tr><td>j</td><td>铰结点数（含支座铰）</td></tr><tr><td>b</td><td>链杆数（含支座链杆）</td></tr></table>
                                 </div>
+</div>
 
-                                <h3>二、常见约束类型</h3>
+<div class="note-section" id="s2">
+<h3>二、常见约束类型</h3>
                                 <div class="note-illustration">
                                     <svg viewBox="0 0 600 90" xmlns="http://www.w3.org/2000/svg">
                                         <g transform="translate(5,5)"><rect x="0" y="0" width="90" height="75" rx="6" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.2"/><line x1="15" y1="30" x2="75" y2="30" stroke="#4f46e5" stroke-width="2"/><circle cx="15" cy="30" r="4" fill="#4f46e5"/><circle cx="75" cy="30" r="4" fill="#4f46e5"/><text x="45" y="55" text-anchor="middle" font-size="10" fill="#4f46e5" font-weight="600">链杆 = 1</text></g>
@@ -309,8 +312,10 @@
                                     </svg>
                                 </div>
                                 <div class="warning-box">⚠️ <strong>复铰</strong>：连接 n 个刚片的铰 = (n-1) 个单铰 = 2(n-1) 个约束</div>
+</div>
 
-                                <h3>三、判定准则</h3>
+<div class="note-section" id="s3">
+<h3>三、判定准则</h3>
                                 <div class="note-illustration">
                                     <svg viewBox="0 0 500 80" xmlns="http://www.w3.org/2000/svg">
                                         <g transform="translate(10,5)"><rect x="0" y="0" width="145" height="65" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/><text x="72" y="22" text-anchor="middle" font-size="14" fill="#ef4444" font-weight="700">W &gt; 0</text><text x="72" y="40" text-anchor="middle" font-size="11" fill="#ef4444">几何可变（机构）</text><text x="72" y="56" text-anchor="middle" font-size="9" fill="#991b1b">约束不足 ❌</text></g>
@@ -319,8 +324,10 @@
                                     </svg>
                                 </div>
                                 <div class="warning-box">⚠️ W ≤ 0 只是必要条件！还需检查约束布置（如三铰共线、三链杆平行则仍可变）</div>
+</div>
 
-                                <h3>四、超静定次数</h3>
+<div class="note-section" id="s4">
+<h3>四、超静定次数</h3>
                                 <div class="formula-box"><p>n = -W = (3g + 2h + b) - 3m</p><p>链杆体系：n = b - 2j</p></div>
                                 <div class="note-illustration">
                                     <svg viewBox="0 0 520 100" xmlns="http://www.w3.org/2000/svg">
@@ -331,7 +338,8 @@
                                         <g transform="translate(400,22)"><rect x="0" y="0" width="105" height="72" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/><rect x="22" y="15" width="60" height="35" rx="2" fill="none" stroke="#334155" stroke-width="2.5"/><text x="52" y="62" text-anchor="middle" font-size="9" fill="#334155">封闭框架</text><text x="52" y="72" text-anchor="middle" font-size="12" fill="#4f46e5" font-weight="700">3次</text></g>
                                     </svg>
                                 </div>
-                            </div>
+</div>
+</div>
                             <div class="cornell-summary">
                                 <h4>📝 总结</h4>
                                 <p><strong>一句话：</strong>自由度 W 是约束与需求的差值。W>0 可变，W=0 静定，W<0 超静定。算 W 关键是数对刚片数、铰数、链杆数，注意复铰折算。</p>
@@ -343,21 +351,22 @@
 
                     <!-- ===== 第1讲 ===== -->
                     <div class="cornell-note" id="note-1">
-                        <div class="note-header"><h2>第1讲 静定梁内力计算</h2><span class="note-date">2026-09-17</span></div>
+                        <div class="note-header"><h2>第1讲 静定梁内力计算</h2><span class="note-date">2026-09-17</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
                         <div class="cornell-layout">
                             <div class="cornell-cue">
                                 <h4>🔑 核心概念</h4>
                                 <ul>
-                                    <li><strong>内力</strong>：弯矩 M、剪力 V、轴力 N</li>
-                                    <li><strong>截面法</strong>：求内力的基本方法</li>
-                                    <li><strong>符号规定</strong>：正负号规则</li>
-                                    <li><strong>内力图</strong>：M图、V图绘制</li>
+                                    <li data-section="s1"><strong>内力</strong>：弯矩 M、剪力 V、轴力 N</li>
+                                    <li data-section="s1"><strong>截面法</strong>：求内力的基本方法</li>
+                                    <li data-section="s2"><strong>符号规定</strong>：正负号规则</li>
+                                    <li data-section="s3"><strong>内力图</strong>：M图、V图绘制</li>
                                 </ul>
                                 <h4>❓ 关键问题</h4>
-                                <ol><li>截面法怎么求内力？</li><li>M、V 正负号怎么规定？</li><li>M、V 微分关系？</li><li>叠加法怎么画 M 图？</li></ol>
+                                <ol><li data-section="s1">截面法怎么求内力？</li><li data-section="s2">M、V 正负号怎么规定？</li><li data-section="s3">M、V 微分关系？</li><li data-section="s4">叠加法怎么画 M 图？</li></ol>
                             </div>
                             <div class="cornell-notes">
-                                <h3>一、截面法（核心）</h3>
+                                <div class="note-section" id="s1">
+<h3>一、截面法（核心）</h3>
                                 <div class="steps-box">
                                     <p><strong>Step 1 → 截</strong>：在需求内力处假想截开</p>
                                     <p><strong>Step 2 → 取</strong>：取其中一部分为隔离体</p>
@@ -396,8 +405,10 @@
                                         </g>
                                     </svg>
                                 </div>
+</div>
 
-                                <h3>二、内力符号规定</h3>
+<div class="note-section" id="s2">
+<h3>二、内力符号规定</h3>
                                 <div class="note-illustration">
                                     <svg viewBox="0 0 480 95" xmlns="http://www.w3.org/2000/svg">
                                         <g transform="translate(10,5)"><rect x="0" y="0" width="140" height="82" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/><text x="70" y="16" text-anchor="middle" font-size="10" fill="#92400e" font-weight="600">弯矩 M（正）</text><line x1="20" y1="42" x2="120" y2="42" stroke="#334155" stroke-width="2"/><path d="M 25,42 Q 70,22 115,42" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,2"/><text x="70" y="35" text-anchor="middle" font-size="8" fill="#f59e0b">上凹 ↓</text><text x="70" y="58" text-anchor="middle" font-size="8" fill="#92400e">← 下侧受拉 →</text><text x="70" y="72" text-anchor="middle" font-size="9" fill="#92400e" font-weight="600">正 M</text></g>
@@ -405,8 +416,10 @@
                                         <g transform="translate(320,5)"><rect x="0" y="0" width="140" height="82" rx="6" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/><text x="70" y="16" text-anchor="middle" font-size="10" fill="#3730a3" font-weight="600">轴力 N（正）</text><line x1="20" y1="42" x2="120" y2="42" stroke="#334155" stroke-width="2.5"/><line x1="20" y1="42" x2="6" y2="42" stroke="#4f46e5" stroke-width="2"/><polygon points="6,42 13,38 13,46" fill="#4f46e5"/><line x1="120" y1="42" x2="134" y2="42" stroke="#4f46e5" stroke-width="2"/><polygon points="134,42 127,38 127,46" fill="#4f46e5"/><text x="70" y="36" text-anchor="middle" font-size="8" fill="#4f46e5">← 拉伸 →</text><text x="70" y="72" text-anchor="middle" font-size="9" fill="#3730a3" font-weight="600">拉力 = 正</text></g>
                                     </svg>
                                 </div>
+</div>
 
-                                <h3>三、微分关系</h3>
+<div class="note-section" id="s3">
+<h3>三、微分关系</h3>
                                 <div class="formula-box"><p>dV/dx = -q(x)</p><p>dM/dx = V(x)</p><p>d²M/dx² = -q(x)</p></div>
                                 <div class="note-illustration">
                                     <svg viewBox="0 0 520 180" xmlns="http://www.w3.org/2000/svg">
@@ -435,8 +448,10 @@
                                         </g>
                                     </svg>
                                 </div>
+</div>
 
-                                <h3>四、叠加法常用值</h3>
+<div class="note-section" id="s4">
+<h3>四、叠加法常用值</h3>
                                 <div class="note-illustration">
                                     <svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg">
                                         <text x="250" y="14" text-anchor="middle" font-size="11" fill="#334155" font-weight="600">标准弯矩图速查</text>
@@ -466,8 +481,10 @@
                                         </g>
                                     </svg>
                                 </div>
+</div>
 
-                                <h3>五、多跨静定梁</h3>
+<div class="note-section" id="s5">
+<h3>五、多跨静定梁</h3>
                                 <div class="tip-box">💡 <strong>口诀</strong>：先附属，后基本；传力方向：附属 → 基本</div>
                                 <div class="note-illustration">
                                     <svg viewBox="0 0 400 70" xmlns="http://www.w3.org/2000/svg">
@@ -481,7 +498,8 @@
                                         </g>
                                     </svg>
                                 </div>
-                            </div>
+</div>
+</div>
                             <div class="cornell-summary">
                                 <h4>📝 总结</h4>
                                 <p><strong>一句话：</strong>截面法是核心，平衡方程求内力；M图画在受拉侧，V图注意正负号；利用微分关系快速画图，叠加法简化复杂荷载。</p>
@@ -493,22 +511,23 @@
 
                     <!-- ===== 第2讲 ===== -->
                     <div class="cornell-note" id="note-2">
-                        <div class="note-header"><h2>第2讲 静定桁架内力计算</h2><span class="note-date">2026-09-17</span></div>
+                        <div class="note-header"><h2>第2讲 静定桁架内力计算</h2><span class="note-date">2026-09-17</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
                         <div class="cornell-layout">
                             <div class="cornell-cue">
                                 <h4>🔑 核心概念</h4>
                                 <ul>
-                                    <li><strong>桁架</strong>：直杆铰接，荷载作用于结点</li>
-                                    <li><strong>理想假设</strong>：杆件只受轴力</li>
-                                    <li><strong>结点法</strong>：逐结点平衡</li>
-                                    <li><strong>截面法</strong>：截断求解</li>
-                                    <li><strong>零杆</strong>：N=0 的杆件</li>
+                                    <li data-section="s1"><strong>桁架</strong>：直杆铰接，荷载作用于结点</li>
+                                    <li data-section="s1"><strong>理想假设</strong>：杆件只受轴力</li>
+                                    <li data-section="s2"><strong>结点法</strong>：逐结点平衡</li>
+                                    <li data-section="s4"><strong>截面法</strong>：截断求解</li>
+                                    <li data-section="s3"><strong>零杆</strong>：N=0 的杆件</li>
                                 </ul>
                                 <h4>❓ 关键问题</h4>
-                                <ol><li>理想桁架假设条件？</li><li>结点法怎么逐点求解？</li><li>截面法怎么截？</li><li>怎么快速判断零杆？</li></ol>
+                                <ol><li data-section="s1">理想桁架假设条件？</li><li data-section="s2">结点法怎么逐点求解？</li><li data-section="s4">截面法怎么截？</li><li data-section="s3">怎么快速判断零杆？</li></ol>
                             </div>
                             <div class="cornell-notes">
-                                <h3>一、理想桁架假设</h3>
+                                <div class="note-section" id="s1">
+<h3>一、理想桁架假设</h3>
                                 <ol><li>所有结点为理想铰</li><li>杆件为直杆，轴线过铰心</li><li>荷载和反力全部作用在结点上</li><li>杆件自重忽略（或等效移至结点）</li></ol>
                                 <p><strong>结论：</strong>每根杆件只受<strong>轴力</strong>（拉力或压力）</p>
 
@@ -529,15 +548,19 @@
                                         </g>
                                     </svg>
                                 </div>
+</div>
 
-                                <h3>二、结点法</h3>
+<div class="note-section" id="s2">
+<h3>二、结点法</h3>
                                 <div class="steps-box">
                                     <p>每个结点 <strong>2个方程</strong>（ΣFx=0, ΣFy=0）→ 最多求 <strong>2个未知力</strong></p>
                                     <p><strong>步骤：</strong></p>
                                     <ol><li>求支座反力</li><li>找只有2根未知杆的结点开始</li><li>设未知力为拉力（背离结点）</li><li>正值→拉力，负值→压力</li></ol>
                                 </div>
+</div>
 
-                                <h3>三、零杆判定（高频考点！）</h3>
+<div class="note-section" id="s3">
+<h3>三、零杆判定（高频考点！）</h3>
                                 <div class="note-illustration">
                                     <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg">
                                         <text x="250" y="14" text-anchor="middle" font-size="11" fill="#ef4444" font-weight="700">🔥 零杆判定三规则</text>
@@ -575,8 +598,10 @@
                                     </svg>
                                 </div>
                                 <div class="tip-box">💡 先找零杆，可减少后续计算量！从最外围结点开始找</div>
+</div>
 
-                                <h3>四、截面法</h3>
+<div class="note-section" id="s4">
+<h3>四、截面法</h3>
                                 <div class="steps-box">
                                     <p>截面最多截断 <strong>3根未知杆</strong>（3个方程）</p>
                                     <p><strong>技巧：</strong></p>
@@ -597,13 +622,18 @@
                                         </g>
                                     </svg>
                                 </div>
+</div>
 
-                                <h3>五、方法选择</h3>
+<div class="note-section" id="s5">
+<h3>五、方法选择</h3>
                                 <table class="compact-table"><tr><th>情况</th><th>推荐方法</th></tr><tr><td>求全部杆件内力</td><td>结点法</td></tr><tr><td>只求某几根杆</td><td>截面法</td></tr><tr><td>截不断(>3未知)</td><td>结点法配合</td></tr></table>
+</div>
 
-                                <h3>六、对称性利用</h3>
+<div class="note-section" id="s6">
+<h3>六、对称性利用</h3>
                                 <ul><li><strong>对称荷载：</strong>对称位置杆件内力相同</li><li><strong>反对称荷载：</strong>对称位置杆件内力大小相等、符号相反</li></ul>
-                            </div>
+</div>
+</div>
                             <div class="cornell-summary">
                                 <h4>📝 总结</h4>
                                 <p><strong>一句话：</strong>桁架杆件只受轴力；结点法逐点平衡（≤2未知），截面法截断求解（≤3未知杆）；先判零杆减少计算，善用对称性减半工作量。</p>
@@ -616,51 +646,63 @@
 
                     <!-- ===== 第3讲 力法 ===== -->
                     <div class="cornell-note" id="note-3">
-                        <div class="note-header"><h2>第3讲 力法</h2><span class="note-date">2026-09-18</span></div>
+                        <div class="note-header"><h2>第3讲 力法</h2><span class="note-date">2026-09-18</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
                         <div class="cornell-layout">
                             <div class="cornell-cue">
                                 <h4>🔑 核心概念</h4>
                                 <ul>
                                     <li><strong>超静定结构</strong>：未知力 > 平衡方程数</li>
-                                    <li><strong>超静定次数</strong>：多余约束的个数</li>
-                                    <li><strong>力法基本未知量</strong>：多余约束力</li>
-                                    <li><strong>柔度系数 δ</strong>：单位力产生的位移</li>
-                                    <li><strong>基本结构</strong>：去掉多余约束后的静定结构</li>
+                                    <li data-section="s1"><strong>超静定次数</strong>：多余约束的个数</li>
+                                    <li data-section="s2"><strong>力法基本未知量</strong>：多余约束力</li>
+                                    <li data-section="s3"><strong>柔度系数 δ</strong>：单位力产生的位移</li>
+                                    <li data-section="s2"><strong>基本结构</strong>：去掉多余约束后的静定结构</li>
                                 </ul>
                                 <h4>❓ 关键问题</h4>
-                                <ol><li>超静定次数怎么确定？</li><li>力法的基本思路？</li><li>力法方程怎么建立？</li><li>对称结构怎么简化？</li></ol>
+                                <ol><li data-section="s1">超静定次数怎么确定？</li><li data-section="s2">力法的基本思路？</li><li data-section="s3">力法方程怎么建立？</li><li data-section="s5">对称结构怎么简化？</li></ol>
                             </div>
                             <div class="cornell-notes">
-                                <h3>一、超静定次数确定</h3>
+                                <div class="note-section" id="s1">
+<h3>一、超静定次数确定</h3>
                                 <div class="formula-box"><p>n = 未知力数 - 独立平衡方程数</p><p>n = 3m - 2h - r （刚架公式）</p></div>
                                 <p><strong>约束换算：</strong>固定端=3，固定铰=2，可动铰=1</p>
+</div>
 
-                                <h3>二、力法核心思路</h3>
+<div class="note-section" id="s2">
+<h3>二、力法核心思路</h3>
                                 <div class="steps-box">
                                     <p><strong>超静定 → 静定 → 变形协调 → 求多余力</strong></p>
                                     <ol><li>去掉多余约束，代以多余约束力 X</li><li>列变形协调方程</li><li>解方程求 X</li><li>叠加求最终内力</li></ol>
                                 </div>
+</div>
 
-                                <h3>三、力法方程</h3>
+<div class="note-section" id="s3">
+<h3>三、力法方程</h3>
                                 <div class="formula-box"><p><strong>一次超静定：</strong>δ₁₁X₁ + Δ₁ₚ = 0</p><p><strong>n次超静定：</strong>[δ]{X} + {Δₚ} = {0}</p></div>
                                 <p><strong>各项含义：</strong></p>
                                 <ul><li><strong>δᵢᵢ（主系数）</strong>：Xᵢ=1 作用下沿 Xᵢ 方向的位移，恒为正</li><li><strong>δᵢⱼ（副系数）</strong>：Xⱼ=1 作用下沿 Xᵢ 方向的位移，可正可负，δᵢⱼ=δⱼᵢ</li><li><strong>Δᵢₚ（自由项）</strong>：荷载作用下沿 Xᵢ 方向的位移</li></ul>
+</div>
 
-                                <h3>四、解题步骤</h3>
+<div class="note-section" id="s4">
+<h3>四、解题步骤</h3>
                                 <ol><li>确定超静定次数，选基本未知量</li><li>确定基本结构（静定且几何不变）</li><li>建立力法方程</li><li>计算系数和自由项（画 M̄ᵢ 图和 Mₚ 图）</li><li>解方程求 X</li><li>叠加求内力：M = ΣM̄ᵢXᵢ + Mₚ</li></ol>
+</div>
 
-                                <h3>五、对称性利用（重要！）</h3>
+<div class="note-section" id="s5">
+<h3>五、对称性利用（重要！）</h3>
                                 <table class="compact-table">
                                     <tr><th>荷载类型</th><th>结论</th></tr>
                                     <tr><td>对称荷载</td><td>反对称多余力 = 0</td></tr>
                                     <tr><td>反对称荷载</td><td>对称多余力 = 0</td></tr>
                                 </table>
                                 <div class="tip-box">💡 遇到对称结构，先判断荷载对称性，直接砍半计算！</div>
+</div>
 
-                                <h3>六、支座位移和温度变化</h3>
+<div class="note-section" id="s6">
+<h3>六、支座位移和温度变化</h3>
                                 <p><strong>支座位移：</strong>方程右边 Δ₁ ≠ 0，代入实际位移</p>
                                 <p><strong>温度变化：</strong>自由项增加温度项 Δᵢₜ</p>
-                            </div>
+</div>
+</div>
                             <div class="cornell-summary">
                                 <h4>📝 总结</h4>
                                 <p><strong>一句话：</strong>力法以多余约束力为未知量，通过变形协调方程求解；选择合适的基本结构简化计算，对称结构优先用对称性减半。</p>

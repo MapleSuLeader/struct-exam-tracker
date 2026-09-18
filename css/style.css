@@ -1334,3 +1334,80 @@ body {
         margin-left: 70px;
     }
 }
+
+/* ===== 复习模式 ===== */
+.review-toggle {
+    font-size: 0.8rem;
+    color: var(--primary);
+    background: white;
+    border: 1.5px solid var(--primary);
+    border-radius: 16px;
+    padding: 4px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-left: 8px;
+}
+.review-toggle:hover {
+    background: var(--primary);
+    color: white;
+}
+.review-toggle.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* 线索可点击 */
+.cornell-cue li[data-section] {
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.cornell-cue li[data-section]:hover {
+    background: rgba(79, 70, 229, 0.1);
+}
+.cornell-cue li[data-section].cue-active {
+    background: rgba(79, 70, 229, 0.15);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* 主线章节 */
+.note-section {
+    transition: opacity 0.3s, max-height 0.4s ease;
+    overflow: hidden;
+}
+
+/* 高亮模式：其他变暗 */
+.cornell-notes.has-highlight .note-section {
+    opacity: 0.25;
+    transition: opacity 0.3s;
+}
+.cornell-notes.has-highlight .note-section.section-highlight {
+    opacity: 1;
+    background: rgba(79, 70, 229, 0.03);
+    border-radius: 8px;
+    padding: 4px 8px;
+    margin: 4px -8px;
+}
+
+/* 复习模式：折叠 */
+.cornell-notes.review-mode .note-section {
+    max-height: 36px;
+    opacity: 0.5;
+}
+.cornell-notes.review-mode .note-section.section-revealed {
+    max-height: 5000px;
+    opacity: 1;
+}
+.cornell-notes.review-mode .note-section h3 {
+    cursor: pointer;
+}
+.cornell-notes.review-mode .note-section h3::after {
+    content: ' ▶';
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+.cornell-notes.review-mode .note-section.section-revealed h3::after {
+    content: ' ▼';
+}
