@@ -265,6 +265,7 @@
                         <button class="note-tab active" data-lecture="0">第0讲 结构判定</button>
                         <button class="note-tab" data-lecture="1">第1讲 静定梁</button>
                         <button class="note-tab" data-lecture="2">第2讲 静定桁架</button>
+                        <button class="note-tab" data-lecture="3">第3讲 力法</button>
                     </div>
 
                     <!-- ===== 第0讲 ===== -->
@@ -612,6 +613,65 @@
                         </div>
                     </div>
                 </div>
+
+                    <!-- ===== 第3讲 力法 ===== -->
+                    <div class="cornell-note" id="note-3">
+                        <div class="note-header"><h2>第3讲 力法</h2><span class="note-date">2026-09-18</span></div>
+                        <div class="cornell-layout">
+                            <div class="cornell-cue">
+                                <h4>🔑 核心概念</h4>
+                                <ul>
+                                    <li><strong>超静定结构</strong>：未知力 > 平衡方程数</li>
+                                    <li><strong>超静定次数</strong>：多余约束的个数</li>
+                                    <li><strong>力法基本未知量</strong>：多余约束力</li>
+                                    <li><strong>柔度系数 δ</strong>：单位力产生的位移</li>
+                                    <li><strong>基本结构</strong>：去掉多余约束后的静定结构</li>
+                                </ul>
+                                <h4>❓ 关键问题</h4>
+                                <ol><li>超静定次数怎么确定？</li><li>力法的基本思路？</li><li>力法方程怎么建立？</li><li>对称结构怎么简化？</li></ol>
+                            </div>
+                            <div class="cornell-notes">
+                                <h3>一、超静定次数确定</h3>
+                                <div class="formula-box"><p>n = 未知力数 - 独立平衡方程数</p><p>n = 3m - 2h - r （刚架公式）</p></div>
+                                <p><strong>约束换算：</strong>固定端=3，固定铰=2，可动铰=1</p>
+
+                                <h3>二、力法核心思路</h3>
+                                <div class="steps-box">
+                                    <p><strong>超静定 → 静定 → 变形协调 → 求多余力</strong></p>
+                                    <ol><li>去掉多余约束，代以多余约束力 X</li><li>列变形协调方程</li><li>解方程求 X</li><li>叠加求最终内力</li></ol>
+                                </div>
+
+                                <h3>三、力法方程</h3>
+                                <div class="formula-box"><p><strong>一次超静定：</strong>δ₁₁X₁ + Δ₁ₚ = 0</p><p><strong>n次超静定：</strong>[δ]{X} + {Δₚ} = {0}</p></div>
+                                <p><strong>各项含义：</strong></p>
+                                <ul><li><strong>δᵢᵢ（主系数）</strong>：Xᵢ=1 作用下沿 Xᵢ 方向的位移，恒为正</li><li><strong>δᵢⱼ（副系数）</strong>：Xⱼ=1 作用下沿 Xᵢ 方向的位移，可正可负，δᵢⱼ=δⱼᵢ</li><li><strong>Δᵢₚ（自由项）</strong>：荷载作用下沿 Xᵢ 方向的位移</li></ul>
+
+                                <h3>四、解题步骤</h3>
+                                <ol><li>确定超静定次数，选基本未知量</li><li>确定基本结构（静定且几何不变）</li><li>建立力法方程</li><li>计算系数和自由项（画 M̄ᵢ 图和 Mₚ 图）</li><li>解方程求 X</li><li>叠加求内力：M = ΣM̄ᵢXᵢ + Mₚ</li></ol>
+
+                                <h3>五、对称性利用（重要！）</h3>
+                                <table class="compact-table">
+                                    <tr><th>荷载类型</th><th>结论</th></tr>
+                                    <tr><td>对称荷载</td><td>反对称多余力 = 0</td></tr>
+                                    <tr><td>反对称荷载</td><td>对称多余力 = 0</td></tr>
+                                </table>
+                                <div class="tip-box">💡 遇到对称结构，先判断荷载对称性，直接砍半计算！</div>
+
+                                <h3>六、支座位移和温度变化</h3>
+                                <p><strong>支座位移：</strong>方程右边 Δ₁ ≠ 0，代入实际位移</p>
+                                <p><strong>温度变化：</strong>自由项增加温度项 Δᵢₜ</p>
+                            </div>
+                            <div class="cornell-summary">
+                                <h4>📝 总结</h4>
+                                <p><strong>一句话：</strong>力法以多余约束力为未知量，通过变形协调方程求解；选择合适的基本结构简化计算，对称结构优先用对称性减半。</p>
+                                <h4>📌 核心公式</h4>
+                                <p>δ₁₁X₁ + Δ₁ₚ = 0</p>
+                                <p>M = M̄₁X₁ + Mₚ</p>
+                                <h4>⚠️ 易错点</h4>
+                                <ol><li>基本结构必须静定，别去掉约束后还是超静定</li><li>δᵢᵢ 恒为正，δᵢⱼ 可正可负</li><li>对称结构一定要利用对称性</li><li>叠加别漏 Mₚ</li><li>支座位移问题 Δ₁ ≠ 0</li></ol>
+                            </div>
+                        </div>
+                    </div>
 
                 <!-- ===== 其他科目占位 ===== -->
                 <div class="subject-content" id="subject-concrete"><div class="empty-subject"><div class="empty-icon">🧱</div><h3>混凝土结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
