@@ -350,14 +350,92 @@
                                 <h4>📝 练习题</h4>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag easy">基础</span><strong>题1：</strong>计算图示体系的自由度W：刚片数 m=3，单铰数 h=3，支座链杆 b=3。判断该体系是几何不变、瞬变还是常变？</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="20" y="28" width="65" height="22" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                            <text x="52" y="43" text-anchor="middle" font-size="9" fill="#334155">刚片I</text>
+                                            <rect x="117" y="28" width="65" height="22" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                            <text x="150" y="43" text-anchor="middle" font-size="9" fill="#334155">刚片II</text>
+                                            <rect x="215" y="28" width="65" height="22" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                            <text x="247" y="43" text-anchor="middle" font-size="9" fill="#334155">刚片III</text>
+                                            <circle cx="100" cy="39" r="6" fill="white" stroke="#4f46e5" stroke-width="2"/>
+                                            <circle cx="200" cy="39" r="6" fill="white" stroke="#4f46e5" stroke-width="2"/>
+                                            <circle cx="150" cy="62" r="6" fill="white" stroke="#4f46e5" stroke-width="2"/>
+                                            <line x1="100" y1="45" x2="150" y2="56" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
+                                            <line x1="200" y1="45" x2="150" y2="56" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
+                                            <polygon points="52,50 45,64 59,64" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="42" y1="67" x2="62" y2="67" stroke="#334155" stroke-width="1.5"/>
+                                            <polygon points="150" y1="68" x2="143" y2="82" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="140" y1="85" x2="160" y2="85" stroke="#334155" stroke-width="1.5"/>
+                                            <polygon points="247,50 240,64 254,64" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="237" y1="67" x2="257" y2="67" stroke="#334155" stroke-width="1.5"/>
+                                            <text x="150" y="105" text-anchor="middle" font-size="9" fill="#64748b">m=3, h=3, b=3</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p>W = 3×3 - (0 + 2×3 + 3) = 9 - 9 = 0</p><p>W=0，还需检查约束布置。若三铰不共线，则几何不变（静定结构）。</p></div></details>
                                 </div>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag medium">陷阱</span><strong>题2：</strong>图示体系：4个刚片，其中有一个铰连接了3个刚片（复铰），另有2个单铰，支座链杆4根。求自由度W，判断几何性质。</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="15" y="28" width="55" height="20" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                            <text x="42" y="42" text-anchor="middle" font-size="8" fill="#334155">刚片I</text>
+                                            <rect x="120" y="15" width="55" height="20" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                            <text x="147" y="29" text-anchor="middle" font-size="8" fill="#334155">刚片II</text>
+                                            <rect x="120" y="48" width="55" height="20" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                            <text x="147" y="62" text-anchor="middle" font-size="8" fill="#334155">刚片III</text>
+                                            <rect x="225" y="28" width="55" height="20" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                            <text x="252" y="42" text-anchor="middle" font-size="8" fill="#334155">刚片IV</text>
+                                            <circle cx="110" cy="38" r="10" fill="white" stroke="#4f46e5" stroke-width="2.5"/>
+                                            <text x="110" y="58" text-anchor="middle" font-size="7" fill="#4f46e5" font-weight="600">复铰</text>
+                                            <line x1="70" y1="38" x2="100" y2="38" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
+                                            <line x1="120" y1="25" x2="105" y2="33" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
+                                            <line x1="120" y1="58" x2="105" y2="43" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
+                                            <circle cx="185" cy="25" r="5" fill="white" stroke="#4f46e5" stroke-width="1.5"/>
+                                            <line x1="175" y1="25" x2="195" y2="25" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
+                                            <circle cx="215" cy="38" r="5" fill="white" stroke="#4f46e5" stroke-width="1.5"/>
+                                            <line x1="195" y1="38" x2="225" y2="38" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
+                                            <polygon points="42,48 36,58 48,58" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="33" y1="61" x2="51" y2="61" stroke="#334155" stroke-width="1.5"/>
+                                            <polygon points="147,68 141,78 153,78" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="138" y1="81" x2="156" y2="81" stroke="#334155" stroke-width="1.5"/>
+                                            <polygon points="175,68 169,78 181,78" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="166" y1="81" x2="184" y2="81" stroke="#334155" stroke-width="1.5"/>
+                                            <polygon points="252,48 246,58 258,58" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="243" y1="61" x2="261" y2="61" stroke="#334155" stroke-width="1.5"/>
+                                            <text x="150" y="105" text-anchor="middle" font-size="9" fill="#64748b">m=4, 复铰=(3-1)=2单铰, b=4</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p>复铰连接3个刚片 = (3-1)=2个单铰</p><p>总单铰数 = 2 + 2 = 4</p><p>W = 3×4 - (0 + 2×4 + 4) = 12 - 12 = 0</p><p>W=0，检查约束布置，若无三铰共线等问题，则几何不变。</p></div></details>
                                 </div>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag hard">进阶</span><strong>题3：</strong>图示简单桁架：5个结点（含2个支座铰），7根杆件（含3根支座链杆）。求自由度W，判断是否为静定结构。</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="40" y1="75" x2="100" y2="75" stroke="#334155" stroke-width="2"/>
+                                            <line x1="100" y1="75" x2="160" y2="75" stroke="#334155" stroke-width="2"/>
+                                            <line x1="160" y1="75" x2="220" y2="75" stroke="#334155" stroke-width="2"/>
+                                            <line x1="40" y1="75" x2="100" y2="30" stroke="#334155" stroke-width="2"/>
+                                            <line x1="100" y1="30" x2="160" y2="75" stroke="#334155" stroke-width="2"/>
+                                            <line x1="100" y1="30" x2="220" y2="75" stroke="#334155" stroke-width="2"/>
+                                            <line x1="160" y1="75" x2="100" y2="30" stroke="#334155" stroke-width="1.5" stroke-dasharray="4,3"/>
+                                            <circle cx="40" cy="75" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="100" cy="75" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="160" cy="75" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="220" cy="75" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="100" cy="30" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <text x="35" y="92" font-size="10" fill="#4f46e5" font-weight="600">A</text>
+                                            <text x="95" y="92" font-size="10" fill="#4f46e5" font-weight="600">B</text>
+                                            <text x="155" y="92" font-size="10" fill="#4f46e5" font-weight="600">C</text>
+                                            <text x="215" y="92" font-size="10" fill="#4f46e5" font-weight="600">D</text>
+                                            <text x="95" y="22" font-size="10" fill="#4f46e5" font-weight="600">E</text>
+                                            <polygon points="40,75 32,90 48,90" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="28" y1="93" x2="52" y2="93" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="220" cy="79" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="214" y1="93" x2="226" y2="93" stroke="#334155" stroke-width="1.5"/>
+                                            <text x="150" y="110" text-anchor="middle" font-size="9" fill="#64748b">j=5, b=7</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p>链杆体系：W = 2j - b = 2×5 - 7 = 3</p><p>W=3&gt;0，体系几何可变（常变），不是结构！</p><p>若要成为静定结构，需增加3根链杆使W=0。</p></div></details>
                                 </div>
                             </div>
@@ -525,14 +603,94 @@
                                 <h4>📝 练习题</h4>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag easy">基础</span><strong>题1：</strong>简支梁AB，跨度L=6m，跨中C点作用集中力P=20kN↓。求：(1)支座反力R<sub>A</sub>、R<sub>B</sub>；(2)C截面弯矩M<sub>C</sub>和剪力F<sub>QC</sub>；(3)绘制M图和F<sub>Q</sub>图。</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="40" y1="55" x2="260" y2="55" stroke="#334155" stroke-width="2.5"/>
+                                            <polygon points="40,55 32,70 48,70" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="28" y1="73" x2="52" y2="73" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="260" cy="59" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="254" y1="73" x2="266" y2="73" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="150" y1="20" x2="150" y2="50" stroke="#ef4444" stroke-width="2"/>
+                                            <polygon points="150,50 146,42 154,42" fill="#ef4444"/>
+                                            <text x="160" y="25" font-size="11" fill="#ef4444" font-weight="600">P=20kN</text>
+                                            <text x="40" y="88" font-size="9" fill="#4f46e5" font-weight="600">A</text>
+                                            <text x="255" y="88" font-size="9" fill="#4f46e5" font-weight="600">B</text>
+                                            <text x="145" y="100" font-size="9" fill="#4f46e5" font-weight="600">C</text>
+                                            <line x1="40" y1="95" x2="260" y2="95" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="40" y1="92" x2="40" y2="98" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="260" y1="92" x2="260" y2="98" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="150" y="108" text-anchor="middle" font-size="9" fill="#64748b">L = 6m</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p>对称结构对称荷载：R<sub>A</sub> = R<sub>B</sub> = P/2 = 10 kN ↑</p><p>M<sub>C</sub> = PL/4 = 20×6/4 = 30 kN·m</p><p>F<sub>QC</sub> = 0（对称点剪力为零）</p><p>M图：三角形，跨中最大30kN·m；F<sub>Q</sub>图：左段+10，右段-10</p></div></details>
                                 </div>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag medium">进阶</span><strong>题2：</strong>简支梁AB，跨度L=8m，全跨均布荷载q=5kN/m↓。求：(1)支座反力；(2)跨中弯矩和剪力；(3)距A支座2m处内力。</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="30" y1="60" x2="270" y2="60" stroke="#334155" stroke-width="2.5"/>
+                                            <polygon points="30,60 22,75 38,75" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="18" y1="78" x2="42" y2="78" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="270" cy="64" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="264" y1="78" x2="276" y2="78" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="50" y1="25" x2="50" y2="55" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="50,55 47,48 53,48" fill="#ef4444"/>
+                                            <line x1="100" y1="25" x2="100" y2="55" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="100,55 97,48 103,48" fill="#ef4444"/>
+                                            <line x1="150" y1="25" x2="150" y2="55" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="150,55 147,48 153,48" fill="#ef4444"/>
+                                            <line x1="200" y1="25" x2="200" y2="55" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="200,55 197,48 203,48" fill="#ef4444"/>
+                                            <line x1="250" y1="25" x2="250" y2="55" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="250,55 247,48 253,48" fill="#ef4444"/>
+                                            <line x1="40" y1="25" x2="260" y2="25" stroke="#ef4444" stroke-width="1.5"/>
+                                            <text x="155" y="18" text-anchor="middle" font-size="11" fill="#ef4444" font-weight="600">q = 5kN/m</text>
+                                            <text x="30" y="93" font-size="9" fill="#4f46e5" font-weight="600">A</text>
+                                            <text x="265" y="93" font-size="9" fill="#4f46e5" font-weight="600">B</text>
+                                            <line x1="30" y1="100" x2="270" y2="100" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="30" y1="97" x2="30" y2="103" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="270" y1="97" x2="270" y2="103" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="150" y="113" text-anchor="middle" font-size="9" fill="#64748b">L = 8m</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p>R<sub>A</sub> = R<sub>B</sub> = qL/2 = 5×8/2 = 20 kN ↑</p><p>跨中：M = qL²/8 = 5×64/8 = 40 kN·m，F<sub>Q</sub> = 0</p><p>距A 2m处：M = 20×2 - 5×2²/2 = 30 kN·m</p><p>F<sub>Q</sub> = 20 - 5×2 = 10 kN</p></div></details>
                                 </div>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag hard">挑战</span><strong>题3：</strong>外伸梁ABC，A固定铰，B滚动铰，AB=4m，BC=2m（外伸）。AB段q=10kN/m↓，C端P=15kN↓。求：(1)支座反力；(2)B截面左、右侧剪力；(3)AB段最大弯矩及位置。</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="30" y1="55" x2="270" y2="55" stroke="#334155" stroke-width="2.5"/>
+                                            <polygon points="30,55 22,70 38,70" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="18" y1="73" x2="42" y2="73" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="190" cy="59" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="184" y1="73" x2="196" y2="73" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="50" y1="20" x2="50" y2="50" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="50,50 47,43 53,43" fill="#ef4444"/>
+                                            <line x1="80" y1="20" x2="80" y2="50" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="80,50 77,43 83,43" fill="#ef4444"/>
+                                            <line x1="110" y1="20" x2="110" y2="50" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="110,50 107,43 113,43" fill="#ef4444"/>
+                                            <line x1="140" y1="20" x2="140" y2="50" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="140,50 137,43 143,43" fill="#ef4444"/>
+                                            <line x1="170" y1="20" x2="170" y2="50" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="170,50 167,43 173,43" fill="#ef4444"/>
+                                            <line x1="40" y1="20" x2="180" y2="20" stroke="#ef4444" stroke-width="1.5"/>
+                                            <text x="110" y="14" text-anchor="middle" font-size="10" fill="#ef4444" font-weight="600">q=10kN/m</text>
+                                            <line x1="270" y1="25" x2="270" y2="50" stroke="#ef4444" stroke-width="2"/>
+                                            <polygon points="270,50 266,42 274,42" fill="#ef4444"/>
+                                            <text x="278" y="30" font-size="10" fill="#ef4444" font-weight="600">P=15kN</text>
+                                            <text x="25" y="88" font-size="9" fill="#4f46e5" font-weight="600">A</text>
+                                            <text x="185" y="88" font-size="9" fill="#4f46e5" font-weight="600">B</text>
+                                            <text x="265" y="88" font-size="9" fill="#4f46e5" font-weight="600">C</text>
+                                            <line x1="30" y1="95" x2="190" y2="95" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="30" y1="92" x2="30" y2="98" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="190" y1="92" x2="190" y2="98" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="110" y="108" text-anchor="middle" font-size="8" fill="#64748b">4m</text>
+                                            <line x1="190" y1="95" x2="270" y2="95" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="270" y1="92" x2="270" y2="98" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="230" y="108" text-anchor="middle" font-size="8" fill="#64748b">2m</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p>∑M<sub>A</sub>=0：R<sub>B</sub>×4 = 10×4×2 + 15×6 → R<sub>B</sub> = 190/4 = 47.5 kN ↑</p><p>∑F<sub>y</sub>=0：R<sub>A</sub> = 10×4 + 15 - 47.5 = 7.5 kN ↑</p><p>B左：F<sub>Q</sub> = 7.5 - 10×4 = -32.5 kN</p><p>B右：F<sub>Q</sub> = -15 kN（仅外伸段荷载）</p><p>AB段V=0处：x = 7.5/10 = 0.75m，M<sub>max</sub> = 7.5×0.75 - 10×0.75²/2 = 2.81 kN·m</p></div></details>
                                 </div>
                             </div>
@@ -674,14 +832,117 @@
                                 <h4>📝 练习题</h4>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag easy">概念</span><strong>题1：</strong>对称三角形桁架：下弦A-B-C，AB=BC=4m；顶点D在B正上方高3m；杆件AD、DC（上弦），AB、BC（下弦），DB（中竖杆）；A铰支座，C滚轴支座；P=20kN作用于D点。判断哪些杆件是零杆？</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="40" y1="80" x2="150" y2="80" stroke="#334155" stroke-width="2"/>
+                                            <line x1="150" y1="80" x2="260" y2="80" stroke="#334155" stroke-width="2"/>
+                                            <line x1="40" y1="80" x2="150" y2="25" stroke="#334155" stroke-width="2"/>
+                                            <line x1="150" y1="25" x2="260" y2="80" stroke="#334155" stroke-width="2"/>
+                                            <line x1="150" y1="80" x2="150" y2="25" stroke="#334155" stroke-width="2"/>
+                                            <circle cx="40" cy="80" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="150" cy="80" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="260" cy="80" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="150" cy="25" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <text x="30" y="95" font-size="10" fill="#4f46e5" font-weight="600">A</text>
+                                            <text x="145" y="95" font-size="10" fill="#4f46e5" font-weight="600">B</text>
+                                            <text x="255" y="95" font-size="10" fill="#4f46e5" font-weight="600">C</text>
+                                            <text x="145" y="18" font-size="10" fill="#4f46e5" font-weight="600">D</text>
+                                            <polygon points="40,80 32,95 48,95" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="28" y1="98" x2="52" y2="98" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="260" cy="84" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="254" y1="98" x2="266" y2="98" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="150" y1="5" x2="150" y2="20" stroke="#ef4444" stroke-width="2"/>
+                                            <polygon points="150,20 146,13 154,13" fill="#ef4444"/>
+                                            <text x="162" y="10" font-size="10" fill="#ef4444" font-weight="600">P=20kN</text>
+                                            <line x1="40" y1="105" x2="150" y2="105" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="40" y1="102" x2="40" y2="108" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="150" y1="102" x2="150" y2="108" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="95" y="115" text-anchor="middle" font-size="8" fill="#64748b">4m</text>
+                                            <line x1="150" y1="105" x2="260" y2="105" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="260" y1="102" x2="260" y2="108" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="205" y="115" text-anchor="middle" font-size="8" fill="#64748b">4m</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>零杆：DB（中竖杆）</strong></p><p>节点B处：杆AB和杆BC共线（水平），杆DB为第三杆（竖直），节点B无外力。</p><p>根据零杆判定规则：无外力三杆节点，两杆共线，第三杆为零杆。</p><p>N<sub>DB</sub> = 0</p></div></details>
                                 </div>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag medium">节点法</span><strong>题2：</strong>简单桁架：A（左下铰支座）、B（右下滚轴支座）、C（顶部），AB=6m，C在AB中点正上方高4m；杆件AC、BC（斜杆），AB（下弦）；P=24kN作用于C点。用节点法求各杆内力。</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="50" y1="85" x2="250" y2="85" stroke="#334155" stroke-width="2"/>
+                                            <line x1="50" y1="85" x2="150" y2="25" stroke="#334155" stroke-width="2"/>
+                                            <line x1="150" y1="25" x2="250" y2="85" stroke="#334155" stroke-width="2"/>
+                                            <circle cx="50" cy="85" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="250" cy="85" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="150" cy="25" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <text x="40" y="100" font-size="10" fill="#4f46e5" font-weight="600">A</text>
+                                            <text x="245" y="100" font-size="10" fill="#4f46e5" font-weight="600">B</text>
+                                            <text x="145" y="18" font-size="10" fill="#4f46e5" font-weight="600">C</text>
+                                            <polygon points="50,85 42,100 58,100" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="38" y1="103" x2="62" y2="103" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="250" cy="89" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="244" y1="103" x2="256" y2="103" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="150" y1="5" x2="150" y2="20" stroke="#ef4444" stroke-width="2"/>
+                                            <polygon points="150,20 146,13 154,13" fill="#ef4444"/>
+                                            <text x="162" y="10" font-size="10" fill="#ef4444" font-weight="600">P=24kN</text>
+                                            <line x1="50" y1="110" x2="250" y2="110" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="50" y1="107" x2="50" y2="113" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="250" y1="107" x2="250" y2="113" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="150" y="118" text-anchor="middle" font-size="8" fill="#64748b">AB = 6m</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p>对称性：R<sub>A</sub> = R<sub>B</sub> = 12 kN ↑</p><p>节点A：sinα = 4/5，cosα = 3/5</p><p>∑F<sub>y</sub>=0：12 + N<sub>AC</sub>×(4/5) = 0 → <strong>N<sub>AC</sub> = -15 kN（压）</strong></p><p>∑F<sub>x</sub>=0：N<sub>AB</sub> + (-15)×(3/5) = 0 → <strong>N<sub>AB</sub> = 9 kN（拉）</strong></p><p>由对称性：<strong>N<sub>BC</sub> = -15 kN（压）</strong></p></div></details>
                                 </div>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag hard">截面法</span><strong>题3：</strong>平行弦桁架：下弦A-B-C-D（各3m），上弦E-F-G（各在AB、BC、CD中点上方），高4m；A铰支座，D滚轴支座；P<sub>1</sub>=10kN(E)、P<sub>2</sub>=20kN(F)、P<sub>3</sub>=10kN(G)。用截面法求杆BF内力。</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="30" y1="85" x2="80" y2="85" stroke="#334155" stroke-width="2"/>
+                                            <line x1="80" y1="85" x2="150" y2="85" stroke="#334155" stroke-width="2"/>
+                                            <line x1="150" y1="85" x2="220" y2="85" stroke="#334155" stroke-width="2"/>
+                                            <line x1="220" y1="85" x2="270" y2="85" stroke="#334155" stroke-width="2"/>
+                                            <line x1="55" y1="40" x2="115" y2="40" stroke="#334155" stroke-width="2"/>
+                                            <line x1="115" y1="40" x2="185" y2="40" stroke="#334155" stroke-width="2"/>
+                                            <line x1="185" y1="40" x2="245" y2="40" stroke="#334155" stroke-width="2"/>
+                                            <line x1="30" y1="85" x2="55" y2="40" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="80" y1="85" x2="55" y2="40" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="80" y1="85" x2="115" y2="40" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="150" y1="85" x2="115" y2="40" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="150" y1="85" x2="185" y2="40" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="220" y1="85" x2="185" y2="40" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="220" y1="85" x2="245" y2="40" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="270" y1="85" x2="245" y2="40" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="30" cy="85" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="80" cy="85" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="150" cy="85" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="220" cy="85" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="270" cy="85" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="55" cy="40" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="115" cy="40" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="185" cy="40" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="245" cy="40" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <text x="25" y="100" font-size="8" fill="#4f46e5" font-weight="600">A</text>
+                                            <text x="75" y="100" font-size="8" fill="#4f46e5" font-weight="600">B</text>
+                                            <text x="145" y="100" font-size="8" fill="#4f46e5" font-weight="600">C</text>
+                                            <text x="215" y="100" font-size="8" fill="#4f46e5" font-weight="600">D</text>
+                                            <text x="50" y="35" font-size="8" fill="#4f46e5" font-weight="600">E</text>
+                                            <text x="110" y="35" font-size="8" fill="#4f46e5" font-weight="600">F</text>
+                                            <text x="180" y="35" font-size="8" fill="#4f46e5" font-weight="600">G</text>
+                                            <polygon points="30,85 22,98 38,98" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="18" y1="101" x2="42" y2="101" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="270" cy="89" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="264" y1="101" x2="276" y2="101" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="55" y1="15" x2="55" y2="35" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="55,35 52,28 58,28" fill="#ef4444"/>
+                                            <text x="55" y="12" text-anchor="middle" font-size="8" fill="#ef4444" font-weight="600">10</text>
+                                            <line x1="115" y1="15" x2="115" y2="35" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="115,35 112,28 118,28" fill="#ef4444"/>
+                                            <text x="115" y="12" text-anchor="middle" font-size="8" fill="#ef4444" font-weight="600">20</text>
+                                            <line x1="185" y1="15" x2="185" y2="35" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="185,35 182,28 188,28" fill="#ef4444"/>
+                                            <text x="185" y="12" text-anchor="middle" font-size="8" fill="#ef4444" font-weight="600">10</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p>R<sub>A</sub> = R<sub>D</sub> = 20 kN（对称荷载）</p><p>截面I-I切断EF、BF、BC，取左半部分</p><p>对B点取矩求N<sub>EF</sub>：20×3 - 10×1.5 + N<sub>EF</sub>×4 = 0 → N<sub>EF</sub> = -11.25 kN（压）</p><p>∑F<sub>y</sub>=0：20 - 10 + N<sub>BF</sub>×sinα = 0</p><p>sinα = 4/√18.25 ≈ 0.936</p><p><strong>N<sub>BF</sub> ≈ -10.68 kN（压）</strong></p></div></details>
                                 </div>
                             </div>
@@ -761,14 +1022,104 @@
                                 <h4>📝 练习题</h4>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag easy">基础</span><strong>题1：</strong>两跨连续梁ABC：A端固定铰，B端中间可动铰，C端可动铰。AB=BC=4m，AB跨均布荷载q=10kN/m。用力法求B支座反力。</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="30" y1="55" x2="270" y2="55" stroke="#334155" stroke-width="2.5"/>
+                                            <polygon points="30,55 22,70 38,70" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="18" y1="73" x2="42" y2="73" stroke="#334155" stroke-width="1.5"/>
+                                            <polygon points="150,55 143,68 157,68" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="140" y1="71" x2="160" y2="71" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="270" cy="59" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="264" y1="73" x2="276" y2="73" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="50" y1="20" x2="50" y2="50" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="50,50 47,43 53,43" fill="#ef4444"/>
+                                            <line x1="75" y1="20" x2="75" y2="50" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="75,50 72,43 78,43" fill="#ef4444"/>
+                                            <line x1="100" y1="20" x2="100" y2="50" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="100,50 97,43 103,43" fill="#ef4444"/>
+                                            <line x1="125" y1="20" x2="125" y2="50" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="125,50 122,43 128,43" fill="#ef4444"/>
+                                            <line x1="40" y1="20" x2="140" y2="20" stroke="#ef4444" stroke-width="1.5"/>
+                                            <text x="90" y="14" text-anchor="middle" font-size="10" fill="#ef4444" font-weight="600">q=10kN/m</text>
+                                            <text x="25" y="88" font-size="9" fill="#4f46e5" font-weight="600">A</text>
+                                            <text x="145" y="88" font-size="9" fill="#4f46e5" font-weight="600">B</text>
+                                            <text x="265" y="88" font-size="9" fill="#4f46e5" font-weight="600">C</text>
+                                            <line x1="30" y1="95" x2="150" y2="95" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="30" y1="92" x2="30" y2="98" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="150" y1="92" x2="150" y2="98" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="90" y="108" text-anchor="middle" font-size="8" fill="#64748b">4m</text>
+                                            <line x1="150" y1="95" x2="270" y2="95" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="270" y1="92" x2="270" y2="98" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="210" y="108" text-anchor="middle" font-size="8" fill="#64748b">4m</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>超静定次数：</strong>n=1</p><p><strong>基本结构：</strong>去掉B支座，代以X₁↑</p><p><strong>力法方程：</strong>δ₁₁X₁ + Δ₁ₚ = 0</p><p><strong>系数计算：</strong>δ₁₁ = 8/(3EI)，Δ₁ₚ = -80/(3EI)</p><p><strong>解：</strong>X₁ = 10 kN ↑</p></div></details>
                                 </div>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag medium">对称性</span><strong>题2：</strong>对称门式刚架，两立柱底部均为固定端，跨度L=6m，柱高H=4m，横梁均布荷载q=20kN/m。用力法求关键截面弯矩。</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="60" y1="25" x2="240" y2="25" stroke="#334155" stroke-width="2.5"/>
+                                            <line x1="60" y1="25" x2="60" y2="90" stroke="#334155" stroke-width="2.5"/>
+                                            <line x1="240" y1="25" x2="240" y2="90" stroke="#334155" stroke-width="2.5"/>
+                                            <rect x="48" y="90" width="24" height="8" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="45" y1="100" x2="75" y2="100" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="50" y1="100" x2="46" y2="106" stroke="#334155" stroke-width="1"/>
+                                            <line x1="57" y1="100" x2="53" y2="106" stroke="#334155" stroke-width="1"/>
+                                            <line x1="64" y1="100" x2="60" y2="106" stroke="#334155" stroke-width="1"/>
+                                            <line x1="71" y1="100" x2="67" y2="106" stroke="#334155" stroke-width="1"/>
+                                            <rect x="228" y="90" width="24" height="8" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="225" y1="100" x2="255" y2="100" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="230" y1="100" x2="226" y2="106" stroke="#334155" stroke-width="1"/>
+                                            <line x1="237" y1="100" x2="233" y2="106" stroke="#334155" stroke-width="1"/>
+                                            <line x1="244" y1="100" x2="240" y2="106" stroke="#334155" stroke-width="1"/>
+                                            <line x1="251" y1="100" x2="247" y2="106" stroke="#334155" stroke-width="1"/>
+                                            <line x1="90" y1="5" x2="90" y2="20" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="90,20 87,13 93,13" fill="#ef4444"/>
+                                            <line x1="130" y1="5" x2="130" y2="20" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="130,20 127,13 133,13" fill="#ef4444"/>
+                                            <line x1="170" y1="5" x2="170" y2="20" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="170,20 167,13 173,13" fill="#ef4444"/>
+                                            <line x1="210" y1="5" x2="210" y2="20" stroke="#ef4444" stroke-width="1.5"/>
+                                            <polygon points="210,20 207,13 213,13" fill="#ef4444"/>
+                                            <line x1="80" y1="5" x2="220" y2="5" stroke="#ef4444" stroke-width="1.5"/>
+                                            <text x="150" y="0" text-anchor="middle" font-size="9" fill="#ef4444" font-weight="600">q=20kN/m</text>
+                                            <line x1="60" y1="112" x2="240" y2="112" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="60" y1="109" x2="60" y2="115" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="240" y1="109" x2="240" y2="115" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="150" y="118" text-anchor="middle" font-size="8" fill="#64748b">L = 6m</text>
+                                            <text x="30" y="60" font-size="8" fill="#64748b">H=4m</text>
+                                            <line x1="50" y1="25" x2="50" y2="90" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="47" y1="25" x2="53" y2="25" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="47" y1="90" x2="53" y2="90" stroke="#64748b" stroke-width="0.8"/>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>超静定次数：</strong>n=3（每个固定端3个约束）</p><p><strong>对称性利用：</strong>对称结构+对称荷载→反对称多余力=0</p><p><strong>关键弯矩：</strong></p><p>· 横梁跨中：M = qL²/12 = 60 kN·m（下侧受拉）</p><p>· 柱顶：M = qL²/24 = 30 kN·m（内侧受拉）</p><p>· 柱底：M = qL²/24 = 30 kN·m（外侧受拉）</p></div></details>
                                 </div>
                                 <div class="practice-problem">
                                     <p><span class="problem-tag hard">支座位移</span><strong>题3：</strong>一次超静定梁：A端固定，B端可动铰，跨度L=6m，B支座下沉Δ=10mm。用力法求B支座反力。</p>
+                                    <div class="practice-illustration">
+                                        <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                            <line x1="40" y1="45" x2="260" y2="45" stroke="#334155" stroke-width="2.5"/>
+                                            <rect x="28" y="30" width="12" height="30" fill="none" stroke="#334155" stroke-width="2"/>
+                                            <line x1="25" y1="30" x2="25" y2="60" stroke="#334155" stroke-width="2"/>
+                                            <line x1="22" y1="33" x2="18" y2="37" stroke="#334155" stroke-width="1"/>
+                                            <line x1="22" y1="40" x2="18" y2="44" stroke="#334155" stroke-width="1"/>
+                                            <line x1="22" y1="47" x2="18" y2="51" stroke="#334155" stroke-width="1"/>
+                                            <line x1="22" y1="54" x2="18" y2="58" stroke="#334155" stroke-width="1"/>
+                                            <polygon points="260,45 253,58 267,58" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="250" y1="61" x2="270" y2="61" stroke="#334155" stroke-width="1.5"/>
+                                            <line x1="260" y1="68" x2="260" y2="95" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,3"/>
+                                            <polygon points="260,95 256,87 264,87" fill="#ef4444"/>
+                                            <text x="275" y="85" font-size="10" fill="#ef4444" font-weight="600">Δ=10mm</text>
+                                            <text x="35" y="78" font-size="9" fill="#4f46e5" font-weight="600">A(固定)</text>
+                                            <text x="248" y="78" font-size="9" fill="#4f46e5" font-weight="600">B(滚轴)</text>
+                                            <line x1="40" y1="100" x2="260" y2="100" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="40" y1="97" x2="40" y2="103" stroke="#64748b" stroke-width="0.8"/>
+                                            <line x1="260" y1="97" x2="260" y2="103" stroke="#64748b" stroke-width="0.8"/>
+                                            <text x="150" y="113" text-anchor="middle" font-size="9" fill="#64748b">L = 6m</text>
+                                        </svg>
+                                    </div>
                                     <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>力法方程：</strong>δ₁₁X₁ + Δ₁ₚ = Δ_B（右边≠0！）</p><p><strong>系数：</strong>δ₁₁ = L³/(3EI) = 72/EI，Δ₁ₚ = 0（无荷载）</p><p><strong>解：</strong>X₁ = Δ/δ₁₁ = 10×10⁻³ × EI/72 = EI/7200 (kN)</p><p>方向向上，阻止下沉。</p></div></details>
                                 </div>
                             </div>
