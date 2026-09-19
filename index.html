@@ -346,6 +346,21 @@
                                 <h4>⚠️ 易错点</h4>
                                 <ol><li>复铰 = (n-1) 个单铰，别数漏</li><li>W=0 不一定静定，还要看约束布置</li><li>公式里 m 不含地基，要统一</li></ol>
                             </div>
+                            <div class="practice-section">
+                                <h4>📝 练习题</h4>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag easy">基础</span><strong>题1：</strong>计算图示体系的自由度W：刚片数 m=3，单铰数 h=3，支座链杆 b=3。判断该体系是几何不变、瞬变还是常变？</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p>W = 3×3 - (0 + 2×3 + 3) = 9 - 9 = 0</p><p>W=0，还需检查约束布置。若三铰不共线，则几何不变（静定结构）。</p></div></details>
+                                </div>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag medium">陷阱</span><strong>题2：</strong>图示体系：4个刚片，其中有一个铰连接了3个刚片（复铰），另有2个单铰，支座链杆4根。求自由度W，判断几何性质。</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p>复铰连接3个刚片 = (3-1)=2个单铰</p><p>总单铰数 = 2 + 2 = 4</p><p>W = 3×4 - (0 + 2×4 + 4) = 12 - 12 = 0</p><p>W=0，检查约束布置，若无三铰共线等问题，则几何不变。</p></div></details>
+                                </div>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag hard">进阶</span><strong>题3：</strong>图示简单桁架：5个结点（含2个支座铰），7根杆件（含3根支座链杆）。求自由度W，判断是否为静定结构。</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p>链杆体系：W = 2j - b = 2×5 - 7 = 3</p><p>W=3&gt;0，体系几何可变（常变），不是结构！</p><p>若要成为静定结构，需增加3根链杆使W=0。</p></div></details>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -711,6 +726,21 @@
                                 <p>M = M̄₁X₁ + Mₚ</p>
                                 <h4>⚠️ 易错点</h4>
                                 <ol><li>基本结构必须静定，别去掉约束后还是超静定</li><li>δᵢᵢ 恒为正，δᵢⱼ 可正可负</li><li>对称结构一定要利用对称性</li><li>叠加别漏 Mₚ</li><li>支座位移问题 Δ₁ ≠ 0</li></ol>
+                            </div>
+                            <div class="practice-section">
+                                <h4>📝 练习题</h4>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag easy">基础</span><strong>题1：</strong>两跨连续梁ABC：A端固定铰，B端中间可动铰，C端可动铰。AB=BC=4m，AB跨均布荷载q=10kN/m。用力法求B支座反力。</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>超静定次数：</strong>n=1</p><p><strong>基本结构：</strong>去掉B支座，代以X₁↑</p><p><strong>力法方程：</strong>δ₁₁X₁ + Δ₁ₚ = 0</p><p><strong>系数计算：</strong>δ₁₁ = 8/(3EI)，Δ₁ₚ = -80/(3EI)</p><p><strong>解：</strong>X₁ = 10 kN ↑</p></div></details>
+                                </div>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag medium">对称性</span><strong>题2：</strong>对称门式刚架，两立柱底部均为固定端，跨度L=6m，柱高H=4m，横梁均布荷载q=20kN/m。用力法求关键截面弯矩。</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>超静定次数：</strong>n=3（每个固定端3个约束）</p><p><strong>对称性利用：</strong>对称结构+对称荷载→反对称多余力=0</p><p><strong>关键弯矩：</strong></p><p>· 横梁跨中：M = qL²/12 = 60 kN·m（下侧受拉）</p><p>· 柱顶：M = qL²/24 = 30 kN·m（内侧受拉）</p><p>· 柱底：M = qL²/24 = 30 kN·m（外侧受拉）</p></div></details>
+                                </div>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag hard">支座位移</span><strong>题3：</strong>一次超静定梁：A端固定，B端可动铰，跨度L=6m，B支座下沉Δ=10mm。用力法求B支座反力。</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>力法方程：</strong>δ₁₁X₁ + Δ₁ₚ = Δ_B（右边≠0！）</p><p><strong>系数：</strong>δ₁₁ = L³/(3EI) = 72/EI，Δ₁ₚ = 0（无荷载）</p><p><strong>解：</strong>X₁ = Δ/δ₁₁ = 10×10⁻³ × EI/72 = EI/7200 (kN)</p><p>方向向上，阻止下沉。</p></div></details>
+                                </div>
                             </div>
                         </div>
                     </div>

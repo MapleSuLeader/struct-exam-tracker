@@ -1411,3 +1411,70 @@ body {
 .cornell-notes.review-mode .note-section.section-revealed h3::after {
     content: ' ▼';
 }
+
+/* 习题区域样式 */
+.practice-section {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: 12px;
+    border: 2px solid #f59e0b;
+}
+.practice-section h4 {
+    color: #92400e;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.practice-problem {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.practice-problem:last-child {
+    margin-bottom: 0;
+}
+.practice-problem p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+.practice-problem details {
+    margin-top: 0.75rem;
+}
+.practice-problem summary {
+    cursor: pointer;
+    color: #4f46e5;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    background: #eef2ff;
+    border-radius: 6px;
+    display: inline-block;
+}
+.practice-problem details[open] summary {
+    background: #4f46e5;
+    color: white;
+}
+.practice-problem details .answer-content {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: #f0fdf4;
+    border-radius: 6px;
+    border-left: 3px solid #10b981;
+}
+.practice-problem details .answer-content p {
+    margin: 0.4rem 0;
+}
+.problem-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: #ef4444;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+.problem-tag.easy { background: #10b981; }
+.problem-tag.medium { background: #f59e0b; }
+.problem-tag.hard { background: #ef4444; }
