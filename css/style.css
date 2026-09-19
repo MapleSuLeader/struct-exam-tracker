@@ -1414,11 +1414,13 @@ body {
 
 /* 习题区域样式 */
 .practice-section {
-    margin-top: 1.5rem;
+    grid-column: 1 / -1;
+    margin-top: 0;
     padding: 1.25rem;
     background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    border-radius: 12px;
-    border: 2px solid #f59e0b;
+    border-top: 2px solid #f59e0b;
+    width: 100% !important;
+    box-sizing: border-box;
 }
 .practice-section h4 {
     color: #92400e;
@@ -1431,6 +1433,10 @@ body {
     padding: 1rem;
     margin-bottom: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    display: block;
 }
 .practice-problem:last-child {
     margin-bottom: 0;
@@ -1438,6 +1444,18 @@ body {
 .practice-problem p {
     margin: 0.5rem 0;
     line-height: 1.6;
+    width: 100%;
+}
+.practice-illustration {
+    width: 100%;
+    margin: 0.75rem 0;
+    display: flex;
+    justify-content: center;
+}
+.practice-illustration svg {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
 }
 .practice-problem details {
     margin-top: 0.75rem;
@@ -1478,3 +1496,18 @@ body {
 .problem-tag.easy { background: #10b981; }
 .problem-tag.medium { background: #f59e0b; }
 .problem-tag.hard { background: #ef4444; }
+
+/* 习题区域全宽 - 突破 Grid 约束 */
+.cornell-layout > .practice-section {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 1.25rem !important;
+    box-sizing: border-box !important;
+}
+.cornell-layout > .practice-section > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
