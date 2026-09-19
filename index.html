@@ -521,6 +521,21 @@
                                 <h4>⚠️ 易错点</h4>
                                 <ol><li>M图画在受拉侧，不标正负</li><li>集中力偶处 M 突变，别漏</li><li>多跨静定梁从附属部分开始算</li><li>V=0 对应 M 极值，可校核</li></ol>
                             </div>
+                            <div class="practice-section">
+                                <h4>📝 练习题</h4>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag easy">基础</span><strong>题1：</strong>简支梁AB，跨度L=6m，跨中C点作用集中力P=20kN↓。求：(1)支座反力R<sub>A</sub>、R<sub>B</sub>；(2)C截面弯矩M<sub>C</sub>和剪力F<sub>QC</sub>；(3)绘制M图和F<sub>Q</sub>图。</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p>对称结构对称荷载：R<sub>A</sub> = R<sub>B</sub> = P/2 = 10 kN ↑</p><p>M<sub>C</sub> = PL/4 = 20×6/4 = 30 kN·m</p><p>F<sub>QC</sub> = 0（对称点剪力为零）</p><p>M图：三角形，跨中最大30kN·m；F<sub>Q</sub>图：左段+10，右段-10</p></div></details>
+                                </div>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag medium">进阶</span><strong>题2：</strong>简支梁AB，跨度L=8m，全跨均布荷载q=5kN/m↓。求：(1)支座反力；(2)跨中弯矩和剪力；(3)距A支座2m处内力。</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p>R<sub>A</sub> = R<sub>B</sub> = qL/2 = 5×8/2 = 20 kN ↑</p><p>跨中：M = qL²/8 = 5×64/8 = 40 kN·m，F<sub>Q</sub> = 0</p><p>距A 2m处：M = 20×2 - 5×2²/2 = 30 kN·m</p><p>F<sub>Q</sub> = 20 - 5×2 = 10 kN</p></div></details>
+                                </div>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag hard">挑战</span><strong>题3：</strong>外伸梁ABC，A固定铰，B滚动铰，AB=4m，BC=2m（外伸）。AB段q=10kN/m↓，C端P=15kN↓。求：(1)支座反力；(2)B截面左、右侧剪力；(3)AB段最大弯矩及位置。</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p>∑M<sub>A</sub>=0：R<sub>B</sub>×4 = 10×4×2 + 15×6 → R<sub>B</sub> = 190/4 = 47.5 kN ↑</p><p>∑F<sub>y</sub>=0：R<sub>A</sub> = 10×4 + 15 - 47.5 = 7.5 kN ↑</p><p>B左：F<sub>Q</sub> = 7.5 - 10×4 = -32.5 kN</p><p>B右：F<sub>Q</sub> = -15 kN（仅外伸段荷载）</p><p>AB段V=0处：x = 7.5/10 = 0.75m，M<sub>max</sub> = 7.5×0.75 - 10×0.75²/2 = 2.81 kN·m</p></div></details>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -654,6 +669,21 @@
                                 <p><strong>一句话：</strong>桁架杆件只受轴力；结点法逐点平衡（≤2未知），截面法截断求解（≤3未知杆）；先判零杆减少计算，善用对称性减半工作量。</p>
                                 <h4>⚠️ 易错点</h4>
                                 <ol><li>零杆不是没用的杆，别随意删除</li><li>设拉力为正，负值=压力，别搞反</li><li>截面法矩心选在未知力交点</li><li>对称结构一定先用对称性简化！</li></ol>
+                            </div>
+                            <div class="practice-section">
+                                <h4>📝 练习题</h4>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag easy">概念</span><strong>题1：</strong>对称三角形桁架：下弦A-B-C，AB=BC=4m；顶点D在B正上方高3m；杆件AD、DC（上弦），AB、BC（下弦），DB（中竖杆）；A铰支座，C滚轴支座；P=20kN作用于D点。判断哪些杆件是零杆？</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>零杆：DB（中竖杆）</strong></p><p>节点B处：杆AB和杆BC共线（水平），杆DB为第三杆（竖直），节点B无外力。</p><p>根据零杆判定规则：无外力三杆节点，两杆共线，第三杆为零杆。</p><p>N<sub>DB</sub> = 0</p></div></details>
+                                </div>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag medium">节点法</span><strong>题2：</strong>简单桁架：A（左下铰支座）、B（右下滚轴支座）、C（顶部），AB=6m，C在AB中点正上方高4m；杆件AC、BC（斜杆），AB（下弦）；P=24kN作用于C点。用节点法求各杆内力。</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p>对称性：R<sub>A</sub> = R<sub>B</sub> = 12 kN ↑</p><p>节点A：sinα = 4/5，cosα = 3/5</p><p>∑F<sub>y</sub>=0：12 + N<sub>AC</sub>×(4/5) = 0 → <strong>N<sub>AC</sub> = -15 kN（压）</strong></p><p>∑F<sub>x</sub>=0：N<sub>AB</sub> + (-15)×(3/5) = 0 → <strong>N<sub>AB</sub> = 9 kN（拉）</strong></p><p>由对称性：<strong>N<sub>BC</sub> = -15 kN（压）</strong></p></div></details>
+                                </div>
+                                <div class="practice-problem">
+                                    <p><span class="problem-tag hard">截面法</span><strong>题3：</strong>平行弦桁架：下弦A-B-C-D（各3m），上弦E-F-G（各在AB、BC、CD中点上方），高4m；A铰支座，D滚轴支座；P<sub>1</sub>=10kN(E)、P<sub>2</sub>=20kN(F)、P<sub>3</sub>=10kN(G)。用截面法求杆BF内力。</p>
+                                    <details><summary>💡 查看答案</summary><div class="answer-content"><p>R<sub>A</sub> = R<sub>D</sub> = 20 kN（对称荷载）</p><p>截面I-I切断EF、BF、BC，取左半部分</p><p>对B点取矩求N<sub>EF</sub>：20×3 - 10×1.5 + N<sub>EF</sub>×4 = 0 → N<sub>EF</sub> = -11.25 kN（压）</p><p>∑F<sub>y</sub>=0：20 - 10 + N<sub>BF</sub>×sinα = 0</p><p>sinα = 4/√18.25 ≈ 0.936</p><p><strong>N<sub>BF</sub> ≈ -10.68 kN（压）</strong></p></div></details>
+                                </div>
                             </div>
                         </div>
                     </div>
