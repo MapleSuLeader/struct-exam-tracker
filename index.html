@@ -353,21 +353,133 @@
                             <div class="practice-problem">
                                 <p><span class="problem-tag easy">基础</span><strong>题1：</strong>计算图示体系的自由度W：刚片数 m=3，单铰数 h=3，支座链杆 b=3。判断该体系是几何不变、瞬变还是常变？</p>
                                 <div class="practice-illustration">
-                                    <img src="images/practice-0-1.jpg" alt="题1图示" style="max-width: 100%; height: auto; border-radius: 8px;">
+                                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                        <!-- 三个刚片三角形排列 -->
+                                        <ellipse cx="95" cy="45" rx="42" ry="22" fill="#888" stroke="#334155" stroke-width="2"/>
+                                        <text x="95" y="49" text-anchor="middle" font-size="9" fill="#fff">刚体</text>
+                                        <ellipse cx="205" cy="45" rx="42" ry="22" fill="#888" stroke="#334155" stroke-width="2"/>
+                                        <text x="205" y="49" text-anchor="middle" font-size="9" fill="#fff">刚体</text>
+                                        <ellipse cx="150" cy="90" rx="55" ry="20" fill="#888" stroke="#334155" stroke-width="2"/>
+                                        <text x="150" y="94" text-anchor="middle" font-size="9" fill="#fff">刚体</text>
+                                        <!-- 三个铰 -->
+                                        <circle cx="150" cy="30" r="5" fill="white" stroke="#334155" stroke-width="2"/>
+                                        <circle cx="60" cy="72" r="5" fill="white" stroke="#334155" stroke-width="2"/>
+                                        <circle cx="240" cy="72" r="5" fill="white" stroke="#334155" stroke-width="2"/>
+                                        <!-- 支座链杆(3根) -->
+                                        <!-- 链杆1: 刚片I左上 -->
+                                        <line x1="65" y1="35" x2="45" y2="20" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="40" y1="18" x2="50" y2="22" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="38" y1="15" x2="42" y2="20" stroke="#334155" stroke-width="1"/>
+                                        <line x1="42" y1="15" x2="46" y2="20" stroke="#334155" stroke-width="1"/>
+                                        <line x1="46" y1="15" x2="50" y2="20" stroke="#334155" stroke-width="1"/>
+                                        <!-- 链杆2: 刚片II右上 -->
+                                        <line x1="235" y1="35" x2="255" y2="20" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="250" y1="18" x2="260" y2="22" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="248" y1="15" x2="252" y2="20" stroke="#334155" stroke-width="1"/>
+                                        <line x1="252" y1="15" x2="256" y2="20" stroke="#334155" stroke-width="1"/>
+                                        <line x1="256" y1="15" x2="260" y2="20" stroke="#334155" stroke-width="1"/>
+                                        <!-- 链杆3: 刚片III底部 -->
+                                        <line x1="150" y1="110" x2="150" y2="130" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="140" y1="132" x2="160" y2="132" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="142" y1="132" x2="138" y2="138" stroke="#334155" stroke-width="1"/>
+                                        <line x1="146" y1="132" x2="142" y2="138" stroke="#334155" stroke-width="1"/>
+                                        <line x1="150" y1="132" x2="146" y2="138" stroke="#334155" stroke-width="1"/>
+                                        <line x1="154" y1="132" x2="150" y2="138" stroke="#334155" stroke-width="1"/>
+                                        <line x1="158" y1="132" x2="154" y2="138" stroke="#334155" stroke-width="1"/>
+                                    </svg>
                                 </div>
                                 <details><summary>💡 查看答案</summary><div class="answer-content"><p>W = 3×3 - (0 + 2×3 + 3) = 9 - 9 = 0</p><p>W=0，还需检查约束布置。若三铰不共线，则几何不变（静定结构）。</p></div></details>
                             </div>
                             <div class="practice-problem">
                                 <p><span class="problem-tag medium">陷阱</span><strong>题2：</strong>图示体系：4个刚片，其中有一个铰连接了3个刚片（复铰），另有2个单铰，支座链杆4根。求自由度W，判断几何性质。</p>
                                 <div class="practice-illustration">
-                                    <img src="images/practice-0-2.jpg" alt="题2图示" style="max-width: 100%; height: auto; border-radius: 8px;">
+                                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                        <!-- 四个刚片 -->
+                                        <ellipse cx="150" cy="75" rx="50" ry="15" fill="#888" stroke="#334155" stroke-width="2"/>
+                                        <text x="150" y="79" text-anchor="middle" font-size="8" fill="#fff">刚体</text>
+                                        <ellipse cx="220" cy="45" rx="20" ry="35" fill="#888" stroke="#334155" stroke-width="2"/>
+                                        <text x="220" y="49" text-anchor="middle" font-size="8" fill="#fff">刚体</text>
+                                        <ellipse cx="180" cy="35" rx="35" ry="12" fill="#888" stroke="#334155" stroke-width="2"/>
+                                        <text x="180" y="39" text-anchor="middle" font-size="8" fill="#fff">刚体</text>
+                                        <ellipse cx="180" cy="105" rx="35" ry="12" fill="#888" stroke="#334155" stroke-width="2"/>
+                                        <text x="180" y="109" text-anchor="middle" font-size="8" fill="#fff">刚体</text>
+                                        <!-- 复铰(连接3个刚片) -->
+                                        <circle cx="150" cy="75" r="6" fill="white" stroke="#334155" stroke-width="2"/>
+                                        <!-- 单铰 -->
+                                        <circle cx="240" cy="45" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="220" cy="105" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <!-- 支座链杆(4根) -->
+                                        <line x1="150" y1="90" x2="150" y2="110" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="140" y1="112" x2="160" y2="112" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="142" y1="112" x2="138" y2="118" stroke="#334155" stroke-width="1"/>
+                                        <line x1="146" y1="112" x2="142" y2="118" stroke="#334155" stroke-width="1"/>
+                                        <line x1="150" y1="112" x2="146" y2="118" stroke="#334155" stroke-width="1"/>
+                                        <line x1="154" y1="112" x2="150" y2="118" stroke="#334155" stroke-width="1"/>
+                                        <line x1="158" y1="112" x2="154" y2="118" stroke="#334155" stroke-width="1"/>
+                                        <line x1="240" y1="45" x2="260" y2="45" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="262" y1="40" x2="262" y2="50" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="262" y1="42" x2="268" y2="42" stroke="#334155" stroke-width="1"/>
+                                        <line x1="262" y1="46" x2="268" y2="46" stroke="#334155" stroke-width="1"/>
+                                        <line x1="262" y1="50" x2="268" y2="50" stroke="#334155" stroke-width="1"/>
+                                        <line x1="180" y1="23" x2="180" y2="10" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="170" y1="8" x2="190" y2="8" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="172" y1="8" x2="168" y2="2" stroke="#334155" stroke-width="1"/>
+                                        <line x1="176" y1="8" x2="172" y2="2" stroke="#334155" stroke-width="1"/>
+                                        <line x1="180" y1="8" x2="176" y2="2" stroke="#334155" stroke-width="1"/>
+                                        <line x1="184" y1="8" x2="180" y2="2" stroke="#334155" stroke-width="1"/>
+                                        <line x1="188" y1="8" x2="184" y2="2" stroke="#334155" stroke-width="1"/>
+                                        <line x1="180" y1="117" x2="180" y2="130" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="170" y1="132" x2="190" y2="132" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="172" y1="132" x2="168" y2="138" stroke="#334155" stroke-width="1"/>
+                                        <line x1="176" y1="132" x2="172" y2="138" stroke="#334155" stroke-width="1"/>
+                                        <line x1="180" y1="132" x2="176" y2="138" stroke="#334155" stroke-width="1"/>
+                                        <line x1="184" y1="132" x2="180" y2="138" stroke="#334155" stroke-width="1"/>
+                                        <line x1="188" y1="132" x2="184" y2="138" stroke="#334155" stroke-width="1"/>
+                                    </svg>
                                 </div>
                                 <details><summary>💡 查看答案</summary><div class="answer-content"><p>复铰连接3个刚片 = (3-1)=2个单铰</p><p>总单铰数 = 2 + 2 = 4</p><p>W = 3×4 - (0 + 2×4 + 4) = 12 - 12 = 0</p><p>W=0，检查约束布置，若无三铰共线等问题，则几何不变。</p></div></details>
                             </div>
                             <div class="practice-problem">
                                 <p><span class="problem-tag hard">进阶</span><strong>题3：</strong>图示简单桁架：5个结点（含2个支座铰），7根杆件（含3根支座链杆）。求自由度W，判断是否为静定结构。</p>
                                 <div class="practice-illustration">
-                                    <img src="images/practice-0-3.jpg" alt="题3图示" style="max-width: 100%; height: auto; border-radius: 8px;">
+                                    <svg viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
+                                        <!-- 桁架杆件 -->
+                                        <line x1="40" y1="90" x2="100" y2="90" stroke="#334155" stroke-width="2.5"/>
+                                        <line x1="100" y1="90" x2="160" y2="90" stroke="#334155" stroke-width="2.5"/>
+                                        <line x1="160" y1="90" x2="220" y2="90" stroke="#334155" stroke-width="2.5"/>
+                                        <line x1="40" y1="90" x2="100" y2="30" stroke="#334155" stroke-width="2.5"/>
+                                        <line x1="100" y1="30" x2="160" y2="90" stroke="#334155" stroke-width="2.5"/>
+                                        <line x1="100" y1="30" x2="220" y2="90" stroke="#334155" stroke-width="2.5"/>
+                                        <line x1="160" y1="90" x2="100" y2="30" stroke="#334155" stroke-width="1.5" stroke-dasharray="4,3"/>
+                                        <!-- 结点 -->
+                                        <circle cx="40" cy="90" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="100" cy="90" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="160" cy="90" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="220" cy="90" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="100" cy="30" r="4" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <!-- 结点编号 -->
+                                        <text x="30" y="105" font-size="10" fill="#4f46e5" font-weight="600">1</text>
+                                        <text x="95" y="105" font-size="10" fill="#4f46e5" font-weight="600">2</text>
+                                        <text x="155" y="105" font-size="10" fill="#4f46e5" font-weight="600">3</text>
+                                        <text x="215" y="105" font-size="10" fill="#4f46e5" font-weight="600">4</text>
+                                        <text x="95" y="22" font-size="10" fill="#4f46e5" font-weight="600">5</text>
+                                        <!-- 支座 -->
+                                        <!-- 固定铰支座(结点1) -->
+                                        <polygon points="40,90 32,105 48,105" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="28" y1="108" x2="52" y2="108" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="30" y1="108" x2="26" y2="114" stroke="#334155" stroke-width="1"/>
+                                        <line x1="34" y1="108" x2="30" y2="114" stroke="#334155" stroke-width="1"/>
+                                        <line x1="38" y1="108" x2="34" y2="114" stroke="#334155" stroke-width="1"/>
+                                        <line x1="42" y1="108" x2="38" y2="114" stroke="#334155" stroke-width="1"/>
+                                        <line x1="46" y1="108" x2="42" y2="114" stroke="#334155" stroke-width="1"/>
+                                        <line x1="50" y1="108" x2="46" y2="114" stroke="#334155" stroke-width="1"/>
+                                        <!-- 可动铰支座(结点4) -->
+                                        <circle cx="220" cy="94" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="214" y1="108" x2="226" y2="108" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="216" y1="108" x2="212" y2="114" stroke="#334155" stroke-width="1"/>
+                                        <line x1="220" y1="108" x2="216" y2="114" stroke="#334155" stroke-width="1"/>
+                                        <line x1="224" y1="108" x2="220" y2="114" stroke="#334155" stroke-width="1"/>
+                                    </svg>
                                 </div>
                                 <details><summary>💡 查看答案</summary><div class="answer-content"><p>链杆体系：W = 2j - b = 2×5 - 7 = 3</p><p>W=3&gt;0，体系几何可变（常变），不是结构！</p><p>若要成为静定结构，需增加3根链杆使W=0。</p></div></details>
                             </div>
