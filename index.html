@@ -266,6 +266,7 @@
                         <button class="note-tab" data-lecture="1">第1讲 静定梁</button>
                         <button class="note-tab" data-lecture="2">第2讲 静定桁架</button>
                         <button class="note-tab" data-lecture="3">第3讲 力法</button>
+                        <button class="note-tab" data-lecture="4">第4讲 位移法</button>
                     </div>
 
                     <!-- ===== 第0讲 ===== -->
@@ -1184,6 +1185,280 @@
                                     </svg>
                                 </div>
                                 <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>力法方程：</strong>δ₁₁X₁ + Δ₁ₚ = Δ_B（右边≠0！）</p><p><strong>系数：</strong>δ₁₁ = L³/(3EI) = 72/EI，Δ₁ₚ = 0（无荷载）</p><p><strong>解：</strong>X₁ = Δ/δ₁₁ = 10×10⁻³ × EI/72 = EI/7200 (kN)</p><p>方向向上，阻止下沉。</p></div></details>
+                            </div>
+                        </div>
+</div>
+                    </div>
+
+                    <!-- ===== 第4讲 位移法 ===== -->
+                    <div class="cornell-note" id="note-4">
+                        <div class="note-header"><h2>第4讲 位移法</h2><span class="note-date">2026-09-21</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+                        <div class="cornell-layout">
+                            <div class="cornell-cue">
+                                <h4>🔑 核心概念</h4>
+                                <ul>
+                                    <li><strong>位移法基本未知量</strong>：结点角位移 + 独立线位移</li>
+                                    <li data-section="s1"><strong>转角位移方程</strong>：杆端弯矩与杆端位移关系</li>
+                                    <li data-section="s2"><strong>刚度系数 k</strong>：单位位移产生的杆端力</li>
+                                    <li data-section="s3"><strong>位移法方程</strong>：平衡方程</li>
+                                    <li data-section="s4"><strong>对称性利用</strong>：半结构法</li>
+                                </ul>
+                                <h4>❓ 关键问题</h4>
+                                <ol><li data-section="s1">转角位移方程怎么写？</li><li data-section="s2">基本未知量怎么确定？</li><li data-section="s3">位移法方程怎么建立？</li><li data-section="s4">对称结构怎么简化？</li><li data-section="s5">力法 vs 位移法如何选择？</li></ol>
+                            </div>
+                            <div class="cornell-notes">
+                                <div class="note-section" id="s1">
+<h3>一、转角位移方程</h3>
+                                <div class="formula-box">
+                                    <p><strong>两端固定梁：</strong></p>
+                                    <p>M<sub>AB</sub> = 4iθ<sub>A</sub> + 2iθ<sub>B</sub> - 6iΔ/L</p>
+                                    <p>M<sub>BA</sub> = 2iθ<sub>A</sub> + 4iθ<sub>B</sub> - 6iΔ/L</p>
+                                </div>
+                                <div class="formula-box">
+                                    <p><strong>一端固定一端铰支：</strong></p>
+                                    <p>M<sub>AB</sub> = 3iθ<sub>A</sub> - 3iΔ/L</p>
+                                </div>
+                                <p><strong>线刚度 i = EI/L</strong>：杆件抗弯刚度除以杆长</p>
+                                <div class="tip-box">💡 记忆口诀：4-2-6（两端固定），3-0-3（一端铰支）</div>
+                                <div class="note-illustration">
+                                    <svg viewBox="0 0 500 130" xmlns="http://www.w3.org/2000/svg">
+                                        <text x="250" y="14" text-anchor="middle" font-size="11" fill="#334155" font-weight="600">转角位移方程示意</text>
+                                        <g transform="translate(10,22)">
+                                            <text x="115" y="10" text-anchor="middle" font-size="9" fill="#64748b">两端固定梁</text>
+                                            <line x1="20" y1="45" x2="210" y2="45" stroke="#334155" stroke-width="2.5"/>
+                                            <rect x="8" y="32" width="12" height="26" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <rect x="198" y="32" width="12" height="26" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <text x="35" y="65" font-size="9" fill="#4f46e5" font-weight="600">θ<sub>A</sub></text>
+                                            <path d="M 35,40 Q 42,32 50,40" fill="none" stroke="#4f46e5" stroke-width="1.5"/>
+                                            <text x="185" y="65" font-size="9" fill="#4f46e5" font-weight="600">θ<sub>B</sub></text>
+                                            <path d="M 185,40 Q 178,32 170,40" fill="none" stroke="#4f46e5" stroke-width="1.5"/>
+                                            <text x="115" y="75" text-anchor="middle" font-size="8" fill="#64748b">L</text>
+                                            <text x="35" y="90" font-size="8" fill="#f59e0b">M<sub>AB</sub></text>
+                                            <text x="175" y="90" font-size="8" fill="#f59e0b">M<sub>BA</sub></text>
+                                        </g>
+                                        <g transform="translate(260,22)">
+                                            <text x="115" y="10" text-anchor="middle" font-size="9" fill="#64748b">一端铰支梁</text>
+                                            <line x1="20" y1="45" x2="210" y2="45" stroke="#334155" stroke-width="2.5"/>
+                                            <rect x="8" y="32" width="12" height="26" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="220" cy="52" r="5" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                            <text x="35" y="65" font-size="9" fill="#4f46e5" font-weight="600">θ<sub>A</sub></text>
+                                            <path d="M 35,40 Q 42,32 50,40" fill="none" stroke="#4f46e5" stroke-width="1.5"/>
+                                            <text x="115" y="75" text-anchor="middle" font-size="8" fill="#64748b">L</text>
+                                            <text x="35" y="90" font-size="8" fill="#f59e0b">M<sub>AB</sub> = 3iθ<sub>A</sub></text>
+                                        </g>
+                                    </svg>
+                                </div>
+</div>
+
+<div class="note-section" id="s2">
+<h3>二、基本未知量确定</h3>
+                                <table class="compact-table">
+                                    <tr><th>未知量类型</th><th>确定方法</th></tr>
+                                    <tr><td>角位移 θ</td><td>刚结点数（每个刚结点1个）</td></tr>
+                                    <tr><td>线位移 Δ</td><td>独立线位移数（铰接点简化法）</td></tr>
+                                </table>
+                                <div class="tip-box">💡 线位移数 = 铰接体系自由度（将刚架所有刚结点改为铰结点后的自由度）</div>
+                                <div class="note-illustration">
+                                    <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                                        <text x="200" y="14" text-anchor="middle" font-size="10" fill="#334155" font-weight="600">基本未知量示意</text>
+                                        <g transform="translate(30,25)">
+                                            <text x="65" y="10" text-anchor="middle" font-size="8" fill="#64748b">刚架（2个角位移+1个线位移）</text>
+                                            <line x1="0" y1="35" x2="130" y2="35" stroke="#334155" stroke-width="2.5"/>
+                                            <line x1="30" y1="35" x2="30" y2="80" stroke="#334155" stroke-width="2.5"/>
+                                            <line x1="100" y1="35" x2="100" y2="80" stroke="#334155" stroke-width="2.5"/>
+                                            <rect x="18" y="80" width="24" height="8" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <rect x="88" y="80" width="24" height="8" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                            <circle cx="30" cy="35" r="5" fill="#4f46e5" fill-opacity="0.2" stroke="#4f46e5" stroke-width="2"/>
+                                            <circle cx="100" cy="35" r="5" fill="#4f46e5" fill-opacity="0.2" stroke="#4f46e5" stroke-width="2"/>
+                                            <text x="15" y="48" font-size="7" fill="#4f46e5">θ₁</text>
+                                            <text x="105" y="48" font-size="7" fill="#4f46e5">θ₂</text>
+                                            <text x="65" y="55" text-anchor="middle" font-size="7" fill="#f59e0b">Δ</text>
+                                            <line x1="55" y1="50" x2="75" y2="50" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,2"/>
+                                        </g>
+                                    </svg>
+                                </div>
+</div>
+
+<div class="note-section" id="s3">
+<h3>三、位移法方程</h3>
+                                <div class="formula-box">
+                                    <p><strong>结点平衡方程：</strong>ΣM<sub>结点</sub> = 0</p>
+                                    <p><strong>剪力平衡方程：</strong>ΣF<sub>x</sub> = 0 或 ΣF<sub>y</sub> = 0</p>
+                                </div>
+                                <p><strong>方程形式：</strong></p>
+                                <ul>
+                                    <li>k<sub>ii</sub>（主刚度系数）：单位位移δ<sub>i</sub>=1产生的结点力</li>
+                                    <li>k<sub>ij</sub>（副刚度系数）：单位位移δ<sub>j</sub>=1产生的结点力</li>
+                                    <li>R<sub>i</sub>（自由项）：荷载产生的结点力</li>
+                                </ul>
+</div>
+
+<div class="note-section" id="s4">
+<h3>四、解题步骤</h3>
+                                <ol>
+                                    <li>确定基本未知量（角位移θ + 线位移Δ）</li>
+                                    <li>列转角位移方程，表达各杆端弯矩</li>
+                                    <li>建立平衡方程（结点平衡 + 剪力平衡）</li>
+                                    <li>解方程求位移未知量</li>
+                                    <li>代回转角位移方程求杆端弯矩</li>
+                                    <li>画内力图</li>
+                                </ol>
+</div>
+
+<div class="note-section" id="s5">
+<h3>五、对称性利用</h3>
+                                <table class="compact-table">
+                                    <tr><th>荷载类型</th><th>变形特点</th><th>半结构取法</th></tr>
+                                    <tr><td>对称荷载</td><td>对称轴处无转角、无水平位移</td><td>对称轴处加定向支座</td></tr>
+                                    <tr><td>反对称荷载</td><td>对称轴处无竖向位移</td><td>对称轴处加可动铰支座</td></tr>
+                                </table>
+                                <div class="tip-box">💡 对称结构先判断荷载对称性，取半结构计算，未知量减半！</div>
+</div>
+
+<div class="note-section" id="s6">
+<h3>六、力法 vs 位移法</h3>
+                                <table class="compact-table">
+                                    <tr><th>对比项</th><th>力法</th><th>位移法</th></tr>
+                                    <tr><td>基本未知量</td><td>多余约束力</td><td>结点位移</td></tr>
+                                    <tr><td>适用范围</td><td>超静定次数少</td><td>超静定次数多、刚架</td></tr>
+                                    <tr><td>方程类型</td><td>变形协调</td><td>平衡方程</td></tr>
+                                    <tr><td>系数含义</td><td>柔度系数δ</td><td>刚度系数k</td></tr>
+                                </table>
+                                <div class="tip-box">💡 经验：超静定次数少用力法，结点多用位移法；刚架优先位移法</div>
+</div>
+</div>
+                            <div class="cornell-summary">
+                                <h4>📝 总结</h4>
+                                <p><strong>一句话：</strong>位移法以结点位移为未知量，通过转角位移方程和平衡方程求解；刚架、超静定次数多时优先使用。</p>
+                                <h4>📌 核心公式</h4>
+                                <p>M<sub>AB</sub> = 4iθ<sub>A</sub> + 2iθ<sub>B</sub> - 6iΔ/L</p>
+                                <p>i = EI/L</p>
+                                <h4>⚠️ 易错点</h4>
+                                <ol>
+                                    <li>线位移数确定：用铰接法</li>
+                                    <li>转角位移方程符号：顺时针为正</li>
+                                    <li>对称结构取半结构时支座类型别搞错</li>
+                                    <li>杆端弯矩正负：对杆端顺时针为正</li>
+                                </ol>
+                            </div>
+                        
+<div class="practice-section">
+                            <h4>📝 练习题</h4>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题1：</strong>连续梁AB：A端固定，B端铰支，跨度L=6m，跨中集中力P=20kN。用位移法求B端弯矩。</p>
+                                <div class="practice-illustration">
+                                    <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="40" y1="50" x2="260" y2="50" stroke="#334155" stroke-width="2.5"/>
+                                        <rect x="28" y="35" width="12" height="30" fill="none" stroke="#334155" stroke-width="2"/>
+                                        <line x1="25" y1="35" x2="25" y2="65" stroke="#334155" stroke-width="2"/>
+                                        <line x1="22" y1="38" x2="18" y2="42" stroke="#334155" stroke-width="1"/>
+                                        <line x1="22" y1="45" x2="18" y2="49" stroke="#334155" stroke-width="1"/>
+                                        <line x1="22" y1="52" x2="18" y2="56" stroke="#334155" stroke-width="1"/>
+                                        <line x1="22" y1="59" x2="18" y2="63" stroke="#334155" stroke-width="1"/>
+                                        <circle cx="270" cy="54" r="5" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="260" y1="62" x2="280" y2="62" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="150" y1="20" x2="150" y2="45" stroke="#ef4444" stroke-width="2"/>
+                                        <polygon points="150,45 146,38 154,38" fill="#ef4444"/>
+                                        <text x="158" y="25" font-size="10" fill="#ef4444" font-weight="600">P=20kN</text>
+                                        <text x="35" y="85" font-size="9" fill="#4f46e5" font-weight="600">A(固定)</text>
+                                        <text x="255" y="85" font-size="9" fill="#4f46e5" font-weight="600">B(铰)</text>
+                                        <line x1="40" y1="95" x2="260" y2="95" stroke="#64748b" stroke-width="0.8"/>
+                                        <line x1="40" y1="92" x2="40" y2="98" stroke="#64748b" stroke-width="0.8"/>
+                                        <line x1="260" y1="92" x2="260" y2="98" stroke="#64748b" stroke-width="0.8"/>
+                                        <text x="150" y="110" text-anchor="middle" font-size="9" fill="#64748b">L = 6m</text>
+                                    </svg>
+                                </div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>基本未知量：</strong>θ<sub>A</sub> = 0（固定端无转角），故仅需1个未知量θ<sub>B</sub>？不，A固定θ<sub>A</sub>=0已知，B铰支θ<sub>B</sub>未知。</p>
+                                    <p><strong>转角位移方程：</strong>M<sub>BA</sub> = 3iθ<sub>B</sub>（一端铰支）</p>
+                                    <p><strong>固端弯矩：</strong>M<sub>AB</sub><sup>F</sup> = -PL/8 = -15 kN·m，M<sub>BA</sub><sup>F</sup> = 0</p>
+                                    <p><strong>平衡方程：</strong>M<sub>BA</sub> = 0 → θ<sub>B</sub> = 0</p>
+                                    <p><strong>最终：</strong>M<sub>B</sub> = 0（铰支端弯矩为零）</p>
+                                    <div class="tip-box">⚠️ 此题陷阱：B端铰支，弯矩必为零，不需计算！</div>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">刚架</span><strong>题2：</strong>门式刚架：两柱固定端，横梁跨中集中力P=30kN，柱高H=4m，跨度L=6m，各杆EI相同。用位移法求柱顶弯矩。</p>
+                                <div class="practice-illustration">
+                                    <svg viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="60" y1="35" x2="240" y2="35" stroke="#334155" stroke-width="2.5"/>
+                                        <line x1="60" y1="35" x2="60" y2="100" stroke="#334155" stroke-width="2.5"/>
+                                        <line x1="240" y1="35" x2="240" y2="100" stroke="#334155" stroke-width="2.5"/>
+                                        <rect x="48" y="100" width="24" height="8" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="45" y1="110" x2="75" y2="110" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="50" y1="110" x2="46" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="57" y1="110" x2="53" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="64" y1="110" x2="60" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="71" y1="110" x2="67" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <rect x="228" y="100" width="24" height="8" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="225" y1="110" x2="255" y2="110" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="230" y1="110" x2="226" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="237" y1="110" x2="233" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="244" y1="110" x2="240" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="251" y1="110" x2="247" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="150" y1="10" x2="150" y2="30" stroke="#ef4444" stroke-width="2"/>
+                                        <polygon points="150,30 146,23 154,23" fill="#ef4444"/>
+                                        <text x="158" y="15" font-size="9" fill="#ef4444" font-weight="600">P=30kN</text>
+                                        <circle cx="60" cy="35" r="5" fill="#4f46e5" fill-opacity="0.2" stroke="#4f46e5" stroke-width="2"/>
+                                        <circle cx="240" cy="35" r="5" fill="#4f46e5" fill-opacity="0.2" stroke="#4f46e5" stroke-width="2"/>
+                                        <text x="52" y="50" font-size="7" fill="#4f46e5">θ₁</text>
+                                        <text x="245" y="50" font-size="7" fill="#4f46e5">θ₂</text>
+                                        <text x="150" y="50" text-anchor="middle" font-size="7" fill="#f59e0b">Δ</text>
+                                        <line x1="140" y1="45" x2="160" y2="45" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,2"/>
+                                        <text x="35" y="70" font-size="8" fill="#64748b">H=4m</text>
+                                        <text x="150" y="125" text-anchor="middle" font-size="8" fill="#64748b">L=6m</text>
+                                    </svg>
+                                </div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>基本未知量：</strong>θ₁, θ₂, Δ（2角位移+1线位移=3个）</p>
+                                    <p><strong>线刚度：</strong>i<sub>柱</sub> = EI/4，i<sub>梁</sub> = EI/6</p>
+                                    <p><strong>对称性：</strong>结构对称、荷载对称 → θ₁ = -θ₂，Δ = 0</p>
+                                    <p><strong>简化后：</strong>仅1个未知量θ₁</p>
+                                    <p><strong>转角位移方程：</strong></p>
+                                    <p>· M<sub>柱顶</sub> = 4i<sub>柱</sub>θ₁</p>
+                                    <p>· M<sub>梁端</sub> = 4i<sub>梁</sub>θ₁ - PL/8</p>
+                                    <p><strong>平衡方程：</strong>2×4i<sub>柱</sub>θ₁ + 4i<sub>梁</sub>θ₁ = PL/8</p>
+                                    <p><strong>解：</strong>θ₁ = PL/(8(8i<sub>柱</sub>+4i<sub>梁</sub>))</p>
+                                    <p><strong>柱顶弯矩：</strong>M<sub>柱顶</sub> = 4i<sub>柱</sub>θ₁ ≈ 12 kN·m（内侧受拉）</p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag hard">对称性</span><strong>题3：</strong>对称刚架受反对称荷载（左柱水平力P=20kN），柱高H=5m，跨度L=8m。利用对称性求基本未知量数目。</p>
+                                <div class="practice-illustration">
+                                    <svg viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="60" y1="35" x2="240" y2="35" stroke="#334155" stroke-width="2.5"/>
+                                        <line x1="60" y1="35" x2="60" y2="100" stroke="#334155" stroke-width="2.5"/>
+                                        <line x1="240" y1="35" x2="240" y2="100" stroke="#334155" stroke-width="2.5"/>
+                                        <rect x="48" y="100" width="24" height="8" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="45" y1="110" x2="75" y2="110" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="50" y1="110" x2="46" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="57" y1="110" x2="53" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="64" y1="110" x2="60" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="71" y1="110" x2="67" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <rect x="228" y="100" width="24" height="8" fill="none" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="225" y1="110" x2="255" y2="110" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="230" y1="110" x2="226" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="237" y1="110" x2="233" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="244" y1="110" x2="240" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="251" y1="110" x2="247" y2="116" stroke="#334155" stroke-width="1"/>
+                                        <line x1="30" y1="20" x2="55" y2="20" stroke="#ef4444" stroke-width="2"/>
+                                        <polygon points="55,20 48,17 48,23" fill="#ef4444"/>
+                                        <text x="20" y="18" font-size="9" fill="#ef4444" font-weight="600">P=20kN</text>
+                                        <line x1="145" y1="35" x2="145" y2="110" stroke="#4f46e5" stroke-width="1" stroke-dasharray="5,3"/>
+                                        <text x="152" y="75" font-size="8" fill="#4f46e5">对称轴</text>
+                                        <text x="35" y="70" font-size="8" fill="#64748b">H=5m</text>
+                                        <text x="150" y="125" text-anchor="middle" font-size="8" fill="#64748b">L=8m</text>
+                                    </svg>
+                                </div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>原结构未知量：</strong>θ₁, θ₂, Δ（3个）</p>
+                                    <p><strong>对称性分析：</strong></p>
+                                    <p>· 反对称荷载 → 对称轴处：无竖向位移，有转角和水平位移</p>
+                                    <p>· 半结构：对称轴处加竖向链杆（可动铰）</p>
+                                    <p><strong>半结构未知量：</strong>θ' + Δ'（2个，减少1个）</p>
+                                    <p><strong>结论：</strong>利用对称性，未知量从3减为2</p>
+                                    <div class="tip-box">💡 反对称荷载下，对称轴处刚结点变为铰结点，可简化计算</div>
+                                </div></details>
                             </div>
                         </div>
 </div>
