@@ -364,23 +364,23 @@
                                         <circle cx="150" cy="30" r="5" fill="white" stroke="#4f46e5" stroke-width="2"/>
                                         <circle cx="60" cy="72" r="5" fill="white" stroke="#4f46e5" stroke-width="2"/>
                                         <circle cx="240" cy="72" r="5" fill="white" stroke="#4f46e5" stroke-width="2"/>
-                                        <!-- 支座链杆(3根): 不平行不共点 -->
-                                        <!-- 链杆1: 从刚片I向左上方 -->
-                                        <circle cx="60" cy="28" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="63" y1="30" x2="45" y2="15" stroke="#334155" stroke-width="1.5"/>
-                                        <circle cx="45" cy="15" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="35" y1="10" x2="55" y2="8" stroke="#334155" stroke-width="1.5"/>
-                                        <!-- 链杆2: 从刚片II向右上方 -->
-                                        <circle cx="240" cy="28" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="237" y1="30" x2="255" y2="15" stroke="#334155" stroke-width="1.5"/>
-                                        <circle cx="255" cy="15" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="245" y1="8" x2="265" y2="10" stroke="#334155" stroke-width="1.5"/>
-                                        <!-- 链杆3: 从刚片III向下 -->
-                                        <circle cx="150" cy="110" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="150" y1="107" x2="150" y2="120" stroke="#334155" stroke-width="1.5"/>
-                                        <circle cx="150" cy="120" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="140" y1="123" x2="160" y2="123" stroke="#334155" stroke-width="1.5"/>
-                                        <text x="150" y="128" text-anchor="middle" font-size="8" fill="#64748b">m=3, h=3, b=3</text>
+                                        <!-- 支座链杆(3根): 与椭圆相切，不平行不共点 -->
+                                        <!-- 链杆1: 从刚片I左上方切点(58,55)向左上延伸 -->
+                                        <circle cx="58" cy="55" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="55" y1="52" x2="35" y2="32" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="35" cy="32" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="25" y1="27" x2="45" y2="25" stroke="#334155" stroke-width="1.5"/>
+                                        <!-- 链杆2: 从刚片II右上方切点(242,55)向右上延伸 -->
+                                        <circle cx="242" cy="55" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="245" y1="52" x2="265" y2="32" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="265" cy="32" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="255" y1="25" x2="275" y2="27" stroke="#334155" stroke-width="1.5"/>
+                                        <!-- 链杆3: 从刚片III底部切点(150,70)向下延伸 -->
+                                        <circle cx="150" cy="70" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="150" y1="73" x2="150" y2="95" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="150" cy="95" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="140" y1="98" x2="160" y2="98" stroke="#334155" stroke-width="1.5"/>
+                                        <text x="150" y="125" text-anchor="middle" font-size="8" fill="#64748b">m=3, h=3, b=3</text>
                                     </svg>
                                 </div>
                                 <details><summary>💡 查看答案</summary><div class="answer-content"><p>W = 3×3 - (0 + 2×3 + 3) = 9 - 9 = 0</p><p>W=0，还需检查约束布置。若三铰不共线，则几何不变（静定结构）。</p></div></details>
