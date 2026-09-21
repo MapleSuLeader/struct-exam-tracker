@@ -352,7 +352,7 @@
                             <div class="practice-problem">
                                 <p><span class="problem-tag easy">基础</span><strong>题1：</strong>计算图示体系的自由度W：刚片数 m=3，单铰数 h=3，支座链杆 b=3。判断该体系是几何不变、瞬变还是常变？</p>
                                 <div class="practice-illustration">
-                                    <svg viewBox="0 0 300 145" xmlns="http://www.w3.org/2000/svg">
+                                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
                                         <!-- 刚片I(左上)、刚片II(右上)、刚片III(下方) 三角形排列 -->
                                         <ellipse cx="95" cy="45" rx="42" ry="22" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
                                         <text x="95" y="49" text-anchor="middle" font-size="9" fill="#334155">刚片I</text>
@@ -360,24 +360,39 @@
                                         <text x="205" y="49" text-anchor="middle" font-size="9" fill="#334155">刚片II</text>
                                         <ellipse cx="150" cy="90" rx="55" ry="20" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
                                         <text x="150" y="94" text-anchor="middle" font-size="9" fill="#334155">刚片III</text>
-                                        <!-- 三个铰 -->
+                                        <!-- 三个 -->
                                         <circle cx="150" cy="30" r="5" fill="white" stroke="#4f46e5" stroke-width="2"/>
                                         <circle cx="60" cy="72" r="5" fill="white" stroke="#4f46e5" stroke-width="2"/>
                                         <circle cx="240" cy="72" r="5" fill="white" stroke="#4f46e5" stroke-width="2"/>
-                                        <!-- 支座链杆(3根): 与椭圆相切，不平行不共点 -->
-                                        <!-- 链杆1: 刚片I左下切点(58,56)，向外延伸到地面 -->
-                                        <line x1="58" y1="56" x2="38" y2="130" stroke="#334155" stroke-width="1.5"/>
-                                        <circle cx="38" cy="130" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="28" y1="133" x2="48" y2="133" stroke="#334155" stroke-width="1.5"/>
-                                        <!-- 链杆2: 刚片II右下切点(242,56)，向外延伸到地面 -->
-                                        <line x1="242" y1="56" x2="262" y2="130" stroke="#334155" stroke-width="1.5"/>
-                                        <circle cx="262" cy="130" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="252" y1="133" x2="272" y2="133" stroke="#334155" stroke-width="1.5"/>
-                                        <!-- 链杆3: 刚片III底部切点(150,110)，向下延伸到地面 -->
-                                        <line x1="150" y1="110" x2="150" y2="130" stroke="#334155" stroke-width="1.5"/>
-                                        <circle cx="150" cy="130" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="140" y1="133" x2="160" y2="133" stroke="#334155" stroke-width="1.5"/>
-                                        <text x="150" y="142" text-anchor="middle" font-size="8" fill="#64748b">m=3, h=3, b=3</text>
+                                        <!-- 支座链杆(3根): 不平行不共点，带地面符号 -->
+                                        <!-- 链杆1: 刚片I左下 -->
+                                        <line x1="58" y1="56" x2="38" y2="125" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="38" cy="125" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="28" y1="128" x2="48" y2="128" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="30" y1="128" x2="26" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="34" y1="128" x2="30" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="38" y1="128" x2="34" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="42" y1="128" x2="38" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="46" y1="128" x2="42" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <!-- 链杆2: 刚片II右下 -->
+                                        <line x1="242" y1="56" x2="262" y2="125" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="262" cy="125" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="252" y1="128" x2="272" y2="128" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="254" y1="128" x2="250" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="258" y1="128" x2="254" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="262" y1="128" x2="258" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="266" y1="128" x2="262" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="270" y1="128" x2="266" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <!-- 链杆3: 刚片III底部 -->
+                                        <line x1="150" y1="110" x2="150" y2="125" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="150" cy="125" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="140" y1="128" x2="160" y2="128" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="142" y1="128" x2="138" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="146" y1="128" x2="142" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="150" y1="128" x2="146" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="154" y1="128" x2="150" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <line x1="158" y1="128" x2="154" y2="134" stroke="#334155" stroke-width="1"/>
+                                        <text x="150" y="145" text-anchor="middle" font-size="8" fill="#64748b">m=3, h=3, b=3</text>
                                     </svg>
                                 </div>
                                 <details><summary>💡 查看答案</summary><div class="answer-content"><p>W = 3×3 - (0 + 2×3 + 3) = 9 - 9 = 0</p><p>W=0，还需检查约束布置。若三铰不共线，则几何不变（静定结构）。</p></div></details>
@@ -385,42 +400,61 @@
                             <div class="practice-problem">
                                 <p><span class="problem-tag medium">陷阱</span><strong>题2：</strong>图示体系：4个刚片，其中有一个铰连接了3个刚片（复铰），另有2个单铰，支座链杆4根。求自由度W，判断几何性质。</p>
                                 <div class="practice-illustration">
-                                    <svg viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="15" y="28" width="55" height="20" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                                        <!-- 4个刚片椭圆布局 -->
+                                        <ellipse cx="42" cy="38" rx="28" ry="18" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
                                         <text x="42" y="42" text-anchor="middle" font-size="8" fill="#334155">刚片I</text>
-                                        <rect x="120" y="15" width="55" height="20" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                        <ellipse cx="147" cy="25" rx="28" ry="18" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
                                         <text x="147" y="29" text-anchor="middle" font-size="8" fill="#334155">刚片II</text>
-                                        <rect x="120" y="48" width="55" height="20" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                        <ellipse cx="147" cy="58" rx="28" ry="18" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
                                         <text x="147" y="62" text-anchor="middle" font-size="8" fill="#334155">刚片III</text>
-                                        <rect x="225" y="28" width="55" height="20" rx="3" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+                                        <ellipse cx="252" cy="38" rx="28" ry="18" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
                                         <text x="252" y="42" text-anchor="middle" font-size="8" fill="#334155">刚片IV</text>
+                                        <!-- 复铰(连接3个刚片) -->
                                         <circle cx="110" cy="38" r="10" fill="white" stroke="#4f46e5" stroke-width="2.5"/>
-                                        <text x="110" y="58" text-anchor="middle" font-size="7" fill="#4f46e5" font-weight="600">复铰</text>
+                                        <text x="110" y="58" text-anchor="middle" font-size="7" fill="#4f46e5" font-weight="600">复</text>
                                         <line x1="70" y1="38" x2="100" y2="38" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
                                         <line x1="120" y1="25" x2="105" y2="33" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
                                         <line x1="120" y1="58" x2="105" y2="43" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
+                                        <!-- 单铰 -->
                                         <circle cx="185" cy="25" r="5" fill="white" stroke="#4f46e5" stroke-width="1.5"/>
                                         <line x1="175" y1="25" x2="195" y2="25" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
                                         <circle cx="215" cy="38" r="5" fill="white" stroke="#4f46e5" stroke-width="1.5"/>
                                         <line x1="195" y1="38" x2="225" y2="38" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
-                                        <!-- 支座链杆(4根): 从刚片底部边缘引出 -->
+                                        <!-- 支座链杆(4根): 带地面符号 -->
                                         <!-- 刚片I底部 -->
-                                        <line x1="42" y1="48" x2="42" y2="62" stroke="#334155" stroke-width="1.5"/>
-                                        <circle cx="42" cy="62" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="33" y1="65" x2="51" y2="65" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="42" y1="56" x2="42" y2="75" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="42" cy="75" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="33" y1="78" x2="51" y2="78" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="35" y1="78" x2="31" y2="84" stroke="#334155" stroke-width="1"/>
+                                        <line x1="39" y1="78" x2="35" y2="84" stroke="#334155" stroke-width="1"/>
+                                        <line x1="43" y1="78" x2="39" y2="84" stroke="#334155" stroke-width="1"/>
+                                        <line x1="47" y1="78" x2="43" y2="84" stroke="#334155" stroke-width="1"/>
                                         <!-- 刚片II底部 -->
-                                        <line x1="147" y1="35" x2="147" y2="50" stroke="#334155" stroke-width="1.5"/>
-                                        <circle cx="147" cy="50" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="138" y1="53" x2="156" y2="53" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="147" y1="43" x2="147" y2="62" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="147" cy="62" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="138" y1="65" x2="156" y2="65" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="140" y1="65" x2="136" y2="71" stroke="#334155" stroke-width="1"/>
+                                        <line x1="144" y1="65" x2="140" y2="71" stroke="#334155" stroke-width="1"/>
+                                        <line x1="148" y1="65" x2="144" y2="71" stroke="#334155" stroke-width="1"/>
+                                        <line x1="152" y1="65" x2="148" y2="71" stroke="#334155" stroke-width="1"/>
                                         <!-- 刚片III底部 -->
-                                        <line x1="147" y1="68" x2="147" y2="82" stroke="#334155" stroke-width="1.5"/>
-                                        <circle cx="147" cy="82" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="138" y1="85" x2="156" y2="85" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="147" y1="76" x2="147" y2="95" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="147" cy="95" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="138" y1="98" x2="156" y2="98" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="140" y1="98" x2="136" y2="104" stroke="#334155" stroke-width="1"/>
+                                        <line x1="144" y1="98" x2="140" y2="104" stroke="#334155" stroke-width="1"/>
+                                        <line x1="148" y1="98" x2="144" y2="104" stroke="#334155" stroke-width="1"/>
+                                        <line x1="152" y1="98" x2="148" y2="104" stroke="#334155" stroke-width="1"/>
                                         <!-- 刚片IV底部 -->
-                                        <line x1="252" y1="48" x2="252" y2="62" stroke="#334155" stroke-width="1.5"/>
-                                        <circle cx="252" cy="62" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
-                                        <line x1="243" y1="65" x2="261" y2="65" stroke="#334155" stroke-width="1.5"/>
-                                        <text x="150" y="105" text-anchor="middle" font-size="9" fill="#64748b">m=4, 复铰=(3-1)=2单铰, b=4</text>
+                                        <line x1="252" y1="56" x2="252" y2="75" stroke="#334155" stroke-width="1.5"/>
+                                        <circle cx="252" cy="75" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="243" y1="78" x2="261" y2="78" stroke="#334155" stroke-width="1.5"/>
+                                        <line x1="245" y1="78" x2="241" y2="84" stroke="#334155" stroke-width="1"/>
+                                        <line x1="249" y1="78" x2="245" y2="84" stroke="#334155" stroke-width="1"/>
+                                        <line x1="253" y1="78" x2="249" y2="84" stroke="#334155" stroke-width="1"/>
+                                        <line x1="257" y1="78" x2="253" y2="84" stroke="#334155" stroke-width="1"/>
+                                        <text x="150" y="120" text-anchor="middle" font-size="8" fill="#64748b">m=4, 复铰=(3-1)=2单铰, b=4</text>
                                     </svg>
                                 </div>
                                 <details><summary>💡 查看答案</summary><div class="answer-content"><p>复铰连接3个刚片 = (3-1)=2个单铰</p><p>总单铰数 = 2 + 2 = 4</p><p>W = 3×4 - (0 + 2×4 + 4) = 12 - 12 = 0</p><p>W=0，检查约束布置，若无三铰共线等问题，则几何不变。</p></div></details>
