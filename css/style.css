@@ -1437,6 +1437,7 @@ body {
     max-width: 100% !important;
     box-sizing: border-box;
     display: block;
+    overflow: hidden;
 }
 .practice-problem:last-child {
     margin-bottom: 0;
@@ -1447,14 +1448,16 @@ body {
     width: 100%;
 }
 .practice-illustration {
-    width: 100%;
-    margin: 0.75rem 0;
+    float: right;
+    width: 180px;
+    margin: 0 0 0.5rem 1rem;
     display: flex;
     justify-content: center;
 }
-.practice-illustration svg {
+.practice-illustration svg,
+.practice-illustration img {
     width: 100%;
-    max-width: 500px;
+    max-width: 180px;
     height: auto;
 }
 .practice-problem details {
