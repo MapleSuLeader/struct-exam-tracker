@@ -1,0 +1,55 @@
+<svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <!-- 题1：简支梁 l=10m，FP=20kN 在距A端3m处 -->
+  <text x="250" y="16" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">题1：简支梁支座反力</text>
+  
+  <!-- 梁 -->
+  <line x1="60" y1="80" x2="440" y2="80" stroke="#334155" stroke-width="3"/>
+  
+  <!-- A支座（固定铰） -->
+  <polygon points="60,80 48,102 72,102" fill="none" stroke="#334155" stroke-width="2"/>
+  <line x1="42" y1="105" x2="78" y2="105" stroke="#334155" stroke-width="2"/>
+  <line x1="46" y1="105" x2="42" y2="112" stroke="#334155" stroke-width="1.2"/>
+  <line x1="54" y1="105" x2="50" y2="112" stroke="#334155" stroke-width="1.2"/>
+  <line x1="62" y1="105" x2="58" y2="112" stroke="#334155" stroke-width="1.2"/>
+  <line x1="70" y1="105" x2="66" y2="112" stroke="#334155" stroke-width="1.2"/>
+  <line x1="78" y1="105" x2="74" y2="112" stroke="#334155" stroke-width="1.2"/>
+  <text x="60" y="128" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">A</text>
+  
+  <!-- B支座（可动铰） -->
+  <polygon points="440,80 428,102 452,102" fill="none" stroke="#334155" stroke-width="2"/>
+  <circle cx="440" cy="105" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+  <line x1="422" y1="108" x2="458" y2="108" stroke="#334155" stroke-width="2"/>
+  <line x1="426" y1="108" x2="422" y2="115" stroke="#334155" stroke-width="1.2"/>
+  <line x1="434" y1="108" x2="430" y2="115" stroke="#334155" stroke-width="1.2"/>
+  <line x1="442" y1="108" x2="438" y2="115" stroke="#334155" stroke-width="1.2"/>
+  <line x1="450" y1="108" x2="446" y2="115" stroke="#334155" stroke-width="1.2"/>
+  <line x1="458" y1="108" x2="454" y2="115" stroke="#334155" stroke-width="1.2"/>
+  <text x="440" y="132" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">B</text>
+  
+  <!-- 集中力 FP=20kN -->
+  <line x1="174" y1="30" x2="174" y2="78" stroke="#ef4444" stroke-width="2.5"/>
+  <polygon points="174,78 169,68 179,68" fill="#ef4444"/>
+  <text x="174" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#ef4444">F<tspan font-size="9" dy="3">P</tspan><tspan dy="-3">=20kN</tspan></text>
+  
+  <!-- 尺寸标注 -->
+  <!-- 总跨度 -->
+  <line x1="60" y1="148" x2="440" y2="148" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="60" y1="142" x2="60" y2="154" stroke="#64748b" stroke-width="1"/>
+  <line x1="440" y1="142" x2="440" y2="154" stroke="#64748b" stroke-width="1"/>
+  <text x="250" y="164" text-anchor="middle" font-size="12" fill="#64748b">l = 10m</text>
+  
+  <!-- 3m 标注 -->
+  <line x1="60" y1="55" x2="174" y2="55" stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="60" y1="50" x2="60" y2="60" stroke="#3b82f6" stroke-width="1"/>
+  <line x1="174" y1="50" x2="174" y2="60" stroke="#3b82f6" stroke-width="1"/>
+  <text x="117" y="50" text-anchor="middle" font-size="11" fill="#3b82f6">x = 3m</text>
+  
+  <!-- 反力箭头 -->
+  <line x1="60" y1="140" x2="60" y2="110" stroke="#10b981" stroke-width="2"/>
+  <polygon points="60,110 56,118 64,118" fill="#10b981"/>
+  <text x="40" y="140" text-anchor="middle" font-size="11" font-weight="600" fill="#10b981">F<tspan font-size="8" dy="2">RA</tspan></text>
+  
+  <line x1="440" y1="140" x2="440" y2="110" stroke="#10b981" stroke-width="2"/>
+  <polygon points="440,110 436,118 444,118" fill="#10b981"/>
+  <text x="460" y="140" text-anchor="middle" font-size="11" font-weight="600" fill="#10b981">F<tspan font-size="8" dy="2">RB</tspan></text>
+</svg>

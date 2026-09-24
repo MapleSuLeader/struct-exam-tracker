@@ -1,0 +1,110 @@
+<svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <!-- 题5：桥梁工程 -->
+  <text x="260" y="16" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">题5：简支梁桥（l=20m，公路-I级车道荷载）</text>
+  
+  <!-- (a) 桥梁示意 -->
+  <text x="130" y="38" text-anchor="middle" font-size="12" font-weight="600" fill="#475569">(a) 桥梁简图</text>
+  
+  <!-- 桥面 -->
+  <rect x="30" y="65" width="200" height="12" rx="2" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+  
+  <!-- 梁 -->
+  <line x1="30" y1="77" x2="230" y2="77" stroke="#334155" stroke-width="3"/>
+  
+  <!-- A支座 -->
+  <rect x="28" y="79" width="24" height="8" rx="2" fill="#94a3b8" stroke="#334155" stroke-width="1.5"/>
+  <line x1="22" y1="89" x2="58" y2="89" stroke="#334155" stroke-width="2"/>
+  <line x1="26" y1="89" x2="22" y2="96" stroke="#334155" stroke-width="1.2"/>
+  <line x1="34" y1="89" x2="30" y2="96" stroke="#334155" stroke-width="1.2"/>
+  <line x1="42" y1="89" x2="38" y2="96" stroke="#334155" stroke-width="1.2"/>
+  <line x1="50" y1="89" x2="46" y2="96" stroke="#334155" stroke-width="1.2"/>
+  <line x1="58" y1="89" x2="54" y2="96" stroke="#334155" stroke-width="1.2"/>
+  <text x="40" y="112" text-anchor="middle" font-size="12" font-weight="600" fill="#334155">A</text>
+  
+  <!-- B支座 -->
+  <rect x="208" y="79" width="24" height="8" rx="2" fill="#94a3b8" stroke="#334155" stroke-width="1.5"/>
+  <line x1="202" y1="89" x2="238" y2="89" stroke="#334155" stroke-width="2"/>
+  <line x1="206" y1="89" x2="202" y2="96" stroke="#334155" stroke-width="1.2"/>
+  <line x1="214" y1="89" x2="210" y2="96" stroke="#334155" stroke-width="1.2"/>
+  <line x1="222" y1="89" x2="218" y2="96" stroke="#334155" stroke-width="1.2"/>
+  <line x1="230" y1="89" x2="226" y2="96" stroke="#334155" stroke-width="1.2"/>
+  <line x1="238" y1="89" x2="234" y2="96" stroke="#334155" stroke-width="1.2"/>
+  <text x="220" y="112" text-anchor="middle" font-size="12" font-weight="600" fill="#334155">B</text>
+  
+  <!-- 跨中标记 -->
+  <line x1="130" y1="58" x2="130" y2="72" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3,2"/>
+  <text x="130" y="54" text-anchor="middle" font-size="12" font-weight="700" fill="#f59e0b">跨中</text>
+  
+  <!-- 跨度标注 -->
+  <line x1="30" y1="125" x2="230" y2="125" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="30" y1="119" x2="30" y2="131" stroke="#64748b" stroke-width="1"/>
+  <line x1="230" y1="119" x2="230" y2="131" stroke="#64748b" stroke-width="1"/>
+  <text x="130" y="142" text-anchor="middle" font-size="11" fill="#64748b">l = 20m</text>
+  
+  <!-- (b) 车道荷载 -->
+  <text x="390" y="38" text-anchor="middle" font-size="12" font-weight="600" fill="#475569">(b) 车道荷载</text>
+  
+  <!-- 梁 -->
+  <line x1="290" y1="80" x2="490" y2="80" stroke="#334155" stroke-width="3"/>
+  
+  <!-- A支座 -->
+  <polygon points="290,80 278,102 302,102" fill="none" stroke="#334155" stroke-width="2"/>
+  <line x1="272" y1="105" x2="308" y2="105" stroke="#334155" stroke-width="2"/>
+  <line x1="276" y1="105" x2="272" y2="112" stroke="#334155" stroke-width="1.2"/>
+  <line x1="284" y1="105" x2="280" y2="112" stroke="#334155" stroke-width="1.2"/>
+  <line x1="292" y1="105" x2="288" y2="112" stroke="#334155" stroke-width="1.2"/>
+  <line x1="300" y1="105" x2="296" y2="112" stroke="#334155" stroke-width="1.2"/>
+  <line x1="308" y1="105" x2="304" y2="112" stroke="#334155" stroke-width="1.2"/>
+  <text x="290" y="128" text-anchor="middle" font-size="12" font-weight="600" fill="#334155">A</text>
+  
+  <!-- B支座 -->
+  <polygon points="490,80 478,102 502,102" fill="none" stroke="#334155" stroke-width="2"/>
+  <circle cx="490" cy="105" r="3" fill="white" stroke="#334155" stroke-width="1.5"/>
+  <line x1="472" y1="108" x2="508" y2="108" stroke="#334155" stroke-width="2"/>
+  <line x1="476" y1="108" x2="472" y2="115" stroke="#334155" stroke-width="1.2"/>
+  <line x1="484" y1="108" x2="480" y2="115" stroke="#334155" stroke-width="1.2"/>
+  <line x1="492" y1="108" x2="488" y2="115" stroke="#334155" stroke-width="1.2"/>
+  <line x1="500" y1="108" x2="496" y2="115" stroke="#334155" stroke-width="1.2"/>
+  <line x1="508" y1="108" x2="504" y2="115" stroke="#334155" stroke-width="1.2"/>
+  <text x="490" y="132" text-anchor="middle" font-size="12" font-weight="600" fill="#334155">B</text>
+  
+  <!-- 均布荷载 qk -->
+  <line x1="300" y1="35" x2="300" y2="68" stroke="#3b82f6" stroke-width="1.5"/>
+  <polygon points="300,68 297,61 303,61" fill="#3b82f6"/>
+  <line x1="330" y1="35" x2="330" y2="68" stroke="#3b82f6" stroke-width="1.5"/>
+  <polygon points="330,68 327,61 333,61" fill="#3b82f6"/>
+  <line x1="360" y1="35" x2="360" y2="68" stroke="#3b82f6" stroke-width="1.5"/>
+  <polygon points="360,68 357,61 363,61" fill="#3b82f6"/>
+  <line x1="420" y1="35" x2="420" y2="68" stroke="#3b82f6" stroke-width="1.5"/>
+  <polygon points="420,68 417,61 423,61" fill="#3b82f6"/>
+  <line x1="450" y1="35" x2="450" y2="68" stroke="#3b82f6" stroke-width="1.5"/>
+  <polygon points="450,68 447,61 453,61" fill="#3b82f6"/>
+  <line x1="480" y1="35" x2="480" y2="68" stroke="#3b82f6" stroke-width="1.5"/>
+  <polygon points="480,68 477,61 483,61" fill="#3b82f6"/>
+  <line x1="290" y1="35" x2="490" y2="35" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="390" y="30" text-anchor="middle" font-size="11" font-weight="600" fill="#3b82f6">q<tspan font-size="8" dy="2">k</tspan><tspan dy="-2"> = 10.5 kN/m</tspan></text>
+  
+  <!-- 集中力 Pk 在跨中 -->
+  <line x1="390" y1="42" x2="390" y2="78" stroke="#ef4444" stroke-width="3"/>
+  <polygon points="390,78 384,66 396,66" fill="#ef4444"/>
+  <text x="390" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="#ef4444">P<tspan font-size="8" dy="2">k</tspan><tspan dy="-2">=240kN</tspan></text>
+  
+  <!-- 跨中标记 -->
+  <line x1="390" y1="82" x2="390" y2="92" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3,2"/>
+  
+  <!-- (c) 影响线 -->
+  <text x="260" y="155" text-anchor="middle" font-size="12" font-weight="600" fill="#475569">(c) 跨中弯矩影响线</text>
+  
+  <!-- 基线 -->
+  <line x1="60" y1="220" x2="460" y2="220" stroke="#94a3b8" stroke-width="1"/>
+  
+  <!-- 三角形影响线 -->
+  <polygon points="60,220 260,170 460,220" fill="rgba(79,70,229,0.12)" stroke="#4f46e5" stroke-width="2"/>
+  
+  <!-- 顶点标注 -->
+  <line x1="260" y1="170" x2="260" y2="220" stroke="#4f46e5" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="275" y="192" font-size="12" font-weight="600" fill="#4f46e5">l/4 = 5m</text>
+  
+  <!-- 面积标注 -->
+  <text x="260" y="210" text-anchor="middle" font-size="10" fill="#4f46e5">ω = 50 m²</text>
+</svg>
