@@ -250,7 +250,7 @@
 
                 <!-- 课程分类 -->
                 <div class="subject-selector">
-                    <button class="subject-btn active" data-subject="mechanics"><span class="subject-icon">🔧</span><span class="subject-name">结构力学</span><span class="subject-count">3</span></button>
+                    <button class="subject-btn active" data-subject="mechanics"><span class="subject-icon">🔧</span><span class="subject-name">结构力学</span><span class="subject-count">4</span></button>
                     <button class="subject-btn" data-subject="concrete"><span class="subject-icon">🧱</span><span class="subject-name">混凝土</span><span class="subject-count">0</span></button>
                     <button class="subject-btn" data-subject="steel"><span class="subject-icon">🏗️</span><span class="subject-name">钢结构</span><span class="subject-count">0</span></button>
                     <button class="subject-btn" data-subject="masonry"><span class="subject-icon">🏠</span><span class="subject-name">砌体</span><span class="subject-count">0</span></button>
@@ -267,6 +267,7 @@
                         <button class="note-tab" data-lecture="2">第2讲 静定桁架</button>
                         <button class="note-tab" data-lecture="3">第3讲 力法</button>
                         <button class="note-tab" data-lecture="4">第4讲 位移法</button>
+                        <button class="note-tab" data-lecture="5">第5讲 影响线</button>
                     </div>
 
                     <!-- ===== 第0讲 ===== -->
@@ -1048,6 +1049,179 @@
 
                         
 
+
+                    <!-- ===== 第5讲 影响线 ===== -->
+                    <div class="cornell-note" id="note-5">
+                        <div class="note-header"><h2>第5讲 影响线</h2><span class="note-date">2026-09-24</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+                        <div class="cornell-layout">
+                            <div class="cornell-cue">
+                                <h4>🔑 核心概念</h4>
+                                <ul>
+                                    <li data-section="s1"><strong>影响线</strong>：单位移动荷载下某量值变化规律的图形</li>
+                                    <li data-section="s2"><strong>静力法</strong>：列平衡方程，x为变量</li>
+                                    <li data-section="s3"><strong>机动法</strong>：虚功原理，撤约束作位移图</li>
+                                    <li data-section="s4"><strong>最不利荷载</strong>：使某量达最大的荷载位置</li>
+                                    <li data-section="s5"><strong>临界荷载</strong>：使量值达极值的荷载</li>
+                                </ul>
+                                <h4>❓ 关键问题</h4>
+                                <ol>
+                                    <li data-section="s1">影响线与内力图有什么区别？</li>
+                                    <li data-section="s2">静力法作影响线的步骤？</li>
+                                    <li data-section="s3">机动法的原理和步骤？</li>
+                                    <li data-section="s4">怎么确定最不利荷载位置？</li>
+                                    <li data-section="s5">绝对最大弯矩怎么求？</li>
+                                </ol>
+                            </div>
+                            <div class="cornell-notes">
+                                <div class="note-section" id="s1">
+<h3>一、影响线的概念</h3>
+<p><strong>定义</strong>：表示单位移动荷载（F<sub>P</sub>=1）作用下，某指定截面某量值变化规律的图形</p>
+<div class="note-illustration">
+<table class="compact-table">
+<tr><th>比较项</th><th>内力图</th><th>影响线</th></tr>
+<tr><td>荷载</td><td>固定荷载</td><td>单位移动荷载</td></tr>
+<tr><td>横坐标</td><td>截面位置</td><td>荷载作用位置</td></tr>
+<tr><td>纵坐标</td><td>该截面内力值</td><td>指定截面在荷载位于此位置时的内力值</td></tr>
+<tr><td>用途</td><td>固定荷载下内力</td><td>移动荷载下最不利内力</td></tr>
+</table>
+</div>
+<div class="tip-box">💡 <strong>核心理解</strong>：内力图是"荷载固定，看各截面"；影响线是"截面固定，看荷载移动"</div>
+<div class="warning-box">⚠️ 应用条件：只有叠加原理成立时，才能引入影响线概念</div>
+</div>
+
+<div class="note-section" id="s2">
+<h3>二、静力法作影响线</h3>
+<p><strong>基本思路</strong>：取隔离体，列平衡方程，将荷载位置 x 作为变量</p>
+<h4>简支梁支座反力</h4>
+<div class="formula-box">
+<p>F<sub>RA</sub> = (l−x)/l &nbsp; (0≤x≤l)</p>
+<p>F<sub>RB</sub> = x/l &nbsp; (0≤x≤l)</p>
+<p>F<sub>RA</sub>：A点竖距1，B点竖距0的直线</p>
+<p>F<sub>RB</sub>：A点竖距0，B点竖距1的直线</p>
+</div>
+<h4>简支梁弯矩影响线（截面C，距A为a，距B为b）</h4>
+<div class="formula-box">
+<p>M<sub>C</sub> = (b/l)·x &nbsp; 荷载在C左</p>
+<p>M<sub>C</sub> = (a/l)·(l−x) &nbsp; 荷载在C右</p>
+<p><strong>图形：三角形，C点竖距 y<sub>C</sub> = ab/l</strong></p>
+</div>
+<h4>简支梁剪力影响线</h4>
+<div class="formula-box">
+<p>F<sub>QC</sub> = −x/l &nbsp; 荷载在C左</p>
+<p>F<sub>QC</sub> = (l−x)/l &nbsp; 荷载在C右</p>
+<p><strong>图形：两段平行线，C处有突变</strong></p>
+</div>
+<div class="warning-box">⚠️ 剪力影响线在截面处有突变，弯矩影响线连续</div>
+</div>
+
+<div class="note-section" id="s3">
+<h3>三、机动法作影响线</h3>
+<p><strong>理论基础</strong>：虚功原理</p>
+<div class="formula-box">
+<p>Z(x) = −δ<sub>P</sub>(x) / δ<sub>Z</sub></p>
+</div>
+<h4>步骤</h4>
+<ol>
+<li>撤去与Z相应的约束，代以未知力Z → 使体系成为有一个自由度的机构</li>
+<li>令机构沿Z正方向发生单位虚位移 → 作荷载作用点的竖向位移图 δ<sub>P</sub></li>
+<li>位移图即为影响线形状，δ<sub>Z</sub>以上为正，以下为负</li>
+</ol>
+<div class="note-illustration">
+<table class="compact-table">
+<tr><th>方法</th><th>原理</th><th>特点</th></tr>
+<tr><td>静力法</td><td>平衡方程</td><td>精确，可求数值</td></tr>
+<tr><td>机动法</td><td>虚功原理</td><td>快速定性，适合判断最不利位置</td></tr>
+</table>
+</div>
+<div class="tip-box">💡 确定最不利荷载位置时，往往只需知道影响线轮廓，用机动法更便捷</div>
+</div>
+
+<div class="note-section" id="s4">
+<h3>四、影响线的应用</h3>
+<h4>单个集中荷载</h4>
+<p>最不利位置：荷载作用在影响线<strong>竖距最大处</strong></p>
+<div class="formula-box"><p>Z<sub>max</sub> = F<sub>P</sub> · y<sub>max</sub></p></div>
+<h4>一组集中荷载</h4>
+<p><strong>一般原则</strong>：把数量大、排列密的荷载放在影响线竖距较大的部位</p>
+<h4>临界荷载判别式</h4>
+<div class="formula-box">
+<p>ΣF<sub>R左</sub>/a > ΣF<sub>R右</sub>/b &nbsp;且&nbsp; (ΣF<sub>R左</sub>−F<sub>Pcr</sub>)/a < (ΣF<sub>R右</sub>+F<sub>Pcr</sub>)/b</p>
+<p>（或反之）</p>
+</div>
+<div class="tip-box">💡 简化理解：临界荷载是使"左密右疏"变"左疏右密"的那个荷载</div>
+</div>
+
+<div class="note-section" id="s5">
+<h3>五、绝对最大弯矩与包络图</h3>
+<h4>绝对最大弯矩</h4>
+<p>移动荷载下梁内可能出现的弯矩最大值</p>
+<ul>
+<li>必定发生在某一集中荷载作用点</li>
+<li>使该荷载与合力关于梁中点对称</li>
+<li>逐个荷载试算，取最大值</li>
+</ul>
+<h4>包络图</h4>
+<p>各截面内力最大值连成的图形（弯矩包络图 + 剪力包络图）</p>
+<div class="tip-box">💡 包络图用于设计，表示各截面可能承受的最大内力</div>
+</div>
+</div>
+                            <div class="cornell-summary">
+                                <h4>📝 总结</h4>
+                                <p><strong>一句话：</strong>影响线是研究移动荷载的工具，静力法列方程求精确值，机动法用虚功快速定性；利用影响线可确定最不利荷载位置和绝对最大弯矩。</p>
+                                <h4>⚠️ 易错点</h4>
+                                <ol>
+                                    <li>影响线横坐标是荷载位置，不是截面位置</li>
+                                    <li>剪力影响线在截面处有突变，别画成连续线</li>
+                                    <li>结点荷载下影响线在结点间是直线，不是曲线</li>
+                                    <li>临界荷载判别式要分清左右段，别搞反不等号方向</li>
+                                    <li>绝对最大弯矩不一定在梁中点，要在某荷载作用点</li>
+                                </ol>
+                            </div>
+<div class="practice-section">
+                            <h4>📝 练习题</h4>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题1：</strong>简支梁AB，跨度l=10m。求支座反力F<sub>RA</sub>和F<sub>RB</sub>的影响线方程，并求当F<sub>P</sub>=20kN作用在距A端3m处时，F<sub>RA</sub>和F<sub>RB</sub>的值。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p>F<sub>RA</sub> = (10−x)/10，F<sub>RB</sub> = x/10</p>
+                                    <p>当 x=3m：F<sub>RA</sub> = 20×7/10 = <strong>14kN</strong>，F<sub>RB</sub> = 20×3/10 = <strong>6kN</strong></p>
+                                    <p>验算：14+6=20kN ✅</p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">核心</span><strong>题2：</strong>简支梁AB，跨度l=12m，截面C距A端a=4m。(1)作M<sub>C</sub>影响线，求顶点竖距；(2)当均布荷载q=10kN/m可任意布置时，求M<sub>C</sub>最大值。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p>b = 12−4 = 8m</p>
+                                    <p>(1) y<sub>C</sub> = ab/l = 4×8/12 = <strong>8/3 ≈ 2.67m</strong></p>
+                                    <p>(2) 荷载布满全跨（全正号区），面积 ω = ½×12×8/3 = 16m²</p>
+                                    <p>M<sub>C,max</sub> = q×ω = 10×16 = <strong>160 kN·m</strong></p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">方法转换</span><strong>题3：</strong>用机动法作简支梁（l=8m）跨中截面C的弯矩M<sub>C</sub>和剪力F<sub>QC</sub>的影响线。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>M<sub>C</sub>影响线</strong>：撤去C处抗弯约束→加铰，令铰两侧产生单位相对转角。影响线为三角形，C点竖距 = l/4 = <strong>2m</strong>，全在基线上方。</p>
+                                    <p><strong>F<sub>QC</sub>影响线</strong>：撤去C处抗剪约束→加定向滑动支座，令两侧产生单位相对竖向位移。左段 −½，右段 +½，C处有突变。</p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag hard">考试热点</span><strong>题4：</strong>简支梁跨度l=16m，截面K距A端6m。M<sub>K</sub>影响线三角形，K点竖距3.75m。集中荷载组：F<sub>P1</sub>=30kN，F<sub>P2</sub>=50kN，F<sub>P3</sub>=30kN，间距3m和4m。求M<sub>K</sub>最大值。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p>F<sub>P2</sub>在K点时：</p>
+                                    <p>F<sub>P1</sub>对应竖距 y₁ = 3.75−3×0.625 = 1.875m</p>
+                                    <p>F<sub>P3</sub>对应竖距 y₃ = 3.75−4×0.375 = 2.25m</p>
+                                    <p>M<sub>K</sub> = 30×1.875 + 50×3.75 + 30×2.25 = 56.25+187.5+67.5 = <strong>311.25 kN·m</strong></p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag hard">桥梁思维</span><strong>题5：</strong>简支梁桥l=20m。公路-I级：q<sub>k</sub>=10.5kN/m，P<sub>k</sub>=240kN。(1)作跨中弯矩影响线；(2)求车道荷载下跨中最大弯矩。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p>(1) 跨中弯矩影响线：三角形，y<sub>max</sub> = l/4 = <strong>5m</strong></p>
+                                    <p>(2) 面积 ω = ½×20×5 = 50m²</p>
+                                    <p>M<sub>max</sub> = P<sub>k</sub>×y<sub>max</sub> + q<sub>k</sub>×ω = 240×5 + 10.5×50 = 1200+525 = <strong>1725 kN·m</strong></p>
+                                </div></details>
+                            </div>
+</div>
+                    </div>
 
                 <!-- ===== 其他科目占位 ===== -->
                 <div class="subject-content" id="subject-concrete"><div class="empty-subject"><div class="empty-icon">🧱</div><h3>混凝土结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
