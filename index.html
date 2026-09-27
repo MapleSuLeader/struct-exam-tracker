@@ -268,6 +268,8 @@
                         <button class="note-tab" data-lecture="3">第3讲 力法</button>
                         <button class="note-tab" data-lecture="4">第4讲 位移法</button>
                         <button class="note-tab" data-lecture="5">第5讲 影响线</button>
+                        <button class="note-tab" data-lecture="6">第6讲 力矩分配法</button>
+                        <button class="note-tab" data-lecture="7">第7讲 结构位移计算</button>
                     </div>
 
                     <!-- ===== 第0讲 ===== -->
@@ -1233,6 +1235,277 @@
                                     <p>(1) 跨中弯矩影响线：三角形，y<sub>max</sub> = l/4 = <strong>5m</strong></p>
                                     <p>(2) 面积 ω = ½×20×5 = 50m²</p>
                                     <p>M<sub>max</sub> = P<sub>k</sub>×y<sub>max</sub> + q<sub>k</sub>×ω = 240×5 + 10.5×50 = 1200+525 = <strong>1725 kN·m</strong></p>
+                                </div></details>
+                            </div>
+</div>
+                    </div>
+
+                    <!-- ===== 第6讲 力矩分配法 ===== -->
+                    <div class="cornell-note" id="note-6">
+                        <div class="note-header"><h2>第6讲 力矩分配法</h2><span class="note-date">2026-09-27</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+                        <div class="cornell-layout">
+                            <div class="cornell-cue">
+                                <h4>🔑 核心概念</h4>
+                                <ul>
+                                    <li data-section="s1"><strong>转动刚度 S</strong>：使杆端产生单位转角所需力矩</li>
+                                    <li data-section="s2"><strong>分配系数 μ</strong>：分配力矩占总不平衡力矩比例</li>
+                                    <li data-section="s3"><strong>传递系数 C</strong>：远端弯矩与近端弯矩之比</li>
+                                    <li data-section="s4"><strong>固端弯矩</strong>：荷载引起的杆端弯矩</li>
+                                    <li data-section="s5"><strong>不平衡力矩</strong>：结点处各杆固端弯矩之和</li>
+                                </ul>
+                                <h4>❓ 关键问题</h4>
+                                <ol>
+                                    <li data-section="s1">转动刚度、分配系数、传递系数怎么算？</li>
+                                    <li data-section="s2">力矩分配法的基本步骤？</li>
+                                    <li data-section="s3">多结点力矩分配怎么操作？</li>
+                                    <li data-section="s4">力矩分配法与位移法有什么关系？</li>
+                                    <li data-section="s5">无侧移刚架怎么用力矩分配法？</li>
+                                </ol>
+                            </div>
+                            <div class="cornell-notes">
+                                <div class="note-section" id="s1">
+<h3>一、三个核心参数</h3>
+<div class="note-illustration">
+<table class="compact-table">
+<tr><th>远端支承</th><th>转动刚度 S</th><th>传递系数 C</th></tr>
+<tr><td>固定端</td><td>4i</td><td>1/2</td></tr>
+<tr><td>铰支端</td><td>3i</td><td>0</td></tr>
+<tr><td>定向滑动</td><td>i</td><td>−1</td></tr>
+<tr><td>自由端</td><td>0</td><td>−</td></tr>
+</table>
+</div>
+<p>线刚度：<strong>i = EI/l</strong></p>
+<div class="tip-box">💡 记忆：远端固定4传递半，远端铰支3不传，远端滑动1反向传</div>
+</div>
+
+<div class="note-section" id="s2">
+<h3>二、分配系数</h3>
+<div class="formula-box">
+<p>μ<sub>ij</sub> = S<sub>ij</sub> / ΣS<sub>ik</sub></p>
+</div>
+<p><strong>性质</strong>：同一结点各杆分配系数之和 = 1</p>
+<div class="warning-box">⚠️ 分配系数只与刚度比有关，与荷载无关</div>
+</div>
+
+<div class="note-section" id="s3">
+<h3>三、力矩分配法步骤</h3>
+<ol>
+<li><strong>锁定</strong>：锁住所有刚结点，计算固端弯矩 M<sup>F</sup></li>
+<li><strong>放松</strong>：选一个不平衡力矩最大的结点放松</li>
+<li><strong>分配</strong>：将 −M<sup>不平衡</sup> 按分配系数分配给各杆</li>
+<li><strong>传递</strong>：分配弯矩向远端传递（乘传递系数）</li>
+<li><strong>迭代</strong>：轮流放松各结点，反复迭代直到收敛</li>
+<li><strong>叠加</strong>：最终弯矩 = 固端 + 各轮分配 + 各轮传递</li>
+</ol>
+<div class="tip-box">💡 通常 3~5 轮即可达到工程精度</div>
+</div>
+
+<div class="note-section" id="s4">
+<h3>四、力矩分配法 vs 位移法</h3>
+<div class="note-illustration">
+<table class="compact-table">
+<tr><th>比较项</th><th>力矩分配法</th><th>位移法</th></tr>
+<tr><td>本质</td><td>迭代法（渐近）</td><td>精确法（解方程）</td></tr>
+<tr><td>未知量</td><td>不直接求位移</td><td>求结点位移</td></tr>
+<tr><td>适用</td><td>连续梁、无侧移刚架</td><td>所有结构</td></tr>
+<tr><td>手算优势</td><td>过程规范，易校核</td><td>需解方程组</td></tr>
+</table>
+</div>
+<p><strong>关系</strong>：力矩分配法是位移法的迭代版本</p>
+</div>
+
+<div class="note-section" id="s5">
+<h3>五、多结点力矩分配</h3>
+<p><strong>核心策略</strong>：逐次放松，交替进行</p>
+<div class="warning-box">⚠️ 相邻结点不能同时放松！</div>
+<p><strong>加速收敛技巧</strong>：</p>
+<ul>
+<li>从不平衡力矩最大的结点开始</li>
+<li>对称结构可取半结构</li>
+</ul>
+<div class="tip-box">💡 每次传递后不平衡力矩逐渐减小，因为 |C| ≤ 1，必然收敛</div>
+</div>
+</div>
+                            <div class="cornell-summary">
+                                <h4>📝 总结</h4>
+                                <p><strong>一句话：</strong>力矩分配法是位移法的迭代版本，通过"锁定→放松→分配→传递"的循环逐次逼近精确解。</p>
+                                <h4>📌 核心公式</h4>
+                                <p>S<sub>固定</sub>=4i, S<sub>铰支</sub>=3i, S<sub>滑动</sub>=i</p>
+                                <p>C<sub>固定</sub>=1/2, C<sub>铰支</sub>=0, C<sub>滑动</sub>=−1</p>
+                                <p>μ<sub>ij</sub> = S<sub>ij</sub>/ΣS<sub>ik</sub></p>
+                                <h4>⚠️ 易错点</h4>
+                                <ol>
+                                    <li>分配系数之和必须 = 1</li>
+                                    <li>放松时分配的是 −不平衡力矩（负号！）</li>
+                                    <li>相邻结点不能同时放松</li>
+                                    <li>多结点要轮流放松</li>
+                                </ol>
+                            </div>
+<div class="practice-section">
+                            <h4>📝 练习题</h4>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题1：</strong>连续梁AB，A固定B铰支，l=6m，AB段受均布荷载q=12kN/m。求分配系数和杆端弯矩。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>分配系数：</strong>μ<sub>BA</sub>=4/7，μ<sub>BC</sub>=3/7</p>
+                                    <p><strong>固端弯矩：</strong>M<sub>BA</sub><sup>F</sup>=36kN·m</p>
+                                    <p><strong>最终：</strong>M<sub>BA</sub>=15.43kN·m，M<sub>AB</sub>=−46.29kN·m</p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">重点</span><strong>题2：</strong>三跨连续梁ABCD，各跨l=6m，AB和CD段受q=10kN/m。用力矩分配法求杆端弯矩。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>结果（对称）：</strong></p>
+                                    <p>M<sub>AB</sub>=−40, M<sub>BA</sub>=10, M<sub>BC</sub>=−10</p>
+                                    <p>M<sub>CB</sub>=10, M<sub>CD</sub>=−10, M<sub>DC</sub>=40</p>
+                                    <p>验算：各结点弯矩和为0 ✅</p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag hard">考试热点</span><strong>题3：</strong>无侧移刚架，横梁BC受均布荷载q=20kN/m，l=8m，h=4m。用力矩分配法求杆端弯矩。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>利用对称性：</strong>θ<sub>C</sub>=−θ<sub>B</sub></p>
+                                    <p><strong>分配系数：</strong>μ<sub>BA</sub>=2/3，μ<sub>BC</sub>=1/3</p>
+                                    <p><strong>最终：</strong>M<sub>BA</sub>=53.33, M<sub>BC</sub>=−53.33</p>
+                                </div></details>
+                            </div>
+</div>
+                    </div>
+
+                    <!-- ===== 第7讲 结构位移计算 ===== -->
+                    <div class="cornell-note" id="note-7">
+                        <div class="note-header"><h2>第7讲 结构位移计算</h2><span class="note-date">2026-09-27</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+                        <div class="cornell-layout">
+                            <div class="cornell-cue">
+                                <h4>🔑 核心概念</h4>
+                                <ul>
+                                    <li data-section="s1"><strong>虚功原理</strong>：外力虚功 = 内力虚功</li>
+                                    <li data-section="s2"><strong>单位荷载法</strong>：在所求位移方向加单位力</li>
+                                    <li data-section="s3"><strong>图乘法</strong>：用图形面积和形心竖距代替积分</li>
+                                    <li data-section="s4"><strong>互等定理</strong>：功的互等、位移互等、反力互等</li>
+                                    <li data-section="s5"><strong>弹性荷载法</strong>：将实际变形等效为荷载</li>
+                                </ul>
+                                <h4>❓ 关键问题</h4>
+                                <ol>
+                                    <li data-section="s1">虚功原理的内容和适用条件？</li>
+                                    <li data-section="s2">单位荷载法怎么求指定截面位移？</li>
+                                    <li data-section="s3">图乘法的适用条件和步骤？</li>
+                                    <li data-section="s4">支座位移和温度变化怎么求位移？</li>
+                                    <li data-section="s5">互等定理有哪些？怎么应用？</li>
+                                </ol>
+                            </div>
+                            <div class="cornell-notes">
+                                <div class="note-section" id="s1">
+<h3>一、虚功原理</h3>
+<div class="formula-box">
+<p>外力虚功 = 内力虚功</p>
+<p>ΣF<sub>i</sub>·δ<sub>i</sub> = ∫(Mκ̄ + Nε̄ + Qγ̄)ds</p>
+</div>
+<div class="note-illustration">
+<table class="compact-table">
+<tr><th>方式</th><th>虚设</th><th>实际</th><th>用途</th></tr>
+<tr><td>虚位移原理</td><td>虚位移</td><td>实际力</td><td>求未知力</td></tr>
+<tr><td>虚力原理</td><td>虚力</td><td>实际位移</td><td>求未知位移</td></tr>
+</table>
+</div>
+<div class="tip-box">💡 求位移用虚力原理——在所求位移方向加单位虚力</div>
+</div>
+
+<div class="note-section" id="s2">
+<h3>二、单位荷载法</h3>
+<div class="formula-box">
+<p>Δ<sub>K</sub> = ∫M̄M<sub>P</sub>/(EI)ds + ∫N̄N<sub>P</sub>/(EA)ds + ∫kQ̄Q<sub>P</sub>/(GA)ds</p>
+</div>
+<p><strong>简化</strong>：梁和刚架可忽略轴向和剪切变形</p>
+<div class="formula-box">
+<p>Δ ≈ ∫M̄·M<sub>P</sub>/(EI) ds</p>
+</div>
+</div>
+
+<div class="note-section" id="s3">
+<h3>三、图乘法</h3>
+<div class="formula-box">
+<p>∫M̄M<sub>P</sub>/(EI) ds = ω·y<sub>C</sub>/(EI)</p>
+</div>
+<p><strong>适用条件</strong>：</p>
+<ul>
+<li>杆件为等截面直杆（EI=常数）</li>
+<li>两个弯矩图中至少有一个是直线图形</li>
+<li>面积ω和竖距y<sub>C</sub>在杆的同一侧时取正号</li>
+</ul>
+<div class="note-illustration">
+<table class="compact-table">
+<tr><th>图形</th><th>面积 ω</th><th>形心位置</th></tr>
+<tr><td>三角形</td><td>bh/2</td><td>距底端 b/3</td></tr>
+<tr><td>二次抛物线（顶点在中点）</td><td>2bh/3</td><td>中点</td></tr>
+<tr><td>二次抛物线（顶点在端点）</td><td>bh/3</td><td>距顶点 b/4</td></tr>
+</table>
+</div>
+<div class="warning-box">⚠️ 正负号：ω和y<sub>C</sub>同侧为正，异侧为负</div>
+</div>
+
+<div class="note-section" id="s4">
+<h3>四、支座位移引起的位移</h3>
+<div class="formula-box">
+<p>Δ<sub>K</sub> = −ΣR̄<sub>k</sub>·c<sub>k</sub></div>
+</div>
+<p>其中 R̄<sub>k</sub> 为单位虚力下第k个支座的反力</p>
+<div class="tip-box">💡 支座位移不引起内力（静定结构），但会产生位移</div>
+</div>
+
+<div class="note-section" id="s5">
+<h3>五、互等定理</h3>
+<div class="note-illustration">
+<table class="compact-table">
+<tr><th>定理</th><th>内容</th></tr>
+<tr><td>功的互等</td><td>W<sub>I→II</sub> = W<sub>II→I</sub></td></tr>
+<tr><td>位移互等</td><td>δ<sub>12</sub> = δ<sub>21</sub></td></tr>
+<tr><td>反力互等</td><td>r<sub>12</sub> = r<sub>21</sub></td></tr>
+</table>
+</div>
+<div class="warning-box">⚠️ 互等定理只适用于<strong>线弹性</strong>结构</div>
+</div>
+</div>
+                            <div class="cornell-summary">
+                                <h4>📝 总结</h4>
+                                <p><strong>一句话：</strong>结构位移计算以虚功原理为基础，单位荷载法是核心方法，图乘法是实用工具。</p>
+                                <h4>📌 核心公式</h4>
+                                <p>单位荷载法：Δ = ∫M̄M<sub>P</sub>/(EI)ds</p>
+                                <p>图乘法：Δ = ω·y<sub>C</sub>/(EI)</p>
+                                <p>桁架位移：Δ = ΣN̄N<sub>P</sub>l/(EA)</p>
+                                <p>支座位移：Δ = −ΣR̄<sub>k</sub>·c<sub>k</sub></p>
+                                <h4>⚠️ 易错点</h4>
+                                <ol>
+                                    <li>图乘法要求至少一个M图为直线</li>
+                                    <li>图乘正负号：同侧为正，异侧为负</li>
+                                    <li>抛物线形心位置别记错</li>
+                                    <li>支座位移公式有负号</li>
+                                    <li>桁架位移是求和不是积分</li>
+                                </ol>
+                            </div>
+<div class="practice-section">
+                            <h4>📝 练习题</h4>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题1：</strong>简支梁l=6m，跨中集中力P=30kN。用图乘法求跨中竖向位移。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>M<sub>P</sub>图：</strong>三角形，M<sub>max</sub>=45kN·m</p>
+                                    <p><strong>M̄图：</strong>三角形，y<sub>max</sub>=1.5m</p>
+                                    <p><strong>图乘：</strong>Δ<sub>C</sub> = 135×1.5/EI = 202.5/EI (↓)</p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">核心</span><strong>题2：</strong>简支梁l=8m，满跨均布荷载q=15kN/m。求跨中竖向位移和A端转角。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>M<sub>P</sub>图：</strong>抛物线，M<sub>max</sub>=120kN·m，面积ω=640</p>
+                                    <p><strong>跨中位移：</strong>Δ<sub>C</sub> = 640×2/EI = 64mm (↓)</p>
+                                    <p><strong>A端转角：</strong>θ<sub>A</sub> = 640×0.5/EI = 0.016rad</p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag hard">考试热点</span><strong>题3：</strong>简支桁架，跨度12m，高度3m，中间上弦结点受P=40kN。求该点竖向位移。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>桁架位移公式：</strong>Δ = ΣN̄N<sub>P</sub>l/(EA)</p>
+                                    <p><strong>计算步骤：</strong>先求N<sub>P</sub>和N̄，再逐杆计算求和</p>
+                                    <p><strong>结果：</strong>Δ ≈ 1.53mm (↓)</p>
                                 </div></details>
                             </div>
 </div>
