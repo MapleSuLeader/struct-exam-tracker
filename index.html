@@ -265,11 +265,11 @@
                         <button class="note-tab active" data-lecture="0">第0讲 结构判定</button>
                         <button class="note-tab" data-lecture="1">第1讲 静定梁</button>
                         <button class="note-tab" data-lecture="2">第2讲 静定桁架</button>
+                        <button class="note-tab" data-lecture="7">第7讲 结构位移计算</button>
                         <button class="note-tab" data-lecture="3">第3讲 力法</button>
                         <button class="note-tab" data-lecture="4">第4讲 位移法</button>
                         <button class="note-tab" data-lecture="5">第5讲 影响线</button>
                         <button class="note-tab" data-lecture="6">第6讲 力矩分配法</button>
-                        <button class="note-tab" data-lecture="7">第7讲 结构位移计算</button>
                     </div>
 
                     <!-- ===== 第0讲 ===== -->
@@ -747,6 +747,146 @@
                         
 
 
+                    <!-- ===== 第7讲 结构位移计算 ===== -->
+                    <div class="cornell-note" id="note-7">
+                        <div class="note-header"><h2>第7讲 结构位移计算</h2><span class="note-date">2026-09-27</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+                        <div class="cornell-layout">
+                            <div class="cornell-cue">
+                                <h4>🔑 核心概念</h4>
+                                <ul>
+                                    <li data-section="s1"><strong>虚功原理</strong>：外力虚功 = 内力虚功</li>
+                                    <li data-section="s2"><strong>单位荷载法</strong>：在所求位移方向加单位力</li>
+                                    <li data-section="s3"><strong>图乘法</strong>：用图形面积和形心竖距代替积分</li>
+                                    <li data-section="s4"><strong>互等定理</strong>：功的互等、位移互等、反力互等</li>
+                                    <li data-section="s5"><strong>弹性荷载法</strong>：将实际变形等效为荷载</li>
+                                </ul>
+                                <h4>❓ 关键问题</h4>
+                                <ol>
+                                    <li data-section="s1">虚功原理的内容和适用条件？</li>
+                                    <li data-section="s2">单位荷载法怎么求指定截面位移？</li>
+                                    <li data-section="s3">图乘法的适用条件和步骤？</li>
+                                    <li data-section="s4">支座位移和温度变化怎么求位移？</li>
+                                    <li data-section="s5">互等定理有哪些？怎么应用？</li>
+                                </ol>
+                            </div>
+                            <div class="cornell-notes">
+                                <div class="note-section" id="s1">
+<h3>一、虚功原理</h3>
+<div class="formula-box">
+<p>外力虚功 = 内力虚功</p>
+<p>ΣF<sub>i</sub>·δ<sub>i</sub> = ∫(Mκ̄ + Nε̄ + Qγ̄)ds</p>
+</div>
+<div class="note-illustration">
+<table class="compact-table">
+<tr><th>方式</th><th>虚设</th><th>实际</th><th>用途</th></tr>
+<tr><td>虚位移原理</td><td>虚位移</td><td>实际力</td><td>求未知力</td></tr>
+<tr><td>虚力原理</td><td>虚力</td><td>实际位移</td><td>求未知位移</td></tr>
+</table>
+</div>
+<div class="tip-box">💡 求位移用虚力原理——在所求位移方向加单位虚力</div>
+</div>
+
+<div class="note-section" id="s2">
+<h3>二、单位荷载法</h3>
+<div class="formula-box">
+<p>Δ<sub>K</sub> = ∫M̄M<sub>P</sub>/(EI)ds + ∫N̄N<sub>P</sub>/(EA)ds + ∫kQ̄Q<sub>P</sub>/(GA)ds</p>
+</div>
+<p><strong>简化</strong>：梁和刚架可忽略轴向和剪切变形</p>
+<div class="formula-box">
+<p>Δ ≈ ∫M̄·M<sub>P</sub>/(EI) ds</p>
+</div>
+</div>
+
+<div class="note-section" id="s3">
+<h3>三、图乘法</h3>
+<div class="formula-box">
+<p>∫M̄M<sub>P</sub>/(EI) ds = ω·y<sub>C</sub>/(EI)</p>
+</div>
+<p><strong>适用条件</strong>：</p>
+<ul>
+<li>杆件为等截面直杆（EI=常数）</li>
+<li>两个弯矩图中至少有一个是直线图形</li>
+<li>面积ω和竖距y<sub>C</sub>在杆的同一侧时取正号</li>
+</ul>
+<div class="note-illustration">
+<table class="compact-table">
+<tr><th>图形</th><th>面积 ω</th><th>形心位置</th></tr>
+<tr><td>三角形</td><td>bh/2</td><td>距底端 b/3</td></tr>
+<tr><td>二次抛物线（顶点在中点）</td><td>2bh/3</td><td>中点</td></tr>
+<tr><td>二次抛物线（顶点在端点）</td><td>bh/3</td><td>距顶点 b/4</td></tr>
+</table>
+</div>
+<div class="warning-box">⚠️ 正负号：ω和y<sub>C</sub>同侧为正，异侧为负</div>
+</div>
+
+<div class="note-section" id="s4">
+<h3>四、支座位移引起的位移</h3>
+<div class="formula-box">
+<p>Δ<sub>K</sub> = −ΣR̄<sub>k</sub>·c<sub>k</sub></p>
+</div>
+<p>其中 R̄<sub>k</sub> 为单位虚力下第k个支座的反力</p>
+<div class="tip-box">💡 支座位移不引起内力（静定结构），但会产生位移</div>
+</div>
+
+<div class="note-section" id="s5">
+<h3>五、互等定理</h3>
+<div class="note-illustration">
+<table class="compact-table">
+<tr><th>定理</th><th>内容</th></tr>
+<tr><td>功的互等</td><td>W<sub>I→II</sub> = W<sub>II→I</sub></td></tr>
+<tr><td>位移互等</td><td>δ<sub>12</sub> = δ<sub>21</sub></td></tr>
+<tr><td>反力互等</td><td>r<sub>12</sub> = r<sub>21</sub></td></tr>
+</table>
+</div>
+<div class="warning-box">⚠️ 互等定理只适用于<strong>线弹性</strong>结构</div>
+</div>
+</div>
+                            <div class="cornell-summary">
+                                <h4>📝 总结</h4>
+                                <p><strong>一句话：</strong>结构位移计算以虚功原理为基础，单位荷载法是核心方法，图乘法是实用工具。</p>
+                                <h4>📌 核心公式</h4>
+                                <p>单位荷载法：Δ = ∫M̄M<sub>P</sub>/(EI)ds</p>
+                                <p>图乘法：Δ = ω·y<sub>C</sub>/(EI)</p>
+                                <p>桁架位移：Δ = ΣN̄N<sub>P</sub>l/(EA)</p>
+                                <p>支座位移：Δ = −ΣR̄<sub>k</sub>·c<sub>k</sub></p>
+                                <h4>⚠️ 易错点</h4>
+                                <ol>
+                                    <li>图乘法要求至少一个M图为直线</li>
+                                    <li>图乘正负号：同侧为正，异侧为负</li>
+                                    <li>抛物线形心位置别记错</li>
+                                    <li>支座位移公式有负号</li>
+                                    <li>桁架位移是求和不是积分</li>
+                                </ol>
+                            </div>
+<div class="practice-section">
+                            <h4>📝 练习题</h4>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题1：</strong>简支梁l=6m，跨中集中力P=30kN。用图乘法求跨中竖向位移。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>M<sub>P</sub>图：</strong>三角形，M<sub>max</sub>=45kN·m</p>
+                                    <p><strong>M̄图：</strong>三角形，y<sub>max</sub>=1.5m</p>
+                                    <p><strong>图乘：</strong>Δ<sub>C</sub> = 135×1.5/EI = 202.5/EI (↓)</p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">核心</span><strong>题2：</strong>简支梁l=8m，满跨均布荷载q=15kN/m。求跨中竖向位移和A端转角。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>M<sub>P</sub>图：</strong>抛物线，M<sub>max</sub>=120kN·m，面积ω=640</p>
+                                    <p><strong>跨中位移：</strong>Δ<sub>C</sub> = 640×2/EI = 64mm (↓)</p>
+                                    <p><strong>A端转角：</strong>θ<sub>A</sub> = 640×0.5/EI = 0.016rad</p>
+                                </div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag hard">考试热点</span><strong>题3：</strong>简支桁架，跨度12m，高度3m，中间上弦结点受P=40kN。求该点竖向位移。</p>
+                                <details><summary>💡 查看答案</summary><div class="answer-content">
+                                    <p><strong>桁架位移公式：</strong>Δ = ΣN̄N<sub>P</sub>l/(EA)</p>
+                                    <p><strong>计算步骤：</strong>先求N<sub>P</sub>和N̄，再逐杆计算求和</p>
+                                    <p><strong>结果：</strong>Δ ≈ 1.53mm (↓)</p>
+                                </div></details>
+                            </div>
+</div>
+                    </div>
+                    </div>
                     <!-- ===== 第3讲 力法 ===== -->
                     <div class="cornell-note" id="note-3">
                         <div class="note-header"><h2>第3讲 力法</h2><span class="note-date">2026-09-18</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
@@ -1372,146 +1512,6 @@
                     </div>
                     </div>
 
-                    <!-- ===== 第7讲 结构位移计算 ===== -->
-                    <div class="cornell-note" id="note-7">
-                        <div class="note-header"><h2>第7讲 结构位移计算</h2><span class="note-date">2026-09-27</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
-                        <div class="cornell-layout">
-                            <div class="cornell-cue">
-                                <h4>🔑 核心概念</h4>
-                                <ul>
-                                    <li data-section="s1"><strong>虚功原理</strong>：外力虚功 = 内力虚功</li>
-                                    <li data-section="s2"><strong>单位荷载法</strong>：在所求位移方向加单位力</li>
-                                    <li data-section="s3"><strong>图乘法</strong>：用图形面积和形心竖距代替积分</li>
-                                    <li data-section="s4"><strong>互等定理</strong>：功的互等、位移互等、反力互等</li>
-                                    <li data-section="s5"><strong>弹性荷载法</strong>：将实际变形等效为荷载</li>
-                                </ul>
-                                <h4>❓ 关键问题</h4>
-                                <ol>
-                                    <li data-section="s1">虚功原理的内容和适用条件？</li>
-                                    <li data-section="s2">单位荷载法怎么求指定截面位移？</li>
-                                    <li data-section="s3">图乘法的适用条件和步骤？</li>
-                                    <li data-section="s4">支座位移和温度变化怎么求位移？</li>
-                                    <li data-section="s5">互等定理有哪些？怎么应用？</li>
-                                </ol>
-                            </div>
-                            <div class="cornell-notes">
-                                <div class="note-section" id="s1">
-<h3>一、虚功原理</h3>
-<div class="formula-box">
-<p>外力虚功 = 内力虚功</p>
-<p>ΣF<sub>i</sub>·δ<sub>i</sub> = ∫(Mκ̄ + Nε̄ + Qγ̄)ds</p>
-</div>
-<div class="note-illustration">
-<table class="compact-table">
-<tr><th>方式</th><th>虚设</th><th>实际</th><th>用途</th></tr>
-<tr><td>虚位移原理</td><td>虚位移</td><td>实际力</td><td>求未知力</td></tr>
-<tr><td>虚力原理</td><td>虚力</td><td>实际位移</td><td>求未知位移</td></tr>
-</table>
-</div>
-<div class="tip-box">💡 求位移用虚力原理——在所求位移方向加单位虚力</div>
-</div>
-
-<div class="note-section" id="s2">
-<h3>二、单位荷载法</h3>
-<div class="formula-box">
-<p>Δ<sub>K</sub> = ∫M̄M<sub>P</sub>/(EI)ds + ∫N̄N<sub>P</sub>/(EA)ds + ∫kQ̄Q<sub>P</sub>/(GA)ds</p>
-</div>
-<p><strong>简化</strong>：梁和刚架可忽略轴向和剪切变形</p>
-<div class="formula-box">
-<p>Δ ≈ ∫M̄·M<sub>P</sub>/(EI) ds</p>
-</div>
-</div>
-
-<div class="note-section" id="s3">
-<h3>三、图乘法</h3>
-<div class="formula-box">
-<p>∫M̄M<sub>P</sub>/(EI) ds = ω·y<sub>C</sub>/(EI)</p>
-</div>
-<p><strong>适用条件</strong>：</p>
-<ul>
-<li>杆件为等截面直杆（EI=常数）</li>
-<li>两个弯矩图中至少有一个是直线图形</li>
-<li>面积ω和竖距y<sub>C</sub>在杆的同一侧时取正号</li>
-</ul>
-<div class="note-illustration">
-<table class="compact-table">
-<tr><th>图形</th><th>面积 ω</th><th>形心位置</th></tr>
-<tr><td>三角形</td><td>bh/2</td><td>距底端 b/3</td></tr>
-<tr><td>二次抛物线（顶点在中点）</td><td>2bh/3</td><td>中点</td></tr>
-<tr><td>二次抛物线（顶点在端点）</td><td>bh/3</td><td>距顶点 b/4</td></tr>
-</table>
-</div>
-<div class="warning-box">⚠️ 正负号：ω和y<sub>C</sub>同侧为正，异侧为负</div>
-</div>
-
-<div class="note-section" id="s4">
-<h3>四、支座位移引起的位移</h3>
-<div class="formula-box">
-<p>Δ<sub>K</sub> = −ΣR̄<sub>k</sub>·c<sub>k</sub></p>
-</div>
-<p>其中 R̄<sub>k</sub> 为单位虚力下第k个支座的反力</p>
-<div class="tip-box">💡 支座位移不引起内力（静定结构），但会产生位移</div>
-</div>
-
-<div class="note-section" id="s5">
-<h3>五、互等定理</h3>
-<div class="note-illustration">
-<table class="compact-table">
-<tr><th>定理</th><th>内容</th></tr>
-<tr><td>功的互等</td><td>W<sub>I→II</sub> = W<sub>II→I</sub></td></tr>
-<tr><td>位移互等</td><td>δ<sub>12</sub> = δ<sub>21</sub></td></tr>
-<tr><td>反力互等</td><td>r<sub>12</sub> = r<sub>21</sub></td></tr>
-</table>
-</div>
-<div class="warning-box">⚠️ 互等定理只适用于<strong>线弹性</strong>结构</div>
-</div>
-</div>
-                            <div class="cornell-summary">
-                                <h4>📝 总结</h4>
-                                <p><strong>一句话：</strong>结构位移计算以虚功原理为基础，单位荷载法是核心方法，图乘法是实用工具。</p>
-                                <h4>📌 核心公式</h4>
-                                <p>单位荷载法：Δ = ∫M̄M<sub>P</sub>/(EI)ds</p>
-                                <p>图乘法：Δ = ω·y<sub>C</sub>/(EI)</p>
-                                <p>桁架位移：Δ = ΣN̄N<sub>P</sub>l/(EA)</p>
-                                <p>支座位移：Δ = −ΣR̄<sub>k</sub>·c<sub>k</sub></p>
-                                <h4>⚠️ 易错点</h4>
-                                <ol>
-                                    <li>图乘法要求至少一个M图为直线</li>
-                                    <li>图乘正负号：同侧为正，异侧为负</li>
-                                    <li>抛物线形心位置别记错</li>
-                                    <li>支座位移公式有负号</li>
-                                    <li>桁架位移是求和不是积分</li>
-                                </ol>
-                            </div>
-<div class="practice-section">
-                            <h4>📝 练习题</h4>
-                            <div class="practice-problem">
-                                <p><span class="problem-tag easy">基础</span><strong>题1：</strong>简支梁l=6m，跨中集中力P=30kN。用图乘法求跨中竖向位移。</p>
-                                <details><summary>💡 查看答案</summary><div class="answer-content">
-                                    <p><strong>M<sub>P</sub>图：</strong>三角形，M<sub>max</sub>=45kN·m</p>
-                                    <p><strong>M̄图：</strong>三角形，y<sub>max</sub>=1.5m</p>
-                                    <p><strong>图乘：</strong>Δ<sub>C</sub> = 135×1.5/EI = 202.5/EI (↓)</p>
-                                </div></details>
-                            </div>
-                            <div class="practice-problem">
-                                <p><span class="problem-tag medium">核心</span><strong>题2：</strong>简支梁l=8m，满跨均布荷载q=15kN/m。求跨中竖向位移和A端转角。</p>
-                                <details><summary>💡 查看答案</summary><div class="answer-content">
-                                    <p><strong>M<sub>P</sub>图：</strong>抛物线，M<sub>max</sub>=120kN·m，面积ω=640</p>
-                                    <p><strong>跨中位移：</strong>Δ<sub>C</sub> = 640×2/EI = 64mm (↓)</p>
-                                    <p><strong>A端转角：</strong>θ<sub>A</sub> = 640×0.5/EI = 0.016rad</p>
-                                </div></details>
-                            </div>
-                            <div class="practice-problem">
-                                <p><span class="problem-tag hard">考试热点</span><strong>题3：</strong>简支桁架，跨度12m，高度3m，中间上弦结点受P=40kN。求该点竖向位移。</p>
-                                <details><summary>💡 查看答案</summary><div class="answer-content">
-                                    <p><strong>桁架位移公式：</strong>Δ = ΣN̄N<sub>P</sub>l/(EA)</p>
-                                    <p><strong>计算步骤：</strong>先求N<sub>P</sub>和N̄，再逐杆计算求和</p>
-                                    <p><strong>结果：</strong>Δ ≈ 1.53mm (↓)</p>
-                                </div></details>
-                            </div>
-</div>
-                    </div>
-                    </div>
                 </div>
 
                 <!-- ===== 其他科目占位 ===== -->
