@@ -1,0 +1,59 @@
+<svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <!-- 第7讲 题3：无侧移门式刚架，柱底A/D固定，横梁BC受均布荷载 q=20kN/m -->
+  <text x="310" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">题3：无侧移刚架 力矩分配法</text>
+  <line x1="150" y1="282" x2="150" y2="150" stroke="#334155" stroke-width="3.5"/>
+  <line x1="470" y1="282" x2="470" y2="150" stroke="#334155" stroke-width="3.5"/>
+  <line x1="150" y1="150" x2="470" y2="150" stroke="#334155" stroke-width="3.5"/>
+  <line x1="150" y1="100" x2="470" y2="100" stroke="#ef4444" stroke-width="2"/>
+  <line x1="158" y1="100" x2="158" y2="143" stroke="#ef4444" stroke-width="1.6"/>
+  <polygon points="158,148 154,139 162,139" fill="#ef4444"/>
+  <line x1="189" y1="100" x2="189" y2="143" stroke="#ef4444" stroke-width="1.6"/>
+  <polygon points="189,148 185,139 193,139" fill="#ef4444"/>
+  <line x1="220" y1="100" x2="220" y2="143" stroke="#ef4444" stroke-width="1.6"/>
+  <polygon points="220,148 216,139 224,139" fill="#ef4444"/>
+  <line x1="251" y1="100" x2="251" y2="143" stroke="#ef4444" stroke-width="1.6"/>
+  <polygon points="251,148 247,139 255,139" fill="#ef4444"/>
+  <line x1="282" y1="100" x2="282" y2="143" stroke="#ef4444" stroke-width="1.6"/>
+  <polygon points="282,148 278,139 286,139" fill="#ef4444"/>
+  <line x1="313" y1="100" x2="313" y2="143" stroke="#ef4444" stroke-width="1.6"/>
+  <polygon points="313,148 309,139 317,139" fill="#ef4444"/>
+  <line x1="344" y1="100" x2="344" y2="143" stroke="#ef4444" stroke-width="1.6"/>
+  <polygon points="344,148 340,139 348,139" fill="#ef4444"/>
+  <line x1="375" y1="100" x2="375" y2="143" stroke="#ef4444" stroke-width="1.6"/>
+  <polygon points="375,148 371,139 379,139" fill="#ef4444"/>
+  <line x1="406" y1="100" x2="406" y2="143" stroke="#ef4444" stroke-width="1.6"/>
+  <polygon points="406,148 402,139 410,139" fill="#ef4444"/>
+  <line x1="437" y1="100" x2="437" y2="143" stroke="#ef4444" stroke-width="1.6"/>
+  <polygon points="437,148 433,139 441,139" fill="#ef4444"/>
+  <text x="310" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#ef4444">q = 20kN/m</text>
+  <text x="124" y="156" font-size="14" font-weight="600" fill="#334155">B</text>
+  <text x="482" y="156" font-size="14" font-weight="600" fill="#334155">C</text>
+  <text x="124" y="288" font-size="14" font-weight="600" fill="#334155">A</text>
+  <text x="482" y="288" font-size="14" font-weight="600" fill="#334155">D</text>
+  <circle cx="150" cy="150" r="4.5" fill="#334155"/>
+  <circle cx="470" cy="150" r="4.5" fill="#334155"/>
+  <text x="164" y="174" font-size="10.5" fill="#64748b">B刚接</text>
+  <text x="418" y="174" font-size="10.5" fill="#64748b">C刚接</text>
+  <line x1="126" y1="282" x2="174" y2="282" stroke="#334155" stroke-width="2.5"/>
+  <line x1="136" y1="282" x2="130" y2="290" stroke="#334155" stroke-width="1.2"/>
+  <line x1="144" y1="282" x2="138" y2="290" stroke="#334155" stroke-width="1.2"/>
+  <line x1="152" y1="282" x2="146" y2="290" stroke="#334155" stroke-width="1.2"/>
+  <line x1="160" y1="282" x2="154" y2="290" stroke="#334155" stroke-width="1.2"/>
+  <line x1="168" y1="282" x2="162" y2="290" stroke="#334155" stroke-width="1.2"/>
+  <line x1="446" y1="282" x2="494" y2="282" stroke="#334155" stroke-width="2.5"/>
+  <line x1="456" y1="282" x2="450" y2="290" stroke="#334155" stroke-width="1.2"/>
+  <line x1="464" y1="282" x2="458" y2="290" stroke="#334155" stroke-width="1.2"/>
+  <line x1="472" y1="282" x2="466" y2="290" stroke="#334155" stroke-width="1.2"/>
+  <line x1="480" y1="282" x2="474" y2="290" stroke="#334155" stroke-width="1.2"/>
+  <line x1="488" y1="282" x2="482" y2="290" stroke="#334155" stroke-width="1.2"/>
+  <text x="150" y="304" text-anchor="middle" font-size="10.5" fill="#64748b">固定端</text>
+  <text x="470" y="304" text-anchor="middle" font-size="10.5" fill="#64748b">固定端</text>
+  <line x1="150" y1="330" x2="470" y2="330" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="150" y1="324" x2="150" y2="336" stroke="#64748b" stroke-width="1"/>
+  <line x1="470" y1="324" x2="470" y2="336" stroke="#64748b" stroke-width="1"/>
+  <text x="310" y="348" text-anchor="middle" font-size="12" fill="#64748b">l = 8m</text>
+  <line x1="100" y1="150" x2="100" y2="282" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="94" y1="150" x2="106" y2="150" stroke="#64748b" stroke-width="1"/>
+  <line x1="94" y1="282" x2="106" y2="282" stroke="#64748b" stroke-width="1"/>
+  <text x="88" y="220" text-anchor="end" font-size="12" fill="#64748b">h = 4m</text>
+</svg>
