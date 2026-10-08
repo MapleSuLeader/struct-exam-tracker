@@ -1,0 +1,69 @@
+<svg viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <!-- 第3讲 题3：简支桁架（king-post），跨度12m，高3m，D点受P=40kN -->
+  <text x="320" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">题3：简支桁架 D 点竖向位移</text>
+
+  <!-- 杆件 -->
+  <!-- 下弦 A-B, B-C -->
+  <line x1="80" y1="220" x2="320" y2="220" stroke="#334155" stroke-width="3"/>
+  <line x1="320" y1="220" x2="560" y2="220" stroke="#334155" stroke-width="3"/>
+  <!-- 斜上弦 A-D, C-D -->
+  <line x1="80" y1="220" x2="320" y2="100" stroke="#334155" stroke-width="3"/>
+  <line x1="560" y1="220" x2="320" y2="100" stroke="#334155" stroke-width="3"/>
+  <!-- 竖腹杆 B-D -->
+  <line x1="320" y1="220" x2="320" y2="100" stroke="#334155" stroke-width="3"/>
+
+  <!-- 结点 -->
+  <circle cx="80" cy="220" r="5" fill="white" stroke="#334155" stroke-width="2"/>
+  <circle cx="320" cy="220" r="5" fill="white" stroke="#334155" stroke-width="2"/>
+  <circle cx="560" cy="220" r="5" fill="white" stroke="#334155" stroke-width="2"/>
+  <circle cx="320" cy="100" r="5" fill="white" stroke="#334155" stroke-width="2"/>
+
+  <!-- 结点标注 -->
+  <text x="58" y="228" font-size="14" font-weight="600" fill="#334155">A</text>
+  <text x="330" y="243" font-size="14" font-weight="600" fill="#334155">B</text>
+  <text x="574" y="228" font-size="14" font-weight="600" fill="#334155">C</text>
+  <text x="298" y="98" font-size="14" font-weight="600" fill="#334155">D</text>
+
+  <!-- 杆件标注 -->
+  <text x="176" y="152" font-size="11" fill="#64748b" transform="rotate(-26.57 190 148)">AD（斜上弦）</text>
+  <text x="404" y="140" font-size="11" fill="#64748b" transform="rotate(26.57 420 148)">DC（斜上弦）</text>
+  <text x="326" y="164" font-size="11" fill="#64748b">BD（竖杆）</text>
+  <text x="180" y="212" font-size="11" fill="#64748b" text-anchor="middle">AB</text>
+  <text x="460" y="212" font-size="11" fill="#64748b" text-anchor="middle">BC</text>
+
+  <!-- A支座（固定铰） -->
+  <polygon points="80,220 66,244 94,244" fill="none" stroke="#334155" stroke-width="2"/>
+  <line x1="60" y1="247" x2="100" y2="247" stroke="#334155" stroke-width="2"/>
+  <line x1="66" y1="247" x2="60" y2="255" stroke="#334155" stroke-width="1.2"/>
+  <line x1="76" y1="247" x2="70" y2="255" stroke="#334155" stroke-width="1.2"/>
+  <line x1="86" y1="247" x2="80" y2="255" stroke="#334155" stroke-width="1.2"/>
+  <line x1="96" y1="247" x2="90" y2="255" stroke="#334155" stroke-width="1.2"/>
+
+  <!-- C支座（可动铰） -->
+  <polygon points="560,220 546,244 574,244" fill="none" stroke="#334155" stroke-width="2"/>
+  <circle cx="560" cy="248" r="3.5" fill="white" stroke="#334155" stroke-width="1.5"/>
+  <line x1="542" y1="254" x2="578" y2="254" stroke="#334155" stroke-width="2"/>
+  <line x1="548" y1="254" x2="542" y2="262" stroke="#334155" stroke-width="1.2"/>
+  <line x1="558" y1="254" x2="552" y2="262" stroke="#334155" stroke-width="1.2"/>
+  <line x1="568" y1="254" x2="562" y2="262" stroke="#334155" stroke-width="1.2"/>
+
+  <!-- 荷载 P=40kN（作用于D，竖直向下） -->
+  <line x1="320" y1="44" x2="320" y2="90" stroke="#ef4444" stroke-width="2.5"/>
+  <polygon points="320,96 315,84 325,84" fill="#ef4444"/>
+  <text x="332" y="52" font-size="12" font-weight="700" fill="#ef4444" text-anchor="start">P = 40kN</text>
+
+  <!-- 尺寸标注：下弦两段 6m+6m -->
+  <line x1="80" y1="286" x2="320" y2="286" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="80" y1="280" x2="80" y2="292" stroke="#64748b" stroke-width="1"/>
+  <line x1="320" y1="280" x2="320" y2="292" stroke="#64748b" stroke-width="1"/>
+  <text x="200" y="302" text-anchor="middle" font-size="12" fill="#64748b">6m</text>
+  <line x1="320" y1="286" x2="560" y2="286" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="560" y1="280" x2="560" y2="292" stroke="#64748b" stroke-width="1"/>
+  <text x="440" y="302" text-anchor="middle" font-size="12" fill="#64748b">6m</text>
+
+  <!-- 尺寸标注：高度 3m -->
+  <line x1="600" y1="100" x2="600" y2="220" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="594" y1="100" x2="606" y2="100" stroke="#64748b" stroke-width="1"/>
+  <line x1="594" y1="220" x2="606" y2="220" stroke="#64748b" stroke-width="1"/>
+  <text x="614" y="164" font-size="12" fill="#64748b">h=3m</text>
+</svg>

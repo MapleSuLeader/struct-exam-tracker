@@ -877,11 +877,16 @@
                                 </div></details>
                             </div>
                             <div class="practice-problem">
-                                <p><span class="problem-tag hard">考试热点</span><strong>题3：</strong>简支桁架，跨度12m，高度3m，中间上弦结点受P=40kN。求该点竖向位移。</p>
+                                <p><span class="problem-tag hard">考试热点</span><strong>题3：</strong>简支桁架（king-post式）：下弦A-B-C，AB=BC=6m；结点D在跨中B正上方高3m处；杆件AD、DC（斜上弦，长各3√5≈6.71m），AB、BC（下弦），BD（竖腹杆）；A铰支座，C滚轴支座；P=40kN竖直向下作用于D点。各杆EA=10⁵kN。求D点竖向位移。</p>
+                                <div class="practice-illustration">
+                                    <img src="images/truss-3p3.svg" alt="题3图示：king-post简支桁架，跨度12m，高3m，D点受P=40kN" style="max-width: 100%; height: auto; border-radius: 8px;">
+                                </div>
                                 <details><summary>💡 查看答案</summary><div class="answer-content">
                                     <p><strong>桁架位移公式：</strong>Δ = ΣN̄N<sub>P</sub>l/(EA)</p>
-                                    <p><strong>计算步骤：</strong>先求N<sub>P</sub>和N̄，再逐杆计算求和</p>
-                                    <p><strong>结果：</strong>Δ ≈ 1.53mm (↓)</p>
+                                    <p><strong>N<sub>P</sub>：</strong>F<sub>A</sub>=F<sub>C</sub>=20kN；结点A：N<sub>AD</sub>=−20√5≈−44.7kN（压），N<sub>AB</sub>=+40kN（拉）；C侧对称；结点B两下弦共线无外力 → <strong>BD为零杆</strong></p>
+                                    <p><strong>N̄（D点P̄=1）：</strong>N̄<sub>AD</sub>=N̄<sub>CD</sub>=−√5/2，N̄<sub>AB</sub>=N̄<sub>CB</sub>=+1，N̄<sub>BD</sub>=0</p>
+                                    <p><strong>求和 N̄N<sub>P</sub>l：</strong>斜杆 2×(√5/2)(20√5)(3√5)=300√5≈670.8；下弦 2×(1)(40)(6)=480；合计≈1150.8 kN·m</p>
+                                    <p><strong>结果：</strong>Δ<sub>D</sub> = 1150.8/EA = 1150.8/10⁵ m ≈ 11.5mm (↓)</p>
                                 </div></details>
                             </div>
 </div>
