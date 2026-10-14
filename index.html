@@ -251,7 +251,7 @@
                 <!-- 课程分类 -->
                 <div class="subject-selector">
                     <button class="subject-btn active" data-subject="mechanics"><span class="subject-icon">🔧</span><span class="subject-name">结构力学</span><span class="subject-count">4</span></button>
-                    <button class="subject-btn" data-subject="concrete"><span class="subject-icon">🧱</span><span class="subject-name">混凝土</span><span class="subject-count">0</span></button>
+                    <button class="subject-btn" data-subject="concrete"><span class="subject-icon">🧱</span><span class="subject-name">混凝土</span><span class="subject-count">1</span></button>
                     <button class="subject-btn" data-subject="steel"><span class="subject-icon">🏗️</span><span class="subject-name">钢结构</span><span class="subject-count">0</span></button>
                     <button class="subject-btn" data-subject="masonry"><span class="subject-icon">🏠</span><span class="subject-name">砌体</span><span class="subject-count">0</span></button>
                     <button class="subject-btn" data-subject="bridge"><span class="subject-icon">🌉</span><span class="subject-name">桥梁</span><span class="subject-count">0</span></button>
@@ -1523,7 +1523,121 @@
                 </div>
 
                 <!-- ===== 其他科目占位 ===== -->
-                <div class="subject-content" id="subject-concrete"><div class="empty-subject"><div class="empty-icon">🧱</div><h3>混凝土结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
+                <div class="subject-content" id="subject-concrete">
+                    <div class="notes-tabs">
+                        <button class="note-tab active" data-lecture="c1">第1讲 材料性能与设计原则</button>
+                    </div>
+
+                    <!-- ===== 混凝土第1讲 ===== -->
+                    <div class="cornell-note active" id="note-c1">
+                        <div class="note-header"><h2>混凝土第1讲 材料性能与设计原则</h2><span class="note-date">2026-10-14</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+                        <div class="cornell-layout">
+                            <div class="cornell-cue">
+                                <h4>🔑 核心概念</h4>
+                                <ul>
+                                    <li data-section="s1"><strong>材料强度设计值</strong>：fc/ft、钢筋 fsy</li>
+                                    <li data-section="s2"><strong>等效矩形应力图</strong>：α1、β1，以C50为界</li>
+                                    <li data-section="s3"><strong>界限受压区高度 ξb</strong>：防超筋</li>
+                                    <li data-section="s4"><strong>最小配筋率 ρmin</strong>：防少筋，"开裂即破坏"</li>
+                                    <li data-section="s5"><strong>设计表达式</strong>：γ0 与 γRE 不同时考虑</li>
+                                </ul>
+                                <h4>❓ 关键问题</h4>
+                                <ol>
+                                    <li data-section="s1">fc、ft、fsy 去哪张表查？</li>
+                                    <li data-section="s2">α1/β1 什么时候不是 1.0/0.80？</li>
+                                    <li data-section="s3">ξb 公式里 εcu 怎么取？</li>
+                                    <li data-section="s4">ρmin 的底面积用 bh 还是 bh0？T形怎么扣？</li>
+                                    <li data-section="s5">γ0 乘在哪边？γRE 除在哪边？</li>
+                                </ol>
+                            </div>
+                            <div class="cornell-notes">
+<div class="note-section" id="s1">
+<h3>一、材料强度设计值</h3>
+                                <div class="formula-box">
+                                    <p><strong>混凝土：</strong>fc（轴心抗压）、ft（轴心抗拉）——《混规》表4.1.3-1，按强度等级查</p>
+                                    <p><strong>钢筋 fsy：</strong>HPB300=270，HRB335=300，HRB400=360，HRB500=435 N/mm²</p>
+                                </div>
+                                <div class="warning-box">⚠️ 考试给的是强度等级（如C30），设计值要自己查表，别记错抗压/抗拉</div>
+</div>
+
+<div class="note-section" id="s2">
+<h3>二、等效矩形应力图（《混规》6.2.6条）</h3>
+                                <div class="formula-box">
+                                    <p>应力图宽度（峰值）= <strong>α1·fc</strong>；受压区高度 <strong>x = β1·xn</strong></p>
+                                    <table class="compact-table"><tr><th>混凝土等级</th><th>α1</th><th>β1</th></tr><tr><td>≤C50</td><td>1.0</td><td>0.80</td></tr><tr><td>C80</td><td>0.94</td><td>0.74</td></tr><tr><td>C50~C80</td><td colspan="2">线性内插</td></tr></table>
+                                    <p>"等效"含义：合力大小相等 + 合力作用位置相同</p>
+                                </div>
+</div>
+
+<div class="note-section" id="s3">
+<h3>三、基本方程与界限条件</h3>
+                                <div class="formula-box">
+                                    <p>ΣN=0：α1·fc·b·x = fy·As</p>
+                                    <p>ΣM=0：M ≤ α1·fc·b·x·(h0 − x/2)</p>
+                                    <p><strong>ξb = β1 / (1 + fsy/(Es·εcu))</strong>；εcu：≤C50 取 0.0033，C80 取 0.0030</p>
+                                    <p>适用条件：<strong>x ≤ ξb·h0</strong>（防超筋）；As ≥ ρmin·b·h（防少筋）</p>
+                                </div>
+                                <div class="warning-box">⚠️ 双筋、T形、偏压、偏拉本质都是这两个平衡方程，第2~4讲会反复用</div>
+</div>
+
+<div class="note-section" id="s4">
+<h3>四、配筋率与最小配筋率（《混规》8.5节）</h3>
+                                <div class="formula-box">
+                                    <p>计算承载力时：ρ = As / (b·h0)　｜　配筋率校核时：ρmin 底面积 = <strong>b·h</strong>（全截面）</p>
+                                    <p>受弯非抗震：<strong>ρmin = max(0.2%, 45ft/fy)</strong></p>
+                                    <p>T形/工字形（表8.5.1注5）：底面积 = 全截面 − (bf′−b)·hf′</p>
+                                    <p>概念依据："开裂即破坏"——开裂前保护层混凝土也参与受拉，故用全截面 bh</p>
+                                </div>
+</div>
+
+<div class="note-section" id="s5">
+<h3>五、设计表达式（非抗震 vs 抗震）</h3>
+                                <div class="formula-box">
+                                    <p><strong>非抗震：</strong>γ0·S ≤ R　（γ0：一级1.1 / 二级1.0 / 三级0.9，《混规》3.3.2条）</p>
+                                    <p><strong>抗震：</strong>S ≤ R / γRE</p>
+                                    <table class="compact-table"><tr><th>构件状态</th><th>γRE</th></tr><tr><td>受弯</td><td>0.75</td></tr><tr><td>偏压 ξn≤0.15 / ξn&gt;0.15</td><td>0.75 / 0.80</td></tr><tr><td>轴拉、受剪</td><td>0.85</td></tr><tr><td>局部受压</td><td>1.0</td></tr></table>
+                                    <p>（混规表11.1.6）</p>
+                                </div>
+                                <div class="warning-box">⚠️ 吴伟河原文强调：γ0 与 γRE 针对不同状况，<strong>两个系数不同时考虑</strong>。γ0 乘在作用侧，γRE 除在承载力侧</div>
+</div>
+</div>
+                            <div class="cornell-summary">
+                                <h4>📝 总结</h4>
+                                <p><strong>一句话：</strong>本讲是混规"第0章"——查表得强度（fc/fy），应力图化矩形（α1/β1），两个平衡方程配钢筋（x≤ξb·h0 防超筋，As≥ρmin·bh 防少筋），最后套对设计表达式（非抗震γ0乘作用，抗震γRE除承载）。</p>
+                                <h4>⚠️ 易错点</h4>
+                                <ol><li>ρmin 校核用 bh，承载力计算用 bh0，两套配筋率别混</li><li>γ0 与 γRE 不同时考虑</li><li>α1/β1 与 εcu 都以 C50 为界，C50~C80 线性内插</li><li>T形 ρmin 底面积要扣受压翼缘 (bf′−b)·hf′</li></ol>
+                            </div>
+                        </div>
+<div class="practice-section">
+                            <h4>📝 练习题（5道）</h4>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题1（概念）：</strong>关于等效矩形应力图系数 α1、β1，混凝土强度等级 ≤C50 时应取：</p>
+                                <div class="options"><p>A. α1=0.94, β1=0.74　B. α1=1.0, β1=0.80　C. α1=1.0, β1=0.74　D. α1=0.94, β1=0.80</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>≤C50 取 α1=1.0、β1=0.80；C80 取 0.94/0.74；C50~C80 之间线性内插。</p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题2：</strong>矩形截面梁 b×h=250mm×500mm，混凝土C30（ft=1.43N/mm²），HRB400 纵筋（fy=360N/mm²），非抗震。求受拉钢筋最小配筋面积 As,min。</p>
+                                <div class="options"><p>A. 179mm²　B. 250mm²　C. 288mm²　D. 313mm²</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>ρmin = max(0.2%, 45ft/fy) = max(0.2%, 45×1.43/360=0.179%) = 0.2%</p><p>As,min = 0.2% × b × h = 0.2% × 250 × 500 = <strong>250mm²</strong>（注意底面积用全截面 bh）</p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">进阶</span><strong>题3：</strong> T形梁 bf′=1100mm，hf′=120mm，b=250mm，h=650mm，C30，HRB400，非抗震受弯。求一侧受拉钢筋最小配筋面积。</p>
+                                <div class="options"><p>A. 325mm²　B. 375mm²　C. 410mm²　D. 471mm²</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>底面积 = 全截面 − (bf′−b)·hf′ = 1100×120 + 250×530 − (1100−250)×120 = 205000mm²</p><p>ρmin = max(0.2%, 0.179%) = 0.2% → As,min = 0.2% × 205000 = <strong>410mm²</strong></p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题4（概念）：</strong>某安全等级为二级的非抗震构件，其结构重要性系数 γ0 应取：</p>
+                                <div class="options"><p>A. 1.2　B. 1.05　C. 1.1　D. 1.0</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：D</strong></p><p>《混规》3.3.2：一级 γ0≥1.1，二级 γ0=1.0，三级 0.9。二级安全等级取 <strong>1.0</strong>。</p><p>⚠️ 笔记原标答"1.1/C"有误，已修正——记牢：1.1/1.0/0.9 对应 一/二/三级。</p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">进阶</span><strong>题5：</strong>抗震框架梁支座截面剪力组合设计值 V=250kN，承载力抗震调整系数 γRE=0.85。问非抗震受剪承载力设计值 Rd 至少应满足多少？</p>
+                                <div class="options"><p>A. 212.5kN　B. 250kN　C. 265kN　D. 294kN</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：A</strong></p><p>抗震表达式 S ≤ R/γRE，两边乘 γRE 等价于 <strong>γRE·S ≤ R</strong>（地震为稀有事件，可靠度指标要求低于非抗震，γRE 是作用效应的折减）。</p><p>Rd ≥ γRE·V = 0.85 × 250 = <strong>212.5kN</strong></p><p>⚠️ 移项方向是最易错点：需的是 γRE·V（212.5），不是 V/γRE（294）。笔记原答案"265kN/C"为移项错误，已修正。</p></div></details>
+                            </div>
+</div>
+                    </div>
+                </div>
                 <div class="subject-content" id="subject-steel"><div class="empty-subject"><div class="empty-icon">🏗️</div><h3>钢结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
                 <div class="subject-content" id="subject-masonry"><div class="empty-subject"><div class="empty-icon">🏠</div><h3>砌体结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
                 <div class="subject-content" id="subject-bridge"><div class="empty-subject"><div class="empty-icon">🌉</div><h3>桥梁工程</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>

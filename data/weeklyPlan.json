@@ -160,13 +160,14 @@
   "2026-10-12": {
     "subject": "混凝土结构",
     "topic": "第1讲：材料性能 + 设计原则",
-    "status": "planned",
-    "notes": "混凝土结构正式开⏫ 主力科目启动"
+    "status": "completed",
+    "notes": "混凝土开讲，实际完成于10-14"
   },
   "2026-10-13": {
     "subject": "混凝土结构",
     "topic": "复习第1讲：材料性能 + 设计原则",
-    "status": "planned"
+    "status": "completed",
+    "notes": "随开讲顺延，10-14完成"
   },
   "2026-10-14": {
     "subject": "混凝土结构",
