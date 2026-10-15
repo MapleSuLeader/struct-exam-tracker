@@ -251,7 +251,7 @@
                 <!-- 课程分类 -->
                 <div class="subject-selector">
                     <button class="subject-btn active" data-subject="mechanics"><span class="subject-icon">🔧</span><span class="subject-name">结构力学</span><span class="subject-count">4</span></button>
-                    <button class="subject-btn" data-subject="concrete"><span class="subject-icon">🧱</span><span class="subject-name">混凝土</span><span class="subject-count">1</span></button>
+                    <button class="subject-btn" data-subject="concrete"><span class="subject-icon">🧱</span><span class="subject-name">混凝土</span><span class="subject-count">3</span></button>
                     <button class="subject-btn" data-subject="steel"><span class="subject-icon">🏗️</span><span class="subject-name">钢结构</span><span class="subject-count">0</span></button>
                     <button class="subject-btn" data-subject="masonry"><span class="subject-icon">🏠</span><span class="subject-name">砌体</span><span class="subject-count">0</span></button>
                     <button class="subject-btn" data-subject="bridge"><span class="subject-icon">🌉</span><span class="subject-name">桥梁</span><span class="subject-count">0</span></button>
@@ -1526,6 +1526,8 @@
                 <div class="subject-content" id="subject-concrete">
                     <div class="notes-tabs">
                         <button class="note-tab active" data-lecture="c1">第1讲 材料性能与设计原则</button>
+                        <button class="note-tab" data-lecture="c2">第2讲 受弯构件正截面承载力</button>
+                        <button class="note-tab" data-lecture="c3">第3讲 受弯构件斜截面承载力</button>
                     </div>
 
                     <!-- ===== 混凝土第1讲 ===== -->
@@ -1638,6 +1640,230 @@
 </div>
                     </div>
                 </div>
+
+                    <!-- ===== 混凝土第2讲 ===== -->
+                    <div class="cornell-note" id="note-c2">
+                        <div class="note-header"><h2>混凝土第2讲 受弯构件正截面承载力</h2><span class="note-date">2026-10-16</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+                        <div class="cornell-layout">
+                            <div class="cornell-cue">
+                                <h4>🔑 核心概念</h4>
+                                <ul>
+                                    <li data-section="s1"><strong>单筋矩形两套流程</strong>：已知M求As / 已知As求Mu</li>
+                                    <li data-section="s2"><strong>双筋截面</strong>：x&gt;ξb·h0 且截面不能放大时引入 As′</li>
+                                    <li data-section="s3"><strong>x&lt;2a′ 处理</strong>：《混规》6.2.14，对受压筋取矩</li>
+                                    <li data-section="s4"><strong>T形两类判别</strong>：中和轴在翼缘内=第一类</li>
+                                    <li data-section="s5"><strong>翼缘计算宽度 bf′</strong>：《混规》表5.2.4 取最小值</li>
+                                </ul>
+                                <h4>❓ 关键问题</h4>
+                                <ol>
+                                    <li data-section="s1">配筋式 x 的求法和复核式差在哪？</li>
+                                    <li data-section="s2">受压钢筋充分利用的前提条件是什么？</li>
+                                    <li data-section="s3">x&lt;2a′ 时公式里为什么出现 h−as−as′？</li>
+                                    <li data-section="s4">配筋计算和截面复核的判别式各用哪个？</li>
+                                    <li data-section="s5">bf′ 按哪三个因素确定？</li>
+                                </ol>
+                            </div>
+                            <div class="cornell-notes">
+<div class="note-section" id="s1">
+<h3>一、单筋矩形截面：两类计算流程</h3>
+                                <div class="formula-box">
+                                    <p><strong>配筋计算（已知M求As）：</strong></p>
+                                    <p>x = h0 − √[h0² − 2γ0M/(α1·fc·b)]，要求 x ≤ ξb·h0</p>
+                                    <p>As = α1·fc·b·x / fy，再校核 As ≥ ρmin·b·h</p>
+                                    <p><strong>截面复核（已知As求Mu）：</strong></p>
+                                    <p>x = fy·As/(α1·fc·b)；x&gt;ξb·h0 时取 x=ξb·h0</p>
+                                    <p>Mu = α1·fc·b·x·(h0 − x/2)，验算 γ0·M ≤ Mu</p>
+                                </div>
+                                <div class="warning-box">⚠️ x&gt;ξb·h0 且截面/混凝土等级不能改 → 转双筋；抗震计算把 γ0M 换成 γRE·M（γRE=0.75 受弯）</div>
+</div>
+
+<div class="note-section" id="s2">
+<h3>二、双筋矩形截面（《混规》6.2.10）</h3>
+                                <div class="formula-box">
+                                    <p>ΣN=0：α1·fc·b·x + fy′·As′ = fy·As</p>
+                                    <p>ΣM=0：γ0·M ≤ α1·fc·b·x·(h0−x/2) + fy′·As′·(h0−as′)</p>
+                                    <p>适用前提：<strong>x ≤ ξb·h0 且 x ≥ 2a′</strong>（保证受压筋屈服、应力取 fy′）</p>
+                                    <p>配筋流程：M1 = γ0M − fy′As′(h0−as′) → 用 M1 按单筋求 x → As = (α1·fc·b·x + fy′·As′)/fy</p>
+                                </div>
+                                <div class="warning-box">⚠️ 抗震框架梁端截面附加要求：x ≤ 0.25h0（一级）、x ≤ 0.35h0（二、三级）</div>
+</div>
+
+<div class="note-section" id="s3">
+<h3>三、x&lt;2a′ 的处理（《混规》6.2.14）</h3>
+                                <div class="formula-box">
+                                    <p>x&lt;2a′ → 受压筋应变小、不屈服 → 近似取 x=2a′，<strong>弯矩对受压筋合力点取矩</strong>：</p>
+                                    <p>配筋：As = γ0M / [fy·(h − as − as′)]</p>
+                                    <p>复核：Mu = fy·As·(h − as − as′)（抗震再除 γRE）</p>
+                                </div>
+</div>
+
+<div class="note-section" id="s4">
+<h3>四、T形截面两类判别与计算（《混规》6.2.11）</h3>
+                                <div class="formula-box">
+                                    <p><strong>判别</strong>：中和轴在翼缘内（x ≤ hf′）= 第一类，按宽 bf′ 的矩形算；中和轴入肋（x&gt;hf′）= 第二类</p>
+                                    <p>配筋式判别：α1·fc·bf′·hf′·(h0−hf′/2) ≥ γ0M → 第一类</p>
+                                    <p>复核式判别：α1·fc·bf′·hf′ ≥ fy·As → 第一类</p>
+                                    <p><strong>第二类配筋</strong>：M1 = α1·fc·(bf′−b)·hf′·(h0−hf′/2)；x = h0 − √[h0² − 2(γ0M−M1)/(α1·fc·b)]</p>
+                                    <p>As = α1·fc·[b·x + (bf′−b)·hf′] / fy</p>
+                                    <p>箱形、工字形、槽形、倒L形均可等效为T形处理</p>
+                                </div>
+</div>
+
+<div class="note-section" id="s5">
+<h3>五、翼缘计算宽度 bf′（《混规》表5.2.4）</h3>
+                                <div class="formula-box">
+                                    <p>三因素控制，<strong>取最小值</strong>：①计算跨度 l0：肋形梁 l0/3，倒L形肋形梁 l0/6；②梁肋净距 sn：b+sn（肋形）、b+sn/2（倒L）；③翼缘高度 hf′/h0：≥0.1 时 b+12hf′；0.05~0.1 时肋形 b+12hf′/独立梁 b+6hf′；&lt;0.05 时肋形 b+12hf′/独立 b+5hf′</p>
+                                    <p>影响翼缘有效性的本质：离肋越远的翼缘参与受力越差（剪滞）</p>
+                                </div>
+                                <div class="warning-box">⚠️ 独立梁（不与楼板整浇）受压翼缘可能沿纵肋开裂时，计算宽度只取 b</div>
+</div>
+</div>
+                            <div class="cornell-summary">
+                                <h4>📝 总结</h4>
+                                <p><strong>一句话：</strong>正截面承载力全是"两个平衡方程+适用条件"的变体——单筋是母版（x≤ξb·h0、As≥ρmin·bh）；双筋加一项 fy′As′(h0−as′)，x≥2a′ 才计受压筋，否则对受压筋取矩；T形先判类型，第一类当 bf′ 宽的矩形，第二类从弯矩里先扣掉翼缘挑出部分 (bf′−b)hf′，bf′ 查表5.2.4取最小。</p>
+                                <h4>⚠️ 易错点</h4>
+                                <ol><li>配筋式与复核式的 T形判别式不同（一个带 h0−hf′/2，一个不带）</li><li>x&lt;2a′ 用 h−as−as′ 力臂，不是 h0−as′</li><li>抗震端截面 x≤0.25/0.35h0 是延性要求，比 ξb 严</li><li>bf′ 三种情况取<strong>最小值</strong>，不是最大值</li></ol>
+                            </div>
+                        </div>
+<div class="practice-section">
+                            <h4>📝 练习题（5道）</h4>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题1（概念）：</strong>T形截面受弯构件，"已知受拉钢筋 As 复核承载力 Mu"时，第一/第二类T形截面的判别式是：</p>
+                                <div class="options"><p>A. α1·fc·bf′·hf′·(h0−hf′/2) ≥ M　B. α1·fc·bf′·hf′ ≥ fy·As　C. x ≤ hf′　D. fy·As ≥ α1·fc·bf′·hf′</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>复核式用合力比较：α1·fc·bf′·hf′ ≥ fy·As → 中和轴在翼缘内，第一类；A 是配筋计算式的判别形式。</p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">进阶</span><strong>题2：</strong>矩形梁 b×h=250mm×550mm，C30（fc=14.3N/mm²），HRB400（fy=360N/mm²），as=50mm，非抗震 γ0=1.0，弯矩设计值 M=150kN·m。求所需受拉钢筋面积 As。</p>
+                                <div class="options"><p>A. 780mm²　B. 918mm²　C. 1060mm²　D. 1250mm²</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>h0=500mm。2γ0M/(α1·fc·b) = 2×150×10⁶/(14.3×250) = 83,916mm²</p><p>x = 500 − √(250000 − 83916) = 500 − 407.5 = 92.5mm ≤ ξb·h0 = 0.518×500 = 259mm ✓</p><p>As = α1·fc·b·x/fy = 14.3×250×92.5/360 = <strong>918mm²</strong></p><p>校核：ρmin·b·h = 0.2%×250×550 = 275mm² &lt; 918mm² ✓</p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">进阶</span><strong>题3：</strong>T形梁 bf′=600mm，hf′=120mm，b=250mm，h=700mm（as=60mm），C30，HRB400，非抗震，M=500kN·m。判断类型并求 As。</p>
+                                <div class="options"><p>A. 第一类，As=2353mm²　B. 第二类，As=2353mm²　C. 第一类，As=2900mm²　D. 第二类，As=2900mm²</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：A</strong></p><p>h0=640mm。α1·fc·bf′·hf′·(h0−hf′/2) = 14.3×600×120×580 = 597kN·m &gt; 500kN·m → <strong>第一类</strong>，按 600mm 宽矩形。</p><p>x = 640 − √(640² − 2×500×10⁶/(14.3×600)) = 640 − √(409600−116550) = 640 − 541.3 = 98.7mm（≤hf′=120 ✓）</p><p>As = 14.3×600×98.7/360 = <strong>2353mm²</strong></p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题4（概念）：</strong>双筋矩形截面计算中，不满足 x≥2a′ 时按《混规》6.2.14条处理，其近似做法是：</p>
+                                <div class="options"><p>A. 忽略受压钢筋，按单筋计算　B. 取 x=2a′，对受压钢筋合力点取矩　C. 取 x=ξb·h0　D. 加大截面重新计算</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>x&lt;2a′ 时受压筋应力达不到 fy′，近似取 x=2a′、受压区合力与受压筋合力重合，对受压筋合力点取矩：As = γ0M/[fy·(h−as−as′)]。</p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag hard">考试热点</span><strong>题5：</strong>抗震框架梁矩形截面 b×h=250mm×550mm（as=50mm），C30，HRB400，受拉钢筋 As=1520mm²（4Φ22）。求该支座截面考虑抗震的正截面受弯承载力设计值 Mu（γRE=0.75）。</p>
+                                <div class="options"><p>A. 232kN·m　B. 309kN·m　C. 255kN·m　D. 412kN·m</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>x = fy·As/(α1·fc·b) = 360×1520/(14.3×250) = 153.1mm ≤ ξb·h0 = 259mm ✓</p><p>M非 = 14.3×250×153.1×(500−76.6) = 231.7kN·m</p><p>抗震：Mu = M非/γRE = 231.7/0.75 = <strong>309kN·m</strong></p><p>⚠️ A（232）是没除 γRE 的陷阱值。</p></div></details>
+                            </div>
+</div>
+                    </div>
+
+                    <!-- ===== 混凝土第3讲 ===== -->
+                    <div class="cornell-note" id="note-c3">
+                        <div class="note-header"><h2>混凝土第3讲 受弯构件斜截面承载力</h2><span class="note-date">2026-10-16</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+                        <div class="cornell-layout">
+                            <div class="cornell-cue">
+                                <h4>🔑 核心概念</h4>
+                                <ul>
+                                    <li data-section="s1"><strong>三种斜截面破坏</strong>：斜压/剪压/斜拉</li>
+                                    <li data-section="s2"><strong>截面限制条件</strong>：6.3.1 防斜压（上限值）</li>
+                                    <li data-section="s3"><strong>受剪承载力公式</strong>：6.3.4，αcv 两种取值</li>
+                                    <li data-section="s4"><strong>最小配箍率</strong>：0.24ft/fyv，防斜拉</li>
+                                    <li data-section="s5"><strong>弯起钢筋/板类/箱形</strong>：0.8fyAsb·sinαs 等专题</li>
+                                </ul>
+                                <h4>❓ 关键问题</h4>
+                                <ol>
+                                    <li data-section="s1">三种破坏各靠什么措施控制？</li>
+                                    <li data-section="s2">hw/b 在 4~6 之间怎么处理？</li>
+                                    <li data-section="s3">什么时候 αcv=0.7，什么时候 1.75/(λ+1)？</li>
+                                    <li data-section="s4">什么条件下可不计算、只按构造配箍？</li>
+                                    <li data-section="s5">fyv 超过 360 怎么处理？</li>
+                                </ol>
+                            </div>
+                            <div class="cornell-notes">
+<div class="note-section" id="s1">
+<h3>一、斜截面三种破坏形态</h3>
+                                <div class="formula-box">
+                                    <p><strong>斜压破坏</strong>：剪跨比小/腹板薄，混凝土被斜向压碎 → 用<strong>截面限制条件</strong>（上限值）控制</p>
+                                    <p><strong>剪压破坏</strong>：适中配箍，斜裂缝延伸到剪压区 → <strong>计算公式的模型基础</strong></p>
+                                    <p><strong>斜拉破坏</strong>：无箍/箍筋过少，一裂即断 → 用<strong>最小配箍率+构造</strong>控制</p>
+                                </div>
+                                <div class="warning-box">⚠️ 概念题常客：三种破坏对应的控制手段一一对应，不要混</div>
+</div>
+
+<div class="note-section" id="s2">
+<h3>二、截面限制条件（《混规》6.3.1）</h3>
+                                <div class="formula-box">
+                                    <table class="compact-table"><tr><th>hw/b</th><th>V ≤</th></tr><tr><td>≤4</td><td>0.25·βc·fc·b·h0</td></tr><tr><td>4~6</td><td>线性内插</td></tr><tr><td>≥6</td><td>0.20·βc·fc·b·h0</td></tr></table>
+                                    <p>βc：混凝土强度影响系数，≤C50 取 1.0，C80 取 0.8，中间线性内插</p>
+                                    <p>不满足 → <strong>加箍筋没用</strong>，只能加大截面或提高混凝土等级</p>
+                                </div>
+</div>
+
+<div class="note-section" id="s3">
+<h3>三、受剪承载力基本公式（《混规》6.3.4）</h3>
+                                <div class="formula-box">
+                                    <p>V ≤ Vcs = αcv·ft·b·h0 + fyv·(Asv/s)·h0　（Asv = n·Asv1，同截面各肢合计）</p>
+                                    <p><strong>αcv：</strong>一般受弯构件取 0.7；集中荷载（对支座剪力占比≥75%）作用的<strong>独立梁</strong>取 1.75/(λ+1)，λ=a/h0，&lt;1.5 取 1.5、&gt;3 取 3</p>
+                                    <p>独立梁＝不与楼板整体浇筑的梁（如吊车梁）</p>
+                                    <p>fyv&gt;360N/mm² 时取 360（受剪/受扭/受冲切计算，《混规》4.2.3）</p>
+                                </div>
+</div>
+
+<div class="note-section" id="s4">
+<h3>四、配箍计算流程与构造界限</h3>
+                                <div class="formula-box">
+                                    <p>① 定 αcv → ② 判 V ≤ αcv·ft·b·h0 + 0.05Np0？满足则仅按 9.2.9 构造配箍 → ③ Asv/s ≥ (V − αcv·ft·b·h0)/(fyv·h0)</p>
+                                    <p>④ 选肢数 n 与间距 s：nAsv1/(b·s) ≥ ρsv,min = <strong>0.24·ft/fyv</strong></p>
+                                    <p>⑤ 校核截面限制条件（6.3.1）</p>
+                                </div>
+                                <div class="warning-box">⚠️ 抗震受剪：γRE=0.85；框架梁另有梁端剪力增大系数与"强剪弱弯"调整（第8讲展开）</div>
+</div>
+
+<div class="note-section" id="s5">
+<h3>五、弯起钢筋、板类与异形截面</h3>
+                                <div class="formula-box">
+                                    <p><strong>箍筋+弯起筋（6.3.5）：</strong>V ≤ Vcs + Vp + 0.8·fy·Asb·sinαs（系数 0.8：斜裂缝处弯起筋应力达不到 fy）</p>
+                                    <p>计算第一排弯起筋取支座边缘剪力；后一排取前一排弯起点处剪力（6.3.6）</p>
+                                    <p><strong>不配箍筋的一般板类（6.3.3）：</strong>V ≤ 0.7·βh·ft·b·h0，βh=(800/h0)^{1/4}，h0&lt;800 取 800、h0&gt;2000 取 2000</p>
+                                    <p><strong>箱形截面</strong>：按矩形流程，取 b = 2tw（一侧壁厚）</p>
+                                </div>
+</div>
+</div>
+                            <div class="cornell-summary">
+                                <h4>📝 总结</h4>
+                                <p><strong>一句话：</strong>斜截面=三道防线——先卡上限（0.25βc·fc·b·h0 防斜压），再算 Vcs=αcv·ft·bh0+fyv·(Asv/s)·h0（剪压模型），最后兜底最小配箍率 0.24ft/fyv（防斜拉）；αcv 记住 0.7 与 1.75/(λ+1) 两条线，弯起筋贡献乘 0.8sinα。</p>
+                                <h4>⚠️ 易错点</h4>
+                                <ol><li>λ 的 1.5~3.0 限值要查</li><li>fyv 上限 360 只限承载力计算，体积配箍率不受限</li><li>截面限制不满足时加箍筋无效</li><li>板类受剪公式不带箍筋项、带 βh</li></ol>
+                            </div>
+                        </div>
+<div class="practice-section">
+                            <h4>📝 练习题（5道）</h4>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题1（概念）：</strong>斜截面受剪承载力计算中，"截面限制条件（上限值）"旨在防止：</p>
+                                <div class="options"><p>A. 斜拉破坏　B. 剪压破坏　C. 斜压破坏（腹板混凝土压碎）　D. 弯曲破坏</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>上限值 0.25βc·fc·b·h0 控制斜压破坏；斜拉靠最小配箍率与构造；剪压是计算模型本身。</p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag easy">基础</span><strong>题2（概念）：</strong>集中荷载作用下独立梁（集中荷载对支座产生的剪力占总剪力 80%），剪跨比 λ=a/h0=2.0，αcv 应取：</p>
+                                <div class="options"><p>A. 0.7　B. 0.583　C. 0.437　D. 0.875</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>αcv = 1.75/(λ+1) = 1.75/3 = <strong>0.583</strong>。λ 在 1.5~3.0 之间，直接采用。</p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">进阶</span><strong>题3：</strong>矩形梁 b×h=250mm×500mm（as=40mm），C30（ft=1.43N/mm²），箍筋 HPB300（fyv=270N/mm²），一般受弯构件（αcv=0.7），剪力设计值 V=180kN。若采用双肢Φ8（Asv=100.5mm²），最大允许间距 s 与下列何值最接近？</p>
+                                <div class="options"><p>A. 150mm　B. 190mm　C. 250mm　D. 300mm</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>h0=460mm。混凝土项 = 0.7×1.43×250×460 = 115.2kN</p><p>Asv/s ≥ (180−115.2)×10³/(270×460) = 0.522mm²/mm → s ≤ 100.5/0.522 = 192mm，取 <strong>190mm</strong></p><p>校核：ρsv = 100.5/(250×190) = 0.212% ≥ 0.24ft/fyv = 0.127% ✓；截面 0.25×1.0×14.3×250×460 = 411kN &gt; 180kN ✓</p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag medium">进阶</span><strong>题4（概念+计算）：</strong>梁 b×h0=250mm×640mm，C40（fc=19.1N/mm²，βc=1.0），hw/b=2.6，剪力设计值 V=900kN。问：能否通过加大箍筋满足受剪要求？</p>
+                                <div class="options"><p>A. 能，配足箍筋即可　B. 不能，V&gt;0.25βc·fc·b·h0≈764kN，需加大截面或提高混凝土强度　C. 改用 HRB500 箍筋即可　D. 加弯起钢筋即可</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>上限值 = 0.25×1.0×19.1×250×640 = <strong>764kN</strong> &lt; 900kN。截面限制条件不满足时腹板先被斜压破坏，任何箍筋/弯起筋都无济于事——只能加大截面或提高混凝土等级。</p></div></details>
+                            </div>
+                            <div class="practice-problem">
+                                <p><span class="problem-tag hard">考试热点</span><strong>题5：</strong>不配箍筋的简支板类受弯构件，b=1000mm，h0=180mm，C30（ft=1.43N/mm²）。其斜截面受剪承载力设计值与下列何值最接近？</p>
+                                <div class="options"><p>A. 140kN　B. 181kN　C. 202kN　D. 258kN</p></div>
+                                <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>《混规》6.3.3：βh=(800/h0)^{1/4}，h0&lt;800 按 800 取 → βh=1.0</p><p>V ≤ 0.7×1.0×1.43×1000×180 = 180.6kN ≈ <strong>181kN</strong></p></div></details>
+                            </div>
+</div>
+                    </div>
+
                 <div class="subject-content" id="subject-steel"><div class="empty-subject"><div class="empty-icon">🏗️</div><h3>钢结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
                 <div class="subject-content" id="subject-masonry"><div class="empty-subject"><div class="empty-icon">🏠</div><h3>砌体结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
                 <div class="subject-content" id="subject-bridge"><div class="empty-subject"><div class="empty-icon">🌉</div><h3>桥梁工程</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>

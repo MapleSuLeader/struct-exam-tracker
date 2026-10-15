@@ -172,17 +172,20 @@
   "2026-10-14": {
     "subject": "混凝土结构",
     "topic": "第2讲：受弯构件正截面承载力",
-    "status": "planned"
+    "status": "completed",
+    "notes": "笔记10-16上板"
   },
   "2026-10-15": {
     "subject": "混凝土结构",
     "topic": "复习第2讲：受弯构件正截面承载力",
-    "status": "planned"
+    "status": "completed",
+    "notes": "随堂复习"
   },
   "2026-10-16": {
     "subject": "混凝土结构",
     "topic": "第3讲：受弯构件斜截面承载力",
-    "status": "planned"
+    "status": "completed",
+    "notes": "笔记10-16上板"
   },
   "2026-10-17": {
     "subject": "混凝土结构",
