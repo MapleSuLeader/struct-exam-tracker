@@ -251,7 +251,7 @@
                 <!-- 课程分类 -->
                 <div class="subject-selector">
                     <button class="subject-btn active" data-subject="mechanics"><span class="subject-icon">🔧</span><span class="subject-name">结构力学</span><span class="subject-count">4</span></button>
-                    <button class="subject-btn" data-subject="concrete"><span class="subject-icon">🧱</span><span class="subject-name">混凝土</span><span class="subject-count">3</span></button>
+                    <button class="subject-btn" data-subject="concrete"><span class="subject-icon">🧱</span><span class="subject-name">混凝土</span><span class="subject-count">8</span></button>
                     <button class="subject-btn" data-subject="steel"><span class="subject-icon">🏗️</span><span class="subject-name">钢结构</span><span class="subject-count">0</span></button>
                     <button class="subject-btn" data-subject="masonry"><span class="subject-icon">🏠</span><span class="subject-name">砌体</span><span class="subject-count">0</span></button>
                     <button class="subject-btn" data-subject="bridge"><span class="subject-icon">🌉</span><span class="subject-name">桥梁</span><span class="subject-count">0</span></button>
@@ -1528,6 +1528,11 @@
                         <button class="note-tab active" data-lecture="c1">第1讲 材料性能与设计原则</button>
                         <button class="note-tab" data-lecture="c2">第2讲 受弯构件正截面承载力</button>
                         <button class="note-tab" data-lecture="c3">第3讲 受弯构件斜截面承载力</button>
+<button class="note-tab" data-lecture="c4">第4讲 受压构件承载力</button>
+<button class="note-tab" data-lecture="c5">第5讲 受拉与受扭构件</button>
+<button class="note-tab" data-lecture="c6">第6讲 预应力混凝土</button>
+<button class="note-tab" data-lecture="c7">第7讲 正常使用极限状态 + 构造</button>
+<button class="note-tab" data-lecture="c8">第8讲 抗震设计 + 真题演练</button>
                     </div>
 
                     <!-- ===== 混凝土第1讲 ===== -->
@@ -1862,7 +1867,349 @@
                                 <details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>《混规》6.3.3：βh=(800/h0)^{1/4}，h0&lt;800 按 800 取 → βh=1.0</p><p>V ≤ 0.7×1.0×1.43×1000×180 = 180.6kN ≈ <strong>181kN</strong></p></div></details>
                             </div>
 </div>
-                    </div>
+                    
+<!-- ===== 混凝土第4讲 ===== -->
+<div class="cornell-note" id="note-c4">
+<div class="note-header"><h2>混凝土第4讲 受压构件承载力（轴压+偏压）</h2><span class="note-date">2026-10-21</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+<div class="cornell-layout">
+<div class="cornell-cue">
+<h4>🔑 核心概念</h4>
+<ul><li data-section="s1"><strong>轴压 6.2.15</strong>：N ≤ 0.9φ(fcA+f′yA′s)，φ 稳定系数</li><li data-section="s2"><strong>螺旋箍 6.2.16</strong>：2αfyvAss0 约束项，上限 1.5Nl</li><li data-section="s3"><strong>计算长度 l0</strong>：现浇框架底层 1.0H、其余 1.25H</li><li data-section="s4"><strong>大小偏压</strong>：对称配筋 x=γ0N/(α1fcb) 比 ξbh0</li><li data-section="s5"><strong>柱斜截面 6.3.12</strong>：λ=M/(Vh0)，+0.07N 有利项</li></ul>
+<h4>❓ 关键问题</h4>
+<ol><li data-section="s1">φ 和 0.9 各管什么？</li><li data-section="s2">什么条件才允许按螺旋箍公式？</li><li data-section="s3">框架柱 l0 怎么取？</li><li data-section="s4">小偏压为何要验算背面？</li><li data-section="s5">+0.07N 与抗震 −0.2N 区别？</li></ol>
+</div>
+<div class="cornell-notes">
+<div class="note-section" id="s1">
+<h3>一、轴压正截面（6.2.15）</h3>
+<div class="formula-box"><p>N ≤ <strong>0.9φ(fc·A + f′y·A′s)</strong>。0.9：可靠度调整；φ 查表 6.2.15，按 l0/b（方）、l0/d（圆）、l0/i 确定，l0/b≤8 时 φ=1.0</p><p>轴压用 HRB500/HRBF500：f′y 取 <strong>400N/mm²</strong>（4.2.3，压碎控制时高强筋用不满）</p></div><div class="warning-box">⚠️ φ=长柱失稳折减，0.9=可靠度——概念题分开考</div>
+</div>
+<div class="note-section" id="s2">
+<h3>二、螺旋箍柱（6.2.16）</h3>
+<div class="formula-box"><p>N ≤ 0.9(fc·Acor + f′y·A′s + <strong>2α·fyv·Ass0</strong>)，Ass0=π·dcor·As′1/s，α=1.0，dcor=d−2c−2d螺旋</p><p>采用条件（缺一按普通箍）：l0/d ≤ 12；40 ≤ s ≤ min(80, dcor/5)；Ass0 ≥ 0.25A′s</p><p>且 普通箍 Nl ≤ N ≤ <strong>1.5Nl</strong>（约束收益封顶）；此处 fyv 无 360 上限</p></div>
+</div>
+<div class="note-section" id="s3">
+<h3>三、柱计算长度 l0（6.2.20）</h3>
+<div class="formula-box"><p>多层框架：现浇楼盖 底层 1.0H、其余 <strong>1.25H</strong>；装配式 1.25H / 1.5H</p><p>单层排架（刚性屋盖）：无吊车单跨 1.5H、多跨 1.25H；上下端有支点轴压构件 l0=1.1l</p></div>
+</div>
+<div class="note-section" id="s4">
+<h3>四、偏压判别与对称配筋（6.2.17）</h3>
+<div class="formula-box"><p>e0=M/N，ea=max(20, h/30)，ei=e0+ea；先按 6.2.4（附录B）判断二阶效应是否放大 M</p><p>对称配筋：x = γ0N/(α1·fc·b)（抗震用 γRE·N）；x≤ξbh0 大偏压，否则小偏压（6.2.17-8 重算 ξ，σs&lt;fy）</p><p>大偏压 x≥2a′：As=A′s=[Ne−α1fc·bx(h0−x/2)]/[f′y(h0−a′s)]，e=ei+h/2−as；x&lt;2a′ 用 6.2.14 对 A′s 取矩</p><p>小偏压且 N&gt;fc·bh 时，另按 6.2.17-9 验算 A′s 一侧（防背面先压碎）</p></div><div class="warning-box">⚠️ 算完必查柱一侧最小配筋 0.2%·bh——计算值经常不控制</div>
+</div>
+<div class="note-section" id="s5">
+<h3>五、柱斜截面（6.3.12）与 γRE</h3>
+<div class="formula-box"><p>V ≤ [1.75/(λ+1)]ft·b·h0 + fyv(Asv/s)h0 + <strong>0.07N</strong>；λ=M/(Vh0)，反弯点在层高内取 Hn/(2h0)，限 1.0~3.0；均布 1.5、集中(≥75%) a/h0</p><p>N&gt;0.3fc·A 取 0.3fc·A；V ≤ 混凝土项+0.07N 时仅构造配箍（6.3.13）</p><p>正截面 γRE（11.1.6）：N/(fcA)&lt;0.15 → 0.75；≥0.15 → 0.80</p></div><div class="warning-box">⚠️ 非抗震 +0.07N（有上限）；抗震公式 −0.2N（第8讲），别混</div>
+</div>
+</div>
+<div class="cornell-summary">
+<h4>📝 总结</h4>
+<p>一句话：轴压看 φ 和 0.9，螺旋箍三重门槛+1.5Nl 封顶；偏压先算 ei 再判大小——对称配筋 x=γ0N/(α1fcb) 比 ξbh0，大偏压套 6.2.17、小偏压重算 ξ 并防背面；柱受剪记 λ 两种算法和 +0.07N（0.3fcA 封顶）。</p>
+<h4>⚠️ 易错点</h4>
+<ol><li>φ 查表用边长/直径不是 h0</li><li>螺旋箍 1.5Nl 上限漏用</li><li>x&lt;2a′ 要改 6.2.14</li><li>γRE 按轴压比分档（0.15 界限）</li></ol>
+</div>
+</div>
+<div class="practice-section">
+<h4>📝 练习题（5道）</h4>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题1（概念）：</strong>轴压公式中稳定系数 φ 是为了考虑：</p>
+<div class="options"><p>A. 混凝土强度离散性　B. 长柱纵向挠曲（失稳）使承载力低于短柱　C. 徐变　D. 施工偏差</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>长柱先失稳，φ 即此折减；0.9 才是可靠度调整。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题2：</strong>轴压柱 400×400，C30（fc=14.3），A′s=1520mm²，HRB400（f′y=360），l0=3.0m（l0/b=7.5，φ=1.0）。承载力设计值最接近：</p>
+<div class="options"><p>A. 2288kN　B. 2552kN　C. 2835kN　D. 3190kN</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>N ≤ 0.9×1.0×(14.3×160000+360×1520) = 0.9×2835.2kN = <strong>2552kN</strong>；C 是漏乘 0.9。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题3：</strong>对称配筋偏压柱 400×600（as=a′s=45），C30，HRB400，N=1000kN，M=250kNm（免二阶放大）。每侧配筋最接近：</p>
+<div class="options"><p>A. 313mm²　B. 480mm²　C. 554mm²　D. 720mm²</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>e0=250，ea=20，ei=270；x=1000×10³/(14.3×400)=174.8 ≤ ξbh0=0.518×555=287.5 → 大偏压</p><p>e=270+300−45=525；As=[525×10⁶−14.3×400×174.8×(555−87.4)]/(360×510)≈313mm²</p><p>但一侧最小配筋 0.2%×400×600=<strong>480mm²</strong> 控制。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题4（概念）：</strong>偏压斜截面公式（6.3.12）中 +0.07N 的物理含义：</p>
+<div class="options"><p>A. 轴压增大箍筋应力　B. 保守安全储备　C. 轴压抑制斜裂缝开展、增大斜裂缝顶端受压区从而提高受剪承载力　D. 与抗震公式一致</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>轴压有利项，N&gt;0.3fc·A 取 0.3fc·A 封顶；抗震受剪改为 −0.2N。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题5（概念）：</strong>多层现浇楼盖框架结构，除底层（1.0H）外其余各层柱 l0 取：</p>
+<div class="options"><p>A. 1.0H　B. 1.25H　C. 1.5H　D. 2.0H</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>表 6.2.20；装配式为 1.25H（底层）/1.5H（其余）。</p></div></details>
+</div>
+</div>
+</div>
+
+<!-- ===== 混凝土第5讲 ===== -->
+<div class="cornell-note" id="note-c5">
+<div class="note-header"><h2>混凝土第5讲 受拉与受扭构件</h2><span class="note-date">2026-10-21</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+<div class="cornell-layout">
+<div class="cornell-cue">
+<h4>🔑 核心概念</h4>
+<ul><li data-section="s1"><strong>轴拉 6.2.22</strong>：γ0N ≤ fyAs+fpyAp，全筋屈服</li><li data-section="s2"><strong>偏拉判别</strong>：e0 与 h/2−as 比大小</li><li data-section="s3"><strong>小偏拉</strong>：两侧筋均屈服、混凝土不参与</li><li data-section="s4"><strong>纯扭 6.4.4</strong>：0.35ftWt+1.2√ζ·fyv(Ast1/s)Acor</li><li data-section="s5"><strong>弯剪扭叠加</strong>：箍筋=剪+2Ast1/s，ρsv,min=0.28ft/fyv</li></ul>
+<h4>❓ 关键问题</h4>
+<ol><li data-section="s1">为什么轴拉公式没有混凝土项？</li><li data-section="s2">大小偏拉怎么分界？</li><li data-section="s3">Wt 公式？</li><li data-section="s4">ζ 的取值范围？</li><li data-section="s5">受扭纵筋为何沿周边+四角布置？</li></ol>
+</div>
+<div class="cornell-notes">
+<div class="note-section" id="s1">
+<h3>一、轴心受拉（6.2.22）</h3>
+<div class="formula-box"><p>γ0N ≤ fy·As + fpy·Ap——开裂后混凝土退出工作，<strong>全部纵向钢筋</strong>受拉屈服</p><p>一侧 ρmin = max(0.2%, 45ft/fy%)（8.5.1）；抗震 γRE=0.85</p></div>
+</div>
+<div class="note-section" id="s2">
+<h3>二、偏心受拉（6.2.23）</h3>
+<div class="formula-box"><p>e0=M/N &lt; h/2−as（N 作用在两排筋之间）→ <strong>小偏拉</strong>；e0 ≥ h/2−as → 大偏拉</p><p>小偏拉：As = γ0N·e/[fy(h0−a′s)]，e = e0+h/2−a′s（对 A′s 合力点取矩）；求 A′s 对 As 取矩同理</p><p>大偏拉：形式同大偏压（有受压区），按 6.2.23-3/4</p><p>最小配筋率：小偏拉按全截面 A；大偏拉按 A−(bf′−b)hf′</p></div><div class="warning-box">⚠️ 判别分界是 h/2−as（N 作用点位置），不是 ξb</div>
+</div>
+<div class="note-section" id="s3">
+<h3>三、纯扭承载力（6.4.4）</h3>
+<div class="formula-box"><p>平衡扭转（雨篷梁）：扭矩与抗扭刚度无关，必须计算；协调扭转（框架边梁）：可仅构造增配</p><p>矩形 Wt = <strong>b²(3h−b)/6</strong>；T 形/工字形分块（腹板+翼缘），扭矩按各块 Wt 比例分配</p><p>T ≤ 0.35ft·Wt + 1.2√ζ·fyv·(Ast1/s)·Acor；ζ 纵筋与箍筋匹配系数，取 <strong>0.6~1.7</strong>（手算常设 1.0 再校核）</p><p>截面限制（6.4.1）：T/(0.8Wt) ≤ 0.25βc·fc（hw/b≤4）；Acor=箍筋中心线围合面积</p></div>
+</div>
+<div class="note-section" id="s4">
+<h3>四、弯剪扭叠加</h3>
+<div class="formula-box"><p>箍筋：(Asv/s)总 = 受剪所需 + 受扭 <strong>2Ast1/s</strong>（扭矩由两侧肢承担）；纵筋=受弯+受扭 Ast（周边均布、四角必设）</p><p>受扭纵筋 ρtl,min = 0.35ft/fy（9.2.5）；弯剪扭箍筋 ρsv,min = <strong>0.28ft/fyv</strong>（9.2.10，比纯剪 0.24 高）</p><p>剪扭相关性：βt=1.5/(1+0.5VWt/(Tbh0))，混凝土项分别折减后叠加（6.4.8~6.4.10）</p></div><div class="warning-box">⚠️ fyv&gt;360 仍取 360（4.2.3 受剪/受扭/受冲切）</div>
+</div>
+</div>
+<div class="cornell-summary">
+<h4>📝 总结</h4>
+<p>一句话：受拉构件"混凝土退场、钢筋说话"——轴拉全筋屈服、小偏拉两侧筋各自取矩；扭转三件套：Wt=b²(3h−b)/6 → T≤0.35ftWt+1.2√ζfyv(Ast1/s)Acor（ζ 0.6~1.7）→ 弯剪扭用 βt 折减、箍筋叠加 2Ast1/s、构造下限 0.28ft/fyv。</p>
+<h4>⚠️ 易错点</h4>
+<ol><li>Wt 与弹性抵抗矩 W 混</li><li>2Ast1/s 漏乘 2</li><li>ρsv,min 误用 0.24</li><li>小偏拉配筋率按全截面</li></ol>
+</div>
+</div>
+<div class="practice-section">
+<h4>📝 练习题（5道）</h4>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题1（概念）：</strong>关于轴心受拉构件正截面承载力，正确的是：</p>
+<div class="options"><p>A. 仅靠近拉力一侧钢筋工作　B. 开裂后混凝土退出工作，全部纵向钢筋受拉屈服　C. 混凝土与钢筋共同抗拉　D. 按 ξb 控制</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>6.2.22：N ≤ fyAs+fpyAp，全截面纵筋屈服。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题2（概念）：</strong>b×h=300×400 偏拉构件，as=a′s=40mm，e0=100mm，属于：</p>
+<div class="options"><p>A. 小偏心受拉　B. 大偏心受拉　C. 轴心受拉　D. 大偏心受压</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：A</strong></p><p>h/2−as = 200−40 = 160mm &gt; e0=100 → N 作用于两排筋之间 → 小偏拉。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题3：</strong>上题构件承受 N=500kN、e0=100mm，HRB400 对称配筋，每侧 As 最接近：</p>
+<div class="options"><p>A. 980mm²　B. 1128mm²　C. 1350mm²　D. 1520mm²</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>e = e0+h/2−a′s = 260mm；h0−a′s = 320mm</p><p>As = 500×10³×260/(360×320) = <strong>1128mm²</strong>（≥0.2%×120000=240 ✓）。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题4：</strong>250×500mm 矩形截面的受扭塑性抵抗矩 Wt = b²(3h−b)/6：</p>
+<div class="options"><p>A. 6.5×10⁶mm³　B. 1.30×10⁷mm³　C. 2.60×10⁷mm³　D. 1.04×10⁷mm³</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>250²×(3×500−250)/6 = 62500×1250/6 = 1.302×10⁷mm³。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag hard">考试热点</span><strong>题5：</strong>矩形梁 250×500，C30（ft=1.43），箍筋 HPB300（fyv=270），纯扭 T=15kNm，ζ=1.0，保护层 25mm，单肢 Φ8（50.3mm²）。最大间距最接近：</p>
+<div class="options"><p>A. 120mm　B. 160mm　C. 200mm　D. 250mm</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>0.35ftWt=6.52kNm；Acor=(250−58)×(500−58)=192×442=8.49×10⁴mm²</p><p>Ast1/s ≥ (15−6.52)×10⁶/(1.2×270×8.49×10⁴) = 0.308mm²/mm → s ≤ 50.3/0.308 = 163mm → <strong>160mm</strong></p><p>截面校核 T/(0.8Wt)=1.44 &lt; 0.25fc=3.58 ✓。</p></div></details>
+</div>
+</div>
+</div>
+
+<!-- ===== 混凝土第6讲 ===== -->
+<div class="cornell-note" id="note-c6">
+<div class="note-header"><h2>混凝土第6讲 预应力混凝土</h2><span class="note-date">2026-10-21</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+<div class="cornell-layout">
+<div class="cornell-cue">
+<h4>🔑 核心概念</h4>
+<ul><li data-section="s1"><strong>σcon 上限</strong>：钢绞线/钢丝 0.75fptk，螺纹筋 0.85fpyk</li><li data-section="s2"><strong>六项损失</strong>：σl1锚具 σl2摩擦 σl3温差 σl4松弛 σl5收缩徐变 σl6局压</li><li data-section="s3"><strong>两批组合</strong>：先张第一批=1+2+3+4；后张第一批=1+2</li><li data-section="s4"><strong>两阶段 σpc</strong>：σpcI 第一批；σpcII 全部损失</li><li data-section="s5"><strong>裂缝控制三级</strong>：一级 σck−σpc≤0；二级 ≤ftk；三级限宽</li></ul>
+<h4>❓ 关键问题</h4>
+<ol><li data-section="s1">哪些损失先张法独有？</li><li data-section="s2">σcon 何时可 +0.05fptk？</li><li data-section="s3">第一批/第二批按什么时点分？</li><li data-section="s4">三级抗裂各用什么荷载组合？</li><li data-section="s5">先张法放张强度要求？</li></ol>
+</div>
+<div class="cornell-notes">
+<div class="note-section" id="s1">
+<h3>一、张拉控制应力 σcon（10.1.3）</h3>
+<div class="formula-box"><p>消除应力钢丝、钢绞线：0.4fptk ≤ σcon ≤ <strong>0.75fptk</strong>；中强度钢丝 ≤0.7fptk；预应力螺纹钢筋 0.5~0.85fpyk</p><p>可放宽 +0.05fptk：为提高施工阶段抗裂设于受压区的筋；或部分抵消松弛/摩擦/分批张拉/温差损失</p></div>
+</div>
+<div class="note-section" id="s2">
+<h3>二、六项损失与组合（10.2.1）</h3>
+<div class="formula-box"><p>σl1 锚具变形内缩｜σl2 摩擦｜σl3 蒸养温差（<strong>仅先张法</strong>）｜σl4 松弛｜σl5 收缩徐变｜σl6 局部挤压（螺旋配筋环形构件 d≤3m）</p><p>组合：先张第一批（预压前）σl1+σl2+σl3+σl4、第二批 σl5；后张第一批 σl1+σl2、第二批 σl4+σl5+σl6</p><p>损失过小兜底：先张法 ≥100N/mm²，后张法 ≥80N/mm²</p></div><div class="warning-box">⚠️ σl4 归属分批是先张/后张差异的核心——真题爱考</div>
+</div>
+<div class="note-section" id="s3">
+<h3>三、两阶段预压应力</h3>
+<div class="formula-box"><p>σpcI（施工/预压阶段）：仅第一批损失；σpcII（使用阶段）：全部损失</p><p>预压阶段 σpc ≤ 0.5f′cu（防局压/预拉开裂）；求 σpc 时损失按 10.2.5 组合取值</p></div>
+</div>
+<div class="note-section" id="s4">
+<h3>四、抗裂验算与裂缝控制等级（3.4.4/7.1.1）</h3>
+<div class="formula-box"><p>一级（全预应力）：标准组合 σck − σpc ≤ 0——受拉边不出现拉应力</p><p>二级：标准组合 σck − σpc ≤ ftk——出现拉应力但不裂通</p><p>三级（部分预应力）：wmax ≤ 限值；预应力裂缝按<strong>标准组合</strong>，二a类环境按准永久组合 σcq−σpc ≤ ftk</p></div><div class="warning-box">⚠️ 组合选择高频考点：钢筋混凝土=准永久；预应力三级裂缝=标准组合</div>
+</div>
+<div class="note-section" id="s5">
+<h3>五、构造要点（10.3）</h3>
+<div class="formula-box"><p>锚固区：锚垫板下局部受压验算 + 间接钢筋（螺旋箍/焊网）防劈裂</p><p>先张法放张：混凝土强度 ≥ 75% 设计强度；后张法：波纹管成孔、有黏结灌浆、束间距与保护层按 10.3</p><p>预应力构件仍须配置受拉侧普通钢筋最小配筋（防一裂即断）；长期反拱+挠度按第7讲刚度概念叠加</p></div>
+</div>
+</div>
+<div class="cornell-summary">
+<h4>📝 总结</h4>
+<p>一句话：预应力 = σcon 上限（0.75fptk）− 六项损失分两批组合（先张 1234｜后张 12 为第一批）→ σpcI（预压阶段，≤0.5f′cu）与 σpcII（使用阶段）→ 抗裂三级（σck−σpc 比 0 / ftk / 裂缝限宽）；σl3 先张独有、σl6 环形专属、损失下限 100/80。</p>
+<h4>⚠️ 易错点</h4>
+<ol><li>先张/后张分批混淆</li><li>σcon+0.05 的适用条件</li><li>一级/二级同用标准组合但限值不同</li><li>二a类环境预应力改准永久</li></ol>
+</div>
+</div>
+<div class="practice-section">
+<h4>📝 练习题（5道）</h4>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题1：</strong>fptk=1860N/mm² 钢绞线，无放宽条件时 σcon 最大允许值：</p>
+<div class="options"><p>A. 1302MPa　B. 1395MPa　C. 1488MPa　D. 1581MPa</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>0.75×1860 = <strong>1395MPa</strong>。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题2（概念）：</strong>后张法构件"混凝土预压前（第一批）"损失组合：</p>
+<div class="options"><p>A. σl1+σl2+σl3+σl4　B. σl1+σl2　C. σl4+σl5+σl6　D. σl1~σl5</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>后张法无 σl3（温差仅先张）；松弛 σl4 归后张第二批。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题3（概念）：</strong>关于使用阶段预压应力 σpcII，正确的是：</p>
+<div class="options"><p>A. 仅第一批损失　B. 仅第二批　C. 考虑全部（第一+第二批）损失　D. 不计损失</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>σpcI=预压阶段（第一批）；σpcII=使用阶段（全部损失）。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题4（概念）：</strong>一级裂缝控制等级（严格要求不出现裂缝）的验算式：</p>
+<div class="options"><p>A. 标准组合 σck−σpc ≤ 0　B. 准永久组合 σcq−σpc ≤ 0　C. 标准组合 σck−σpc ≤ ftk　D. wmax ≤ 0.2mm</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：A</strong></p><p>一级=标准组合下受拉边不出现拉应力；二级才是 ≤ftk。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag hard">考试热点</span><strong>题5：</strong>后张法预应力轴拉构件（2021上午5改编）：基本组合 N=830kN，4Φ12（As=452mm²，fy=360），钢绞线 fpy=1220。所需最小 Ap：</p>
+<div class="options"><p>A. 420mm²　B. 480mm²　C. 550mm²　D. 620mm²</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>6.2.22：Ap = (830×10³ − 360×452)/1220 = 667.3×10³/1220 ≈ <strong>547mm²</strong> → C。</p></div></details>
+</div>
+</div>
+</div>
+
+<!-- ===== 混凝土第7讲 ===== -->
+<div class="cornell-note" id="note-c7">
+<div class="note-header"><h2>混凝土第7讲 正常使用极限状态 + 构造</h2><span class="note-date">2026-10-21</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+<div class="cornell-layout">
+<div class="cornell-cue">
+<h4>🔑 核心概念</h4>
+<ul><li data-section="s1"><strong>裂缝宽度 7.1.2</strong>：wmax=αcr·ψ·(σsq/Es)(1.9cs+0.08deq/ρte)</li><li data-section="s2"><strong>ψ 系数</strong>：1.1−0.65ftk/(ρte·σsq)，限 0.2~1.0</li><li data-section="s3"><strong>αcr 取值</strong>：受弯/大偏压 1.9，大偏拉 2.4，轴拉 2.7</li><li data-section="s4"><strong>刚度</strong>：Bs=EsAsH0²/(1.15ψ+0.2+6αEρ/(1+3.5γf′))，长期乘 θ</li><li data-section="s5"><strong>构造三件套</strong>：保护层双控 / lab=α(fy/ft)d / ll=ζl·la</li></ul>
+<h4>❓ 关键问题</h4>
+<ol><li data-section="s1">ψ&lt;0.2、ρte&lt;0.01 各怎么处理？</li><li data-section="s2">受弯 Ate 怎么算？</li><li data-section="s3">θ 与受压筋关系？</li><li data-section="s4">la、ll 下限？</li><li data-section="s5">接头百分率如何影响 ζl？</li></ol>
+</div>
+<div class="cornell-notes">
+<div class="note-section" id="s1">
+<h3>一、验算组合与限值</h3>
+<div class="formula-box"><p>挠度、钢筋混凝土裂缝宽度：按<strong>准永久组合</strong>并考虑长期作用；预应力三级裂缝按标准组合</p><p>挠度限值（3.4.3）：受弯构件 l0/200（屋盖）、l0/250（楼盖）等按跨度分档；裂缝限值（3.4.5）：一般室内钢筋混凝土 0.3mm、二a类 0.2mm</p></div>
+</div>
+<div class="note-section" id="s2">
+<h3>二、最大裂缝宽度（7.1.2）</h3>
+<div class="formula-box"><p>wmax = αcr·ψ·(σsq/Es)·(1.9cs + 0.08·deq/ρte)</p><p>αcr：受弯/大偏压 1.9；大偏拉 2.4；轴拉 2.7</p><p>ψ = 1.1 − 0.65ftk/(ρte·σsq)；ψ&lt;0.2 取 0.2、ψ&gt;1.0 取 1.0；直接重复荷载受弯 ψ=1.0</p><p>ρte = As/Ate：受弯 Ate = 0.5bh + (bf−b)hf；轴拉取全截面；<strong>ρte&lt;0.01 取 0.01</strong></p><p>σsq：受弯 Mq/(0.87h0As)；轴拉 Nq/As；cs=最外层受力筋保护层；deq=等效直径</p></div><div class="warning-box">⚠️ 概念：w ∝ σsq、∝ cs，反比于 ρte——"细而密"配筋抗裂好</div>
+</div>
+<div class="note-section" id="s3">
+<h3>三、挠度与刚度（7.2）</h3>
+<div class="formula-box"><p>短期刚度 Bs = Es·As·h0²/[1.15ψ + 0.2 + 6αEρ/(1+3.5γf′)]；γf′=(bf′−b)hf′/(bh0)，hf′≤0.2h0，矩形/倒T 取 0</p><p>长期增大系数 θ：ρ′=0 取 2.0；ρ′=ρ/2 取 1.6；线性内插；全长期荷载时 B = Bs/θ</p><p>最小刚度原则：等截面简支/悬臂取最大弯矩截面刚度；连续梁 0.5B跨中 ≤ B支座 ≤ 2B跨中 时统一取跨中刚度</p></div>
+</div>
+<div class="note-section" id="s4">
+<h3>四、保护层与锚固（8.2/8.3）</h3>
+<div class="formula-box"><p>保护层定义：最外层钢筋（梁柱=箍筋）外缘至表面；双控：环境查表 且 ≥受力筋直径</p><p>50年：一类 板墙15/梁柱20；二a 20/25；二b 25/35；三a 30/40；三b 40/50（mm）</p><p>lab = α(fy/ft)d（带肋 0.14、光圆 0.16；ft 高于 C60 按 C60）；la = ζa·lab ≥ max(0.6lab, 200mm)</p></div>
+</div>
+<div class="note-section" id="s5">
+<h3>五、连接（8.4）</h3>
+<div class="formula-box"><p>绑扎搭接 ll = ζl·la ≥ 300mm；ζl 按接头面积百分率 ≤25%/50%/100% → 1.2/1.4/1.6</p><p>抗震 laE = ζaE·la（一、二级 1.15；三、四级 1.05）；同一连接区段取 1.3ll，接头错开</p></div>
+</div>
+</div>
+<div class="cornell-summary">
+<h4>📝 总结</h4>
+<p>一句话：正常使用=准永久组合算裂缝与挠度——wmax=αcr·ψ·(σsq/Es)(1.9cs+0.08deq/ρte)（αcr 1.9/2.4/2.7，ψ 0.2~1.0，ρte≥0.01）；挠度 Bs 公式分母三项记牢，长期乘 θ（2.0/1.6）；构造查表：保护层双控、la≥200、ll≥300、ζl 1.2/1.4/1.6。</p>
+<h4>⚠️ 易错点</h4>
+<ol><li>ψ 限幅漏查</li><li>ρte<0.01 未取 0.01</li><li>Ate 误用全截面</li><li>la 与 lab 混（忘乘 ζa）</li><li>搭接下限 300mm 漏验</li></ol>
+</div>
+</div>
+<div class="practice-section">
+<h4>📝 练习题（5道）</h4>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题1（概念）：</strong>轴心受拉构件裂缝宽度计算的 αcr 取：</p>
+<div class="options"><p>A. 1.0　B. 1.9　C. 2.7　D. 2.4</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>受弯/大偏压 1.9，大偏拉 2.4，轴拉 2.7。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题2：</strong>ρte=0.0279，σsq=220N/mm²，C30（ftk=2.01），ψ=1.1−0.65ftk/(ρte·σsq)=</p>
+<div class="options"><p>A. 0.75　B. 0.89　C. 1.0　D. 0.2</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>ψ = 1.1 − 0.65×2.01/(0.0279×220) = 1.1−0.213 = <strong>0.887</strong>（在 0.2~1.0 内直接取用）。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag hard">考试热点</span><strong>题3：</strong>受弯构件 αcr=1.9、ψ=0.887、σsq=220、Es=2.0×10⁵、cs=30mm、deq=25mm、ρte=0.0279，wmax 最接近：</p>
+<div class="options"><p>A. 0.21mm　B. 0.24mm　C. 0.27mm　D. 0.30mm</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>1.9c_s=57；0.08deq/ρte=0.08×25/0.0279=71.7；合计 128.7</p><p>wmax = 1.9×0.887×(220/2×10⁵)×128.7 ≈ <strong>0.24mm</strong>（2017上午9 原型）。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题4（概念）：</strong>计算 ρte 时发现 ρte = 0.006，应：</p>
+<div class="options"><p>A. 按 0.006 代入　B. 取 0.02　C. 取 0.01　D. 取 ψ=1.0</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>《混规》7.1.2：ρte&lt;0.01 时取 0.01。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题5（概念）：</strong>受拉钢筋绑扎搭接，接头面积百分率 50% 时 ζl 及 ll 下限：</p>
+<div class="options"><p>A. 1.2，≥250mm　B. 1.4，≥300mm　C. 1.6，≥300mm　D. 1.4，≥200mm</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>ζl：≤25%→1.2、50%→1.4、100%→1.6；ll=ζl·la 且 ≥300mm。</p></div></details>
+</div>
+</div>
+</div>
+
+<!-- ===== 混凝土第8讲 ===== -->
+<div class="cornell-note" id="note-c8">
+<div class="note-header"><h2>混凝土第8讲 抗震设计 + 真题演练</h2><span class="note-date">2026-10-21</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+<div class="cornell-layout">
+<div class="cornell-cue">
+<h4>🔑 核心概念</h4>
+<ul><li data-section="s1"><strong>γRE（11.1.6）</strong>：受弯 0.75、剪/偏拉 0.85、柱按轴压比分 0.75/0.80</li><li data-section="s2"><strong>强柱弱梁</strong>：ΣMc = ηvc·ΣMb，1.7/1.5/1.3/1.2</li><li data-section="s3"><strong>轴压比限值</strong>：框架 0.70/0.80/0.90/0.95（一~四级）</li><li data-section="s4"><strong>抗震柱受剪 11.4.8</strong>：1.05/(λ+1) 项 −0.2N，γRE=0.85</li><li data-section="s5"><strong>构造</strong>：加密区 max(Hn/6, hc, 500)；体积配箍 λv·fc/fyv</li></ul>
+<h4>❓ 关键问题</h4>
+<ol><li data-section="s1">γRE 与 γ0 为何不同时用？</li><li data-section="s2">三水准两阶段指什么？</li><li data-section="s3">轴压比为什么是抗震核心指标？</li><li data-section="s4">抗震受剪公式与 6.3.12 差异？</li><li data-section="s5">哪些柱要全高加密？</li></ol>
+</div>
+<div class="cornell-notes">
+<div class="note-section" id="s1">
+<h3>一、设防与表达式</h3>
+<div class="formula-box"><p>三水准："小震不坏、中震可修、大震不倒"；两阶段：多遇地震算承载力+弹性变形，罕遇验算弹塑性变形</p><p>地震设计状况：S ≤ R/γRE——γRE 反映材料地震强度提高与可靠度调整，<strong>与 γ0 不同时考虑</strong></p><p>γRE（表 11.1.6）：受弯 0.75；轴压/偏压正截面按 N/(fcA)&lt;0.15 → 0.75、≥0.15 → 0.80；偏心受拉/受剪/受冲切 0.85；局压/锚固 1.0</p></div>
+</div>
+<div class="note-section" id="s2">
+<h3>二、内力调整（概念设计四道防线）</h3>
+<div class="formula-box"><p>强柱弱梁：节点 ΣMc = ηvc·ΣMb，ηvc 一/二/三/四级 = <strong>1.7/1.5/1.3/1.2</strong></p><p>强剪弱弯：梁端弯矩调整 ηvb=1.3/1.2/1.1/—（一~三）；柱端剪力 V = ηvc·(M上+M下)/Hn，ηvc=1.4/1.2/1.1/1.1</p><p>强节点、强锚固：节点核心区剪力按梁端实配弯矩（Mbua）放大；避免软弱层（层刚度比/受剪承载力比限值）</p></div>
+</div>
+<div class="note-section" id="s3">
+<h3>三、柱截面与配筋限值</h3>
+<div class="formula-box"><p>轴压比 μN = N/(fc·A)（地震组合 N）：框架结构 一0.70/二0.80/三0.90/四0.95；框架-剪力墙等 0.75/0.85/0.90/0.95</p><p>满足构造（螺旋箍全高、d≥8、s≤100 等）限值 +0.1；柱轴压比控制是防脆性压碎的核心</p><p>纵筋：全柱 min 按等级（HRB400 表值），一侧 ≥0.2%，全柱 ≤5%；λ≤2 一级柱一侧 ≤1.2%；边/角/端柱出现偏拉时纵筋按计算 +25%</p><p>体积配箍率：ρv ≥ λv·fc/fyv 且一级 max(0.8%,…)、二级 0.6%、三四 0.4%；λ≤2 柱 ≥1.2%；9度一级 ≥1.5%</p></div><div class="warning-box">⚠️ fc 低于 C35 按 C35 代入配箍率公式</div>
+</div>
+<div class="note-section" id="s4">
+<h3>四、柱斜截面抗震受剪（11.4.8）</h3>
+<div class="formula-box"><p>V ≤ (1/γRE)·[1.05/(λ+1)·ft·b·h0 + fyv(Asv/s)h0 − <strong>0.2N</strong>]；混凝土项 [1.05/(λ+1)ftbh0−0.2N] 算出 &lt;0 取 0</p><p>λ=Hn/(2h0) 限 1.0~3.0；要求 fyv(Asv/s)h0 ≥ 0.36ft·b·h0（不满足加大箍筋）</p><p>截面限制：λ&gt;2 → V ≤ 0.2βc·fc·bh0/γRE；λ≤2 → 0.15βc·fc·bh0/γRE</p></div><div class="warning-box">⚠️ 非抗震 +0.07N（有利）vs 抗震 −0.2N（高轴压不利低周往复）——对比记忆</div>
+</div>
+<div class="note-section" id="s5">
+<h3>五、加密区与构造带</h3>
+<div class="formula-box"><p>柱端加密区：max(Hn/6, hc, 500)；柱根取 Hn/3；刚性地面上下各 500mm</p><p>全高加密：λ≤2 短柱、Hn/h≤4 的柱、一级/二级角柱、框支柱</p><p>加密区箍筋间距/直径/肢距按等级查表 11.4.12（一级 ≤min(6d,100) 框支柱）；非加密区 ≥加密区箍筋用量的折减延续</p></div>
+</div>
+</div>
+<div class="cornell-summary">
+<h4>📝 总结</h4>
+<p>一句话：抗震=一个表达式（S≤R/γRE，γRE 按构件/轴压比查 11.1.6，与 γ0 互斥）+四个强弱次序（柱弯矩 1.7/1.5/1.3/1.2 放大、梁柱剪力放大、节点强锚固）+两个核心指标（轴压比 0.70~0.95 分档、体积配箍 λv·fc/fyv）；柱抗震受剪混凝土项 1.05/(λ+1)ftbh0−0.2N（负值取 0）、γRE=0.85。</p>
+<h4>⚠️ 易错点</h4>
+<ol><li>γRE 与 γ0 同时乘</li><li>框架与框剪轴压比限值混（0.8 vs 0.85）</li><li>−0.2N 符号与 +0.07N 混</li><li>加密区三者取大漏 500</li><li>fc<C35 未按 C35 代入 λv·fc/fyv</li></ol>
+</div>
+</div>
+<div class="practice-section">
+<h4>📝 练习题（5道）</h4>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题1（概念）：</strong>关于承载力抗震调整系数 γRE，正确的是：</p>
+<div class="options"><p>A. 所有构件均取 0.75　B. 地震组合表达式 S≤R/γRE，γRE 与 γ0 不同时考虑　C. γRE 大于 1，偏安全　D. 可与非抗震组合混用</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>11.1.6：γRE&lt;1（等效提高承载力），仅用于地震设计状况；γ0 用于非地震状况。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题2（概念）：</strong>二级框架结构（纯框架）柱的轴压比限值为：</p>
+<div class="options"><p>A. 0.70　B. 0.75　C. 0.80　D. 0.85</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>抗规表 6.3.6：框架结构 一0.70/二0.80/三0.90/四0.95（框剪等另档 0.75/0.85）。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题3（概念）：</strong>二级框架节点"强柱弱梁"柱端弯矩增大系数 ηvc 取：</p>
+<div class="options"><p>A. 1.2　B. 1.3　C. 1.5　D. 1.7</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>一/二/三/四级 = 1.7/1.5/1.3/1.2。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag hard">考试热点</span><strong>题4：</strong>抗震框架柱 λ=2.0，b×h0=400×460，C30（ft=1.43），箍筋 2Φ10@150（fyv=270），地震组合 N=250kN。受剪承载力设计值最接近：</p>
+<div class="options"><p>A. 172kN　B. 202kN　C. 238kN　D. 369kN</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>混凝土项 = 0.35×1.43×400×460 − 0.2×250×10³ = 92.1−50 = 42.1kN（&gt;0 取用）</p><p>箍筋项 = 270×(157/150)×460 = 129.9kN</p><p>V = (42.1+129.9)/0.85 = <strong>202kN</strong>；截面限制 λ≤2：0.15×14.3×400×460/0.85=368.6kN 不控制；fyv(Asv/s)h0=129.9 ≥ 0.36ftbh0=94.7 ✓。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题5：</strong>某一级框架柱 Hn=3.6m、截面 hc=500mm，柱端箍筋加密区高度至少为：</p>
+<div class="options"><p>A. 500mm　B. 560mm　C. 600mm　D. 720mm</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>max(Hn/6=600, hc=500, 500) = <strong>600mm</strong>；若 λ≤2 或短柱（Hn/h≤4? 3600/500=7.2 否）则另论。</p></div></details>
+</div>
+</div>
+</div>
+
+</div>
 
                 <div class="subject-content" id="subject-steel"><div class="empty-subject"><div class="empty-icon">🏗️</div><h3>钢结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
                 <div class="subject-content" id="subject-masonry"><div class="empty-subject"><div class="empty-icon">🏠</div><h3>砌体结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
