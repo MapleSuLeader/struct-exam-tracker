@@ -1514,3 +1514,17 @@ body {
     max-width: 100% !important;
     box-sizing: border-box !important;
 }
+
+/* ===== 规范条文/公式摘抄折叠面板 ===== */
+.code-refs { margin: 14px 0; border: 1px solid #d8e3ee; border-radius: 10px; background: #f6fafd; }
+.code-refs > summary { cursor: pointer; padding: 10px 14px; font-weight: 600; color: #1a5c8a; list-style: none; }
+.code-refs > summary::-webkit-details-marker { display: none; }
+.code-refs > summary::before { content: '▸ '; }
+.code-refs[open] > summary::before { content: '▾ '; }
+.code-refs .cr-body { padding: 4px 16px 12px; border-top: 1px dashed #d8e3ee; }
+.code-refs .cr-num { margin: 12px 0 4px; font-weight: 700; color: #1a5c8a; }
+.code-refs .cr-body p { margin: 4px 0; font-size: 13.5px; line-height: 1.65; color: #333; }
+.code-refs .cr-h3 { margin: 10px 0 3px !important; font-weight: 700; color: #2c5f8a; }
+.code-refs .cr-formula { margin: 4px 0 4px 14px !important; font-family: 'Cambria Math','Times New Roman',serif; color: #143a5c; }
+.code-refs .cr-row { margin-left: 14px !important; color: #555 !important; font-size: 13px !important; }
+.code-refs .cr-note { margin-top: 10px !important; color: #b26a00 !important; font-size: 12.5px !important; }
