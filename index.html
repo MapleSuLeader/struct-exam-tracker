@@ -251,7 +251,7 @@
                 <!-- 课程分类 -->
                 <div class="subject-selector">
                     <button class="subject-btn active" data-subject="mechanics"><span class="subject-icon">🔧</span><span class="subject-name">结构力学</span><span class="subject-count">4</span></button>
-                    <button class="subject-btn" data-subject="concrete"><span class="subject-icon">🧱</span><span class="subject-name">混凝土</span><span class="subject-count">8</span></button>
+                    <button class="subject-btn" data-subject="concrete"><span class="subject-icon">🧱</span><span class="subject-name">混凝土</span><span class="subject-count">9</span></button>
                     <button class="subject-btn" data-subject="steel"><span class="subject-icon">🏗️</span><span class="subject-name">钢结构</span><span class="subject-count">0</span></button>
                     <button class="subject-btn" data-subject="masonry"><span class="subject-icon">🏠</span><span class="subject-name">砌体</span><span class="subject-count">0</span></button>
                     <button class="subject-btn" data-subject="bridge"><span class="subject-icon">🌉</span><span class="subject-name">桥梁</span><span class="subject-count">0</span></button>
@@ -1533,6 +1533,7 @@
 <button class="note-tab" data-lecture="c6">第6讲 预应力混凝土</button>
 <button class="note-tab" data-lecture="c7">第7讲 正常使用极限状态 + 构造</button>
 <button class="note-tab" data-lecture="c8">第8讲 抗震设计 + 真题演练</button>
+<button class="note-tab" data-lecture="c9">第9讲 冲切及局压计算</button>
                     </div>
 
                     <!-- ===== 混凝土第1讲 ===== -->
@@ -2210,6 +2211,76 @@
 </div>
 
 </div>
+
+<!-- ===== 混凝土第9讲 ===== -->
+<div class="cornell-note" id="note-c9">
+<div class="note-header"><h2>混凝土第9讲 冲切及局压计算</h2><span class="note-date">2026-10-26</span><button class="review-toggle" onclick="toggleReviewMode(this)">🧠 复习模式</button></div>
+<div class="cornell-layout">
+<div class="cornell-cue">
+<h4>🔑 核心概念</h4>
+<ul><li data-section="s1"><strong>冲切公式</strong>：Fl ≤ 0.7βh·ft·η·um·h0（6.5.1，无抗冲切钢筋）</li><li data-section="s2"><strong>η 取小</strong>：η=min(η1,η2)，η1=0.4+1.2/βs，η2=0.5+αs·h0/(4um)</li><li data-section="s3"><strong>αs</strong>：中柱40、边柱30、角柱20；βs=hc/bc 限2~4（圆形取2）</li><li data-section="s4"><strong>有抗冲切筋</strong>：0.5ft项+0.8fyvAsvu+0.8fyAsbu·sinα；fyv>360取360</li><li data-section="s5"><strong>局压</strong>：βl=√(Ab/Al)；截面限制1.35βcβlfcAln；间接筋0.9(βcβlfc+2αρvβcor·fyv)Aln</li></ul>
+<h4>❓ 关键问题</h4>
+<ol><li data-section="s1">Fl 为什么要扣锥体内板荷载？</li><li data-section="s2">孔洞影响 um 怎么扣？</li><li data-section="s3">不平衡弯矩如何等效为 Fl,eq？</li><li data-section="s4">抗震等级对 Fl,eq 增大系数？</li><li data-section="s5">局压 Ab 的"同心对称"原则？</li><li data-section="s6">Acor≤1.25Al 时如何处理？</li></ol>
+</div>
+<div class="cornell-notes">
+<div class="note-section" id="s1">
+<h3>一、无抗冲切钢筋的板（混规6.5.1/6.5.2）</h3>
+<div class="formula-box"><p>受冲切承载力：F<sub>l</sub> ≤ 0.7β<sub>h</sub>·f<sub>t</sub>·η·u<sub>m</sub>·h<sub>0</sub>；β<sub>h</sub>：h≤800取1.0，h≥2000取0.9，线性插值</p><p>u<sub>m</sub> 临界截面周长（局部荷载边缘外 h0/2）：矩形 2[(b<sub>c</sub>+h0)+(h<sub>c</sub>+h0)]；方形 4(b<sub>c</sub>+h0)；圆形 2π(r+h0)</p><p>η=min(η1,η2)：η1=0.4+1.2/βs（βs=h<sub>c</sub>/b<sub>c</sub>，限2~4，圆形βs=2）；η2=0.5+αs·h0/(4u<sub>m</sub>)，αs：中柱40、边柱30、角柱20</p><p>冲切力 F<sub>l</sub>=柱轴力层间差 − q×冲切锥体底面积（荷载面积外扩2h0：方形(b<sub>c</sub>+2h0)²、矩形(b<sub>c</sub>+2h0)(h<sub>c</sub>+2h0)）</p><p>孔洞：洞边至局部荷载/集中反力边缘 ≤6h0 时，u<sub>m</sub> 扣除局部荷载中心至孔洞外边切线间长度（l1≤l2：l4=(b+h0)/(b+2l)·l2；l1&gt;l2：用√(l1l2)）</p></div><div class="warning-box">⚠️ 题目问"冲切力Fl"还是"受冲切承载力0.7βhftηumh0"，看清再算；F[l]是承载力、Fl是荷载效应</div>
+</div>
+<div class="note-section" id="s2">
+<h3>二、冲切位置与基础冲切</h3>
+<div class="formula-box"><p>柱对托板冲切：有效高度 h0；托板对板冲切：取 h01（两层分别验算，各用各自临界面）</p><p>非矩形（异形）柱：u<sub>m</sub> 取凸折线、折角≤180°，临界面离柱边允许&gt;h0/2，取最小周长</p><p>阶形基础（6.5.5）：柱与基础交接处、基础变阶处两个截面验算 Fl ≤ 0.7β<sub>h</sub>·f<sub>t</sub>·b<sub>m</sub>·h0（bm 为平均宽度，冲切锥沿坡面）</p></div>
+</div>
+<div class="note-section" id="s3">
+<h3>三、配置箍筋/弯起钢筋（6.5.3/6.5.4，构造9.1.11）</h3>
+<div class="formula-box"><p>截面限制（双控上限）：F<sub>l</sub> ≤ 1.2f<sub>t</sub>·η·u<sub>m</sub>·h0，防止箍筋不能充分发挥、斜裂缝过大</p><p>承载力：F<sub>l</sub> ≤ (0.5f<sub>t</sub>+0.25σ<sub>pc,m</sub>)η·u<sub>m</sub>·h0 + 0.8f<sub>yv</sub>A<sub>svu</sub> + 0.8f<sub>y</sub>A<sub>sbu</sub>·sinα；σpc,m 非预应力取0</p><p>f<sub>yv</sub>&gt;360MPa 时取 360；A<sub>svu</sub>/A<sub>sbu</sub>=与45°冲切锥体斜截面相交的全部箍筋/弯起筋面积</p><p>锥体以外截面（6.5.4）：按6.5.1再验算，u<sub>m</sub> 取最外排抗冲切钢筋周边以外 0.5h0 处最不利周长</p><p>构造（9.1.11）：抗冲切箍筋 d≥6mm、间距 s≤min(h0/3, 100mm)？教材口径 s≤h0/3；弯起筋 d≥12mm、每向≥3根</p></div><div class="warning-box">⚠️ 已知Fl求箍筋：Asvu=(Fl−0.5ftηumh0)/(0.8fyv)，再按四周总肢数 n·Asv1≥Asvu 配筋</div>
+</div>
+<div class="note-section" id="s4">
+<h3>四、板柱节点不平衡弯矩（附录F + 抗震11.9.3）</h3>
+<div class="formula-box"><p>节点传递不平衡弯矩 Munb 时，用等效集中反力：F<sub>l,eq</sub> = F<sub>l</sub> + τ<sub>max</sub>·u<sub>m</sub>·h0（把锥体斜面化为临界截面垂直截面，Munb 产生的竖向剪应力线性分布，取 τmax 折算附加集中反力）</p><p>Munb 取对临界截面周长重心轴（轴2）的矩 = 对柱重心轴（轴1）的弯矩 + Fl 对该轴取矩；两弯矩同向取加、反向取减；计算系数 αo 按 F.0.2，中/边/角柱参数见图 F.0.1</p><p>边柱/角柱有悬臂板时：可能按边/角柱临界面，也可能按中柱锥体，计算比较取不利（F.0.4）</p><p>地震组合（11.9.3）：Fl,eq 乘增大系数——一、二、三级抗震等级分别取 <strong>1.7、1.5、1.3</strong>；配抗冲切钢筋时锥体以外截面按 6.5.4 式验算（um 取最外排筋外 0.5h0）</p></div><div class="warning-box">⚠️ 借鉴 ACI 318 方法；忽略临界截面水平剪应力（近似略去 h0³ 项）</div>
+</div>
+<div class="note-section" id="s5">
+<h3>五、局部受压（6.6）</h3>
+<div class="formula-box"><p>机理：外围混凝土"套箍"→局部区三向受压→局压强度远高于轴压，提高随 A<sub>b</sub>/A<sub>l</sub> 增大</p><p>β<sub>l</sub>=√(A<sub>b</sub>/A<sub>l</sub>)；A<sub>b</sub>（6.6.2）"同心、对称"：与局压面同重心，沿各边向外扩大有效距离不超过受压面短边 b（圆形承压板可沿周边扩大一倍直径）；<strong>边角局压 βl=1.0</strong>；算 βl 不扣除孔道面积</p><p>截面限制（6.6.1）：F<sub>l</sub> ≤ 1.35β<sub>c</sub>β<sub>l</sub>·f<sub>c</sub>·A<sub>ln</sub>；β<sub>c</sub>：≤C50取1.0，C80取0.8（插值）</p><p>配置方格网/螺旋间接钢筋（6.6.3）：F<sub>l</sub> ≤ 0.9(β<sub>c</sub>β<sub>l</sub>f<sub>c</sub> + 2α·ρ<sub>v</sub>·β<sub>cor</sub>·f<sub>yv</sub>)A<sub>ln</sub>；α：≤C50取1.0，C80取0.85；β<sub>cor</sub>=√(A<sub>cor</sub>/A<sub>l</sub>)，A<sub>cor</sub>&gt;A<sub>b</sub>时取Ab；<strong>A<sub>cor</sub>≤1.25A<sub>l</sub> 时不考虑间接钢筋提高</strong></p><p>ρ<sub>v</sub>：方格网 (n1As1l1+n2As2l2)/(A<sub>cor</sub>·s)；螺旋式 4As<sub>s1</sub>/(d<sub>cor</sub>·s)；长短向配筋相差过大受限时钢筋强度不能充分发挥</p><p>素混凝土局压（附录D.5.1）：ω 均布取1.0、梁/过梁端部支承（非均匀）取0.75；锚头下局压：预应力作荷载效应对不利时分项系数1.2（10.1.2）；牛腿局压见构造（8.2.2，第7讲）</p></div><div class="warning-box">⚠️ 2013二级真题：a=300、b=200 居中 → Ab=(300+2×200)×(3×200)=420000，βl=√(Ab/Al)=2.65</div>
+</div>
+</div>
+<div class="cornell-summary">
+<h4>📝 总结</h4>
+<p>一句话：冲切 = 0.7βhftηumh0（um在h0/2处、η取η1η2小者、Fl扣锥体内荷载、洞口≤6h0要扣周长）；配抗冲切筋双控（1.2ft上限+0.5ft+0.8fyvAsvu+0.8fyAsbu·sinα，fyv≤360）；板柱节点有不平衡弯矩换 Fl,eq=Fl+τmax·um·h0、抗震乘1.7/1.5/1.3；局压 = βl=√(Ab/Al)（同心对称、边角取1.0）+ 截面限制1.35βcβlfcAln + 间接筋0.9(βcβlfc+2αρvβcor·fyv)Aln（Acor≤1.25Al不考虑）。</p>
+<h4>⚠️ 易错点</h4>
+<ol><li>Fl（荷载）与[F l]（承载力）混淆</li><li>αs 中边角柱 40/30/20 与 βs 下限2 记混</li><li>Fl 忘扣 q×锥体底面积</li><li>βh/βc/α 三个插值系数张冠李戴</li><li>Ab 各边扩大限短边b（圆形一倍直径），边角βl=1.0</li><li>Acor≤1.25Al 仍乘 βcor 提高（不应考虑）</li><li>fyv>360 未截断</li></ol>
+</div>
+</div>
+<div class="practice-section">
+<h4>📝 练习题（5道）</h4>
+<div class="practice-problem">
+<p><span class="problem-tag easy">基础</span><strong>题1：</strong>中柱 600mm×600mm，板有效高度 h0=355mm，方形柱的临界截面周长 um：</p>
+<div class="options"><p>A. 3440mm　B. 3820mm　C. 4280mm　D. 4440mm</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：B</strong></p><p>um = 4×(bc+h0) = 4×(600+355) = <strong>3820mm</strong>。（临界面在柱边外 h0/2，每边外扩 h0/2×2？每侧+ h0/2，周长 4×(600+2×h0/2)=4×(600+355)）</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题2：</strong>方形柱帽1600×1600 对板冲切，h0=210mm，um=7240mm，中柱。受冲切承载力系数 η：</p>
+<div class="options"><p>A. 0.79　B. 1.00　C. 1.21　D. 1.43</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：A</strong></p><p>βs=1&lt;2 取2 → η1=0.4+1.2/2=1.0；η2=0.5+40×210/(4×7240)=0.79；取小 → η=<strong>0.79</strong>。（2013上午11题同款）</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag hard">考试热点</span><strong>题3：</strong>板柱结构中柱 N=1500kN（层间差值），板面均布荷载设计值 q=12kPa，柱600×600，h0=210mm。冲切力 Fl：</p>
+<div class="options"><p>A. 1388kN　B. 1450kN　C. 1488kN　D. 1500kN</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>锥体底 (0.6+2×0.21)²=1.0404m²；Fl=1500−12×1.04≈<strong>1488kN</strong>。注意扣的是冲切锥体底面（荷载面积外扩2h0）内板荷载。</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag medium">进阶</span><strong>题4：</strong>大截面构件中部矩形局部受压面 a×b=300×200mm，无孔洞、忽略边距。验算时 βl：</p>
+<div class="options"><p>A. 1.73　B. 2.16　C. 2.65　D. 3.00</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：C</strong></p><p>Ab=(a+2b)×(b+2b)=(300+400)×600=420000mm²；Al=60000mm²；βl=√(420000/60000)=√7≈<strong>2.65</strong>。（2013上午13题改编）</p></div></details>
+</div>
+<div class="practice-problem">
+<p><span class="problem-tag easy">概念</span><strong>题5：</strong>关于局部受压，下列说法<strong>错误</strong>的是：</p>
+<div class="options"><p>A. 计算底面积Ab与局压面积Al同心对称　B. 边角局部受压时 βl=1.0　C. 圆形承压板可沿周边扩大一倍直径　D. Acor 大于 Ab 时仍按实际 Acor 取值</p></div>
+<details><summary>💡 查看答案</summary><div class="answer-content"><p><strong>答案：D</strong></p><p>Acor&gt;Ab 时只能取 Ab（保证间接钢筋充分发挥且偏安全）；另 Acor≤1.25Al 时不考虑间接钢筋提高。</p></div></details>
+</div>
+</div>
+</div>
+
 
                 <div class="subject-content" id="subject-steel"><div class="empty-subject"><div class="empty-icon">🏗️</div><h3>钢结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
                 <div class="subject-content" id="subject-masonry"><div class="empty-subject"><div class="empty-icon">🏠</div><h3>砌体结构</h3><p>暂无笔记，开始学习后会自动整理</p></div></div>
